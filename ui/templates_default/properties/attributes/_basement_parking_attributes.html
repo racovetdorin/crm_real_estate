@@ -1,0 +1,39 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load custom_tags %}
+
+<div class="mb-3 form-row">
+    <div class="col-md-4 col-xl-2">
+        {{ form.construction_year|as_crispy_field }}
+    </div> <!-- construction_year -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.construction_material|as_crispy_field }}
+    </div> <!-- construction_material -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.built|as_crispy_field }}
+    </div> <!-- built  -->
+</div>
+
+<div class="mb-3 form-row">
+    <div class="col-md-4 col-xl-2">
+        {{ form.cadastral_number|as_crispy_field }}
+   </div>
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.topographic_number|as_crispy_field }}
+    </div>
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.land_registry|as_crispy_field }}
+   </div>
+</div>
+
+<div class="form-row">
+    <div class="form-row col-12">
+        <div class="mr-3 col">{{ form.in_development|as_crispy_field }}</div>
+        <div class="mr-3 col"></div>
+    </div>
+</div>
+<!-- 'new_construction/key_possession/pet_friendly/parking_spot/garage/furnished/ground_floor/top_floor/mansard/' -->

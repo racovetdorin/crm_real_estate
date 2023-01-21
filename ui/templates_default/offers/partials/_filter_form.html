@@ -1,0 +1,73 @@
+{% load crispy_forms_tags %}
+{% load custom_tags %}
+
+{% load i18n %}
+
+<div class="row">
+    <div class="col-md-12 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <form id="transactions-filters" method="GET">
+                    <strong><label class="mb-3">{% trans 'Filters' %}</label></strong>
+                    <a class="ml-2" href="{{request.path}}"><strong>{% trans 'Reset filters' %}</strong></a>
+
+                    <div class="form-row mb-3">
+                        <div class="col-md-6">
+                            {{ filter.form.type|as_crispy_field }}
+                        </div> <!-- type -->
+
+                        <div class="col-md-6">
+                            {{ filter.form.office|as_crispy_field }}
+                        </div> <!-- office -->
+                    </div>
+
+                    <div class="form-row mb-3">
+                        {% if request.user.is_manager %}
+                        <div class="col-md-6">
+                            {{ filter.form.user_active|as_crispy_field }}
+                        </div> <!-- user -->
+
+                        {% endif %}
+                    </div> <!-- office/user/type -->
+
+                    <div class="form-row mb-3">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ filter.form.status.label }}</label>
+                                <select data-toggle="select2" name="{{ filter.form.status.name }}">
+                                    {% for value, status in status_choices %}
+                                    <option {% if filter.form.status.value == value %} selected {% endif %} value="{{ value }}">{{ status }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>{{ filter.form.closed_after_date.label }}</label>
+                            <input type="date"
+                                   class="form-control"
+                                   name="{{ filter.form.closed_after_date.name }}"
+                                   value="{{ filter.form.closed_after_date.value }}" data-date-format="DD/MM/YYYY">
+                        </div> <!-- closed_after_date -->
+
+                        <div class="form-group col-md-4">
+                            <label>{{ filter.form.closed_before_date.label }}</label>
+                            <input type="date"
+                                   class="form-control"
+                                   name="{{ filter.form.closed_before_date.name }}"
+                                   value="{{ filter.form.closed_before_date.value }}" data-date-format="DD/MM/YYYY">
+                        </div> <!-- closed_before_date -->
+
+                    </div> <!-- closed_after_date/closed_before_date -->
+
+                    <div class="float-right">
+                        {% include 'partials/_filter_button.html' %}
+                    </div> <!-- filter -->
+                    <div class="float-right mr-3">
+                        <a id="transactions-export" href="{% url 'ui:transacted_offers_log' %}">{% trans 'Get Transaction Log' %}</a>
+                    </div> <!-- get transaction log -->
+                </form> <!-- end form -->
+            </div> <!-- end card-body -->
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+</div> <!-- end row -->

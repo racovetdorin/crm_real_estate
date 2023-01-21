@@ -1,0 +1,28 @@
+{% load crispy_forms_tags %}
+
+<div class="form-row col-md-8 col-lg-9 p-0">
+    <div class="form-group col-5 col-md-3 col-lg-3">
+        {{ form.prefix_1|as_crispy_field }}
+    </div> <!-- prefix_1 -->
+
+    <div class="form-group col-7 col-md-8">
+        {{ form.phone_1|as_crispy_field }}
+    </div> <!-- phone_1 -->
+
+    <div class="form-group col-5 col-md-3 col-lg-3">
+        {{ form.prefix_2|as_crispy_field }}
+    </div> <!-- prefix_2 -->
+
+    <div class="form-group col-7 col-md-8">
+        {{ form.phone_2|as_crispy_field }}
+    </div> <!-- phone_2 -->
+
+    <div class="form-group col-5 col-md-3 col-lg-3">
+        {{ form.prefix_3|as_crispy_field }}
+    </div> <!-- prefix_3 -->
+
+    <div class="form-group col-7 col-md-8">
+        {{ form.phone_3|as_crispy_field }}
+    </div> <!-- phone_3 -->
+
+</div> <!-- phones -->

@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<div class="tasks">
+    <h5 class="mt-0 task-header">{% trans activity_column.title %}</h5>
+    <div id="{{ activity_column.id }}" class="task-list-items" data-status="{{ activity_column.status }}">
+        {% for activity in activity_column.qs %}
+            {% include 'activities/partials/_list_row.html' with activity=activity %}
+        {% endfor %}
+    </div> <!-- activity row -->
+</div>

@@ -1,0 +1,118 @@
+{% load crispy_forms_tags %}
+
+{% load i18n %}
+
+<div class="card">
+    <div class="card-body">
+        <form id="id-form-client-add" action="{% url 'ui:hidden_client_create' %}" method="POST">
+            <div id="id-form-client-error-container"
+                 class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert"
+                 style="display:none">
+                <div id="id-form-client-error-data">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-xl-12">
+                    <label class="mb-2" id="new_client"><strong>{% trans 'New Client' %}</strong></label>
+                    <a href="#" id="id-close" type="button" class="close">×</a>
+                    <div class="form-row">
+                        <div class="col-lg-6 col-md-6">
+                            {{ form.first_name|as_crispy_field }}
+                        </div> <!-- first_name -->
+
+                        <div class="col-lg-6 col-md-6">
+                            {{ form.last_name|as_crispy_field }}
+                        </div> <!-- last_name -->
+
+                    </div> <!-- first_name/last_name -->
+                    <div class="form-row">
+                        <div class="col-lg-4 col-md-4 col-lg-6">
+                            {{ form.email|as_crispy_field }}
+                        </div> <!-- email -->
+
+                        <div class="col-lg-4 col-md-4 col-lg-6">
+                            {{ form.company|as_crispy_field }}
+                        </div> <!-- company -->
+
+                        <div class="col-lg-4 col-md-4 col-lg-12">
+                            {{ form.address|as_crispy_field }}
+                        </div> <!-- address -->
+
+                    </div> <!-- email/company/address/ -->
+                    <div class="form-row col-md-8 col-lg-9 p-0">
+                        <div class="form-group col-5 col-md-3 col-lg-3">
+                            <div id="div_id_prefix_1" class="form-group">
+                                <label for="id_prefix_1" class>{% trans 'Prefix 1' %}</label>
+                                <div class>
+                                    <select name="prefix_1" class="select form-control" id="id_prefix_1">
+                                        {% for value, label in form.prefix_1.field.choices %}
+                                        {% if not client %}
+                                        <option {% if value == '+373' %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                                        {% else %}
+                                        <option {% if value == form.prefix_1.value %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div> <!-- prefix_1 -->
+
+                        <div class="form-group col-7 col-md-8">
+                            {{ form.phone_1|as_crispy_field }}
+                        </div> <!-- phone_1 -->
+
+                        <div class="form-group col-5 col-md-3 col-lg-3">
+                            <div id="div_id_prefix_2" class="form-group">
+                                <label for="id_prefix_2" class>{% trans 'Prefix 2' %}</label>
+                                <div class>
+                                    <select name="prefix_2" class="select form-control" id="id_prefix_2">
+                                        {% for value, label in form.prefix_2.field.choices %}
+                                        {% if not client %}
+                                        <option {% if value == '+373' %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                                        {% else %}
+                                        <option {% if value == form.prefix_2.value %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div> <!-- prefix_2 -->
+
+                        <div class="form-group col-7 col-md-8">
+                            {{ form.phone_2|as_crispy_field }}
+                        </div> <!-- phone_2 -->
+
+                        <div class="form-group col-5 col-md-3 col-lg-3">
+                            <div id="div_id_prefix_3" class="form-group">
+                                <label for="id_prefix_3" class>{% trans 'Prefix 3' %}</label>
+                                <div class>
+                                    <select name="prefix_3" class="select form-control" id="id_prefix_3">
+                                        {% for value, label in form.prefix_3.field.choices %}
+                                        {% if not client %}
+                                        <option {% if value == '+373' %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                                        {% else %}
+                                        <option {% if value == form.prefix_3.value %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div> <!-- prefix_3 -->
+
+                        <div class="form-group col-7 col-md-8">
+                            {{ form.phone_3|as_crispy_field }}
+                        </div> <!-- phone_3 -->
+
+                    </div> <!-- phones -->
+                    <div class="form-row">
+                        {{ form.is_agency|as_crispy_field }}
+                    </div> <!-- agency -->
+                </div>
+            </div>
+            <button id="id-form-client-submit" type="submit" class="btn btn-primary mt-3">{% trans 'Submit' %}</button>
+            <input type="hidden" value="{{ request.path }}" name="current_path">
+        </form>
+    </div>
+</div>
+

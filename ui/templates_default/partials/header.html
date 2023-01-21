@@ -1,0 +1,55 @@
+{% load static %}
+{% load i18n %}
+<div class="navbar-custom">
+    <ul class="list-unstyled topbar-right-menu float-right mb-0">
+        <li class="notification-list">
+
+        </li>
+        <li class="dropdown notification-list">
+            <a class="nav-link arrow-none mr-0" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="false"
+                   aria-expanded="false">
+                    <i class="dripicons-gear noti-icon"></i>
+                </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                <div class="custom-switch dropdown-item ml-2">
+                    <input type="checkbox"
+                           class="custom-control-input"
+                           id="id-sidebar-toggle"
+                           {% if 'leftSidebarCondensed' in user.layout_settings %} checked {% endif %}>
+                    <label for="id-sidebar-toggle" class="custom-control-label">{% trans 'Condensed sidebard' %}</label>
+                </div>
+                <a href="{% url 'ui:users_update' pk=user.pk %}" class="dropdown-item notify-item">
+                    <i class="mdi mdi-logout mr-1"></i>
+                    <span>{% trans 'My profile' %}</span>
+                </a>
+            </div>
+        </li>
+
+        <li class="dropdown notification-list">
+            <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false"
+               aria-expanded="false">
+                <span class="account-user-avatar">
+                    <img src="{{ user.get_full_thumbnail_url }}" class="rounded-circle">
+                </span>
+                <span>
+                    <span class="account-user-name">{{ user.get_display_full_name }}</span>
+                    <span class="account-position">{{ user.get_username }}</span>
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                <a href="{% url 'ui:crm_logout' %}" class="dropdown-item notify-item">
+                    <i class="mdi mdi-logout mr-1"></i>
+                    <span>{% trans 'Logout' %}</span>
+                </a>
+
+            </div>
+        </li>
+
+    </ul>
+    <button class="button-menu-mobile open-left disable-btn">
+        <i class="mdi mdi-menu"></i>
+    </button>
+</div>
+<!-- end Topbar -->

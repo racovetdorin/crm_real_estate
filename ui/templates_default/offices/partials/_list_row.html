@@ -1,0 +1,25 @@
+<tr>
+    <td>
+        <img src="{{ storage_url }}{{ office.get_thumbnail_url }}" alt="contact-img"
+             title="contact-img" height="120" width="180"/>
+    </td>
+
+    <td>
+        {{ office.name|default_if_none:"" }}
+    </td>
+
+    <td>
+        {{ office.email|default_if_none:"" }}<br>
+        <i class="mdi mdi-phone"></i>&nbsp;{{ office.phone_1|default_if_none:"" }}<br>
+        <i class="mdi mdi-phone"></i>&nbsp;{{ office.phone_2|default_if_none:"" }}
+    </td>
+
+    <td>
+        {{ office.users.values|length }}
+    </td>
+
+    <td>
+        <a href="{% url 'ui:office_update' pk=office.id %}" class="action-icon"> <i
+                class="mdi mdi-square-edit-outline"></i></a>
+    </td>
+</tr>

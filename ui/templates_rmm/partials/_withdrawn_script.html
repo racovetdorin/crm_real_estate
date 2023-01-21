@@ -1,0 +1,20 @@
+<script>
+$(function() {
+    var forLoopCounter = $('#name-sale').data('forloop-counter')
+    for(var index=0; index<forLoopCounter; index++){
+        var formIdValue = $('#id_form-'+index+'-status').val();
+        if (formIdValue == 'withdrawn'){
+            $('#withdrawn_reason_'+index.toString()).show();
+        }
+        $('#id_form-'+index+'-status').on('change', function(){
+            var j = $(this).parent().parent().parent().data('loop-counter');
+            if(this.value == 'withdrawn'){
+                $('#withdrawn_reason_'+j.toString()).show();
+            }
+            else {
+                $('#withdrawn_reason_'+j.toString()).hide();
+            }
+        });
+    };
+});
+</script>

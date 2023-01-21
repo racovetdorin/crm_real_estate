@@ -1,0 +1,53 @@
+{% load humanize %}
+{% load custom_tags %}
+
+<tr>
+    <td>
+        {{ offer.get_type_display }} #{{ offer.id }}
+    </td>
+
+    <td>
+        {{ offer.closed_by }}
+    </td>
+
+    <td>
+        {{ offer.price|default_if_none:""|intcomma }}
+    </td>
+
+    <td>
+        {{ offer.final_price|default_if_none:""|intcomma }}
+    </td>
+
+    <td>
+        {{ offer.commission|default_if_none:""|intcomma }}
+    </td>
+
+    <td>
+        {{ offer.commission_percent|default_if_none:"" }}%
+    </td>
+
+    <td>
+        {{ offer.VAT }}
+    </td> <!-- VAT -->
+
+    <td>
+        {{ offer.updated_at }}
+    </td>
+
+    <td>
+        {% include 'partials/_status_filter.html' with status=offer.status|default_if_none:'' %}
+    </td>
+
+    <td>
+        {{ offer.closing_date }}
+    </td>
+
+    <td>
+        {% if request.user.is_manager %}
+        <a href="#" class="action-icon" data-toggle="modal" data-target="#danger-alert-modal-{{ offer.id }}"><i
+                class="mdi mdi-delete"></i></a>
+        {% endif %}
+    </td>
+
+    {% include 'partials/_delete_modal.html' with csrf_token=csrf_token delete_url='ui:offer_delete' id=offer.id %}
+</tr>

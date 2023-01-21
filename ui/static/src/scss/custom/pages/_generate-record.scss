@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.roboto{
+    font-family: 'Roboto', sans-serif;
+}
+.blue_div{
+    font-weight: 700;
+    background: linear-gradient(to right, #003DA5 50%, white 50%);
+    height: 100%; 
+    padding:18px;
+}
+.mt_30{
+    margin-top: 30px;
+}
+.mt_40{
+    margin-top: 40px;
+}
+.pt_40{
+    padding-top: 40px ;
+    padding-bottom: 60px;
+}
+.blue_div_full{
+    font-weight: 700;
+    background-color: #003DA5;
+    height: 100%; 
+    
+}
+.red_div_full{
+    font-weight: 700;
+    background-color: red;
+    height: 100%; 
+    
+}

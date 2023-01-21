@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% load i18n %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    {% include "partials/page_title.html" with title='Archived activities' %} <!-- page_title -->
+    {% include "partials/messages.html" %}
+    {% include 'activities/partials/_filter_form.html' %}
+
+    <!-- content_row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-centered w-100 dt-responsive nowrap dataTable no-footer dtr-inline collapsed" id="products-datatable">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>{% trans 'Activity' %}</th>
+                                <th>{% trans 'Type' %}</th>
+                                <th>{% trans 'Telephone' %}</th>
+                                <th>{% trans 'Agent' %}</th>
+                                <th>{% trans 'Hyperink' %}</th>
+                                <th>{% trans 'Linked to' %}</th>
+                                <th>{% trans 'Created at' %}</th>
+                                <th>{% trans 'Description' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for activity in object_list %}
+                            {% include 'activities/partials/_archived_activities_list_row.html' with activity=activity %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div> <!-- transactions list -->
+                    {% include 'partials/pagination.html' %}
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div> <!-- content_row -->
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'dist/js/custom/export_transactions.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+<div class="form-row mb-3">
+    <div class="col-md-4 col-lg-2">
+        <div id="div_id_surface_total" class="form-group">
+            <label for="div_id_surface_total" class> {% trans 'Total surface' %}</label>
+            <div>
+                <input type="number"
+                       name="{{ form.surface_total.html_name }}"
+                       value="{{ form.surface_total.value }}"
+                       step="any"
+                       class="numberinput form-control"
+                       id="id_{{ form.surface_total.html_name }}"/>
+            </div>
+        </div>
+    </div> <!-- surface_total -->
+    <div class="col-md-4 col-lg-2">
+        <div id="div_id_surface_total" class="form-group">
+           
+                <div>
+                        {{ form.units_of_measure|as_crispy_field }}
+                </div>
+        </div>
+    </div>
+</div> 

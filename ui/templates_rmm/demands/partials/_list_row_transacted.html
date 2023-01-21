@@ -1,0 +1,46 @@
+{% load static %}
+{% load custom_tags %}
+{% load i18n %}
+{% load humanize %}
+
+<tr>
+    <td>
+        {{ demand.user }}
+    </td> <!-- property -->
+    <td>
+         ({{ demand.user.office }})
+    </td> <!-- office -->
+    <td>
+        {% trans "demand" %} #{{ demand.id }}<br>
+    </td> <!-- property/demand type-id -->
+    <td>
+        {{ demand.get_type_display}}
+    </td> <!-- type -->
+    <td>
+        {{ demand.country.name}}
+    </td> <!-- country -->
+    <td>
+        {{ demand.final_price|default_if_none:""|intcomma }}
+    </td> <!-- final_price -->
+    <td>
+        {{ demand.commission|default_if_none:""|intcomma }}
+    </td> <!-- commission seller -->
+    <td>
+        {{ demand.commission_percent|default_if_none:""|intcomma }}
+    </td> <!-- commission seller % -->
+    <td>
+        {{ demand.commission_buyer|default_if_none:""|intcomma }}
+    </td> <!-- commission buyer -->
+    <td>
+        {{ demand.commission_buyer_percent|default_if_none:""|intcomma }}
+    </td> <!-- commission buyer % -->
+    <td>
+        {{ demand.closing_date|default_if_none:"--" }}
+    </td> <!-- closing_date -->
+    <td>
+        {{ demand.get_status_display }}
+    </td>
+    <td>
+        {{ demand.is_closed|translate_bool }}
+    </td>
+</tr>

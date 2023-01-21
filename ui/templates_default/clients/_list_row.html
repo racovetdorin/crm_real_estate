@@ -1,0 +1,42 @@
+{% load static %}
+{% load custom_tags %}
+{% load ui_extras %}
+
+<tr>
+    <td class="table-user">
+        <img src="{% if client.is_agency %}{% static 'dist/images/clients/avatar-agency.png' %}{% else %}{% static 'dist/images/clients/avatar-client.png' %}{% endif %}" alt="table-user"
+             class="mr-2 rounded-circle">
+    </td>
+
+    <td>
+        {{ client.get_display_full_name }}
+    </td>
+
+    {% can_view_client_details request.user client as user_can_view %}
+    {% if user_can_view %}
+        <td>
+            {{ client.get_display_phones_emails_text }}
+        </td>
+    {% else %}
+        <td>{{  _('Private details for this user') }}</td>
+    {% endif %}
+
+    <td>
+        {{ client.created_at }} <br>
+        {{ client.updated_at }}
+    </td>
+
+    <td>
+        <a href="{% url 'ui:client_update' pk=client.id %}" class="action-icon"> <i
+                class="mdi mdi-square-edit-outline"></i></a>
+        {% can_delete_client request.user client as user_can_delete %}
+        {% if user_can_delete %}
+
+            <a href="#" class="action-icon" data-toggle="modal" data-target="#danger-alert-modal-{{ client.id }}"><i
+                class="mdi mdi-delete"></i></a>
+        {% endif %}
+    </td>
+
+
+    {% include 'partials/_delete_modal.html' with csrf_token=csrf_token delete_url='ui:client_delete' id=client.id%}
+</tr>

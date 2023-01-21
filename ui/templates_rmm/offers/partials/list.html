@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% load i18n %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    {% include "partials/page_title.html" with title='Transacted Offers' %} <!-- page_title -->
+    {% include 'offers/partials/_filter_form.html' %}
+
+    <!-- content_row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% include 'partials/object_count.html' with object_list_1=object_list|length objects_1='transacted offers' %}
+                    <div class="table-responsive">
+                        <table class="table table-centered w-100 dt-responsive nowrap dataTable no-footer dtr-inline collapsed" id="products-datatable">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>{% trans 'Agent' %}</th>
+                                <th>{% trans 'Office' %}</th>
+                                <th>{% trans 'Offer and Property ID' %}</th>
+                                <th>{% trans 'Exclusivity' %}</th>
+                                <th>{% trans 'Transaction type' %}</th>
+                                <th>{% trans 'Final price' %}</th>
+                                <th>{% trans 'Commission %' %}</th>
+                                <th>{% trans 'Commission' %}</th>
+                                <th>{% trans 'Closing date' %}</th>
+                                <th>{% trans 'Status' %}</th>
+                                <th>{% trans 'Is closed' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for offer in object_list %}
+                            {% include 'offers/partials/_list_row.html' with offer=offer %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div> <!-- transactions list -->
+                    {% include 'partials/pagination.html' %}
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div> <!-- content_row -->
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'dist/js/custom/export_transactions.js' %}"></script>
+{% endblock %}

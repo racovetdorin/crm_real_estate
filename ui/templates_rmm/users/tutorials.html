@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card col-6">
+    <div class="card-body">
+        {% for tutorial_name, tutorial_link in crm_tutorials %}
+            <a href="{{ tutorial_link }}" target="_blank"><strong>{{ tutorial_name }}</strong></a> <br>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

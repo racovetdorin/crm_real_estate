@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% load i18n %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    {% include "partials/page_title.html" with title='Transacted Demands' %} <!-- page_title -->
+    {% include 'demands/partials/_filter_form.html' %}
+
+    <!-- content_row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% include 'partials/object_count.html' with object_list_1=object_list|length objects_1='transacted offers' %}
+                    <div class="table-responsive">
+                        <table class="table table-centered w-100 dt-responsive nowrap dataTable no-footer dtr-inline collapsed" id="products-datatable">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>{% trans 'Agent' %}</th>
+                                <th>{% trans 'Office' %}</th>
+                                <th>{% trans 'Demand ID' %}</th>
+                                <th>{% trans 'Transaction type' %}</th>
+                                <th>{% trans 'Country' %}</th>
+                                <th>{% trans 'Final price' %}</th>
+                                <th>{% trans 'Commission seller' %}</th>
+                                <th>{% trans 'Commission seller %' %}</th>
+                                <th>{% trans 'Commission buyer' %}</th>
+                                <th>{% trans 'Commission buyer %' %}</th>
+                                <th>{% trans 'Closing date' %}</th>
+                                <th>{% trans 'Status' %}</th>
+                                <th>{% trans 'Is closed' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for demand in object_list %}
+                            {% include 'demands/partials/_list_row_transacted.html' with demand=demand %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div> <!-- transactions list -->
+                    {% include 'partials/pagination.html' %}
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div> <!-- content_row -->
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% load crispy_forms_tags %}
+
+<div class="form-row">
+    <div class="col-md-12 col-lg-4">
+        {{ form.subtype|as_crispy_field }}
+    </div> <!-- 'subtype' -->
+
+    <div class="col-md-12 col-lg-8">
+        {{ form.description_sentimental|as_crispy_field }}
+    </div>  <!-- description_sentimental -->
+</div>
+
+<div class="form-row">
+    <div class="col-md-7">
+        {{ form.description|as_crispy_field }}
+    </div> <!-- description -->
+
+    <div class="col-md-5 has-error">
+        {{ form.description_private|as_crispy_field }}
+    </div> <!-- description_private -->
+
+</div> <!-- 'description/description_sentimental/description_private' -->
+
+<div class="form-row mb-3">
+    <div class="col-md-4 col-lg-2">
+        {{ form.surface_total|as_crispy_field }}
+    </div> <!-- surface_total -->
+
+    <div class="col-md-4 col-lg-2">
+        {{ form.surface_util|as_crispy_field }}
+    </div> <!-- surface_util -->
+
+    <div class="col-md-4 col-lg-2">
+        {{ form.surface_built|as_crispy_field }}
+    </div> <!-- surface_built -->
+
+    <div class="col-md-6 col-lg-2">
+        {{ form.surface_field|as_crispy_field }}
+    </div> <!-- 'surface_field -->
+
+    <div class="col-md-6 col-lg-2">
+        {{ form.surface_garden|as_crispy_field }}
+    </div> <!-- surface_garden -->
+
+    <div class="col-md-6 col-lg-2">
+        {{ form.front_line|as_crispy_field }}
+    </div> <!-- front_line -->
+
+
+</div> <!-- surface -->

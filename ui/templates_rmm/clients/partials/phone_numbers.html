@@ -1,0 +1,83 @@
+{% load crispy_forms_tags %}
+
+{% load i18n %}
+
+<div class="form-row col-md-8 col-lg-9 p-0">
+    <div class="form-group col-5 col-md-3 col-lg-3">
+        <div id="div_id_prefix_1" class="form-group">
+            <label for="id_prefix_1" class>{% trans 'Prefix 1' %}</label>
+            <div class>
+                <select name="prefix_1" class="select form-control" id="id_prefix_1">
+                    {% for value, label in form.prefix_1.field.choices %}
+                    {% if not client %}
+                    <option {% if value == '+373' %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                    {% else %}
+                    <option {% if value == form.prefix_1.value %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div> <!-- prefix_1 -->
+
+    <div class="form-group col-7 col-md-8">
+        {{ form.phone_1|as_crispy_field }}
+    </div> <!-- phone_1 -->
+
+    <div class="form-group col-5 col-md-3 col-lg-3">
+        <div id="div_id_prefix_2" class="form-group">
+            <label for="id_prefix_2" class>{% trans 'Prefix 2' %}</label>
+            <div class>
+                <select name="prefix_2" class="select form-control" id="id_prefix_2">
+                    {% for value, label in form.prefix_2.field.choices %}
+                    {% if not client %}
+                    <option {% if value == '+373' %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                    {% else %}
+                    <option {% if value == form.prefix_2.value %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div> <!-- prefix_2 -->
+
+    <div class="form-group col-7 col-md-8">
+        {{ form.phone_2|as_crispy_field }}
+    </div> <!-- phone_2 -->
+
+    <div class="form-group col-5 col-md-3 col-lg-3">
+        <div id="div_id_prefix_3" class="form-group">
+            <label for="id_prefix_3" class>{% trans 'Prefix 3' %}</label>
+            <div class>
+                <select name="prefix_3" class="select form-control" id="id_prefix_3">
+                    {% for value, label in form.prefix_3.field.choices %}
+                    {% if not client %}
+                    <option {% if value == '+373' %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                    {% else %}
+                    <option {% if value == form.prefix_3.value %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div> <!-- prefix_3 -->
+
+    <div class="form-group col-7 col-md-8">
+        {{ form.phone_3|as_crispy_field }}
+    </div> <!-- phone_3 -->
+
+</div> <!-- phones -->
+
+<!-- client type seller -->
+{% if client.properties.count > 0 %}
+<div class="form-group col-7 col-md-8">
+    <i class="mdi mdi-check"></i><span>{% trans 'Client seller' %}</span>
+</div>
+{% endif %}
+
+<!-- client type buyer -->
+{% if client.demands.count > 0 %}
+<div class="form-group col-7 col-md-8">
+    <i class="mdi mdi-check"></i><span>{% trans 'Client buyer' %}</span>
+</div>
+{% endif %}

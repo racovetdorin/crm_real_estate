@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load ui_extras %}
+
+{% translate 'Update Client' %}
+{% translate 'Add Client' %}
+
+{% block content %}
+<div class="container-fluid">
+    {% if client %}
+        {% include "partials/page_title.html" with title='Update Client' id=client.id %} <!-- page_title -->
+    {% else %}
+        {% include "partials/page_title.html" with title='Add Client' %} <!-- page_title -->
+    {% endif %}
+    {% include "partials/messages.html" %}
+
+    <!-- content_row -->
+    <div class="row">
+        <div class="col-md-12 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    {% include 'partials/form_errors.html' %}
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6 col-md-6">
+                                        {{ form.first_name|as_crispy_field }}
+                                    </div> <!-- first_name -->
+
+                                    <div class="form-group col-lg-6 col-md-6">
+                                        {{ form.last_name|as_crispy_field }}
+                                    </div> <!-- last_name -->
+
+                                </div> <!-- first_name/last_name -->
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 col-lg-6">
+                                        {{ form.email|as_crispy_field }}
+                                    </div> <!-- email -->
+
+                                    <div class="form-group col-md-4 col-lg-6">
+                                        {{ form.company|as_crispy_field }}
+                                    </div> <!-- company -->
+
+                                    <div class="form-group col-md-4 col-lg-12">
+                                        {{ form.national_id|as_crispy_field }}
+                                    </div> <!-- national_id -->
+
+                                    <div class="form-group col-md-4 col-lg-12">
+                                        {{ form.address|as_crispy_field }}
+                                    </div> <!-- address -->
+
+                                </div> <!-- email/company/address/ -->
+                                {% if client.is_private %}
+                                    {% if user.is_superuser %}
+                                    {% include 'clients/partials/phone_numbers.html' %}
+                                    {% endif %}
+                                {% else %}
+                                    {% include 'clients/partials/phone_numbers.html' %}
+                                {% endif %}
+                                <div class="form-row ml-1">
+                                    <div class="mr-3">
+                                        {{ form.is_agency|as_crispy_field }}
+                                    </div>
+                                    {% if user.is_superuser %}
+                                    {{ form.is_private|as_crispy_field }}
+                                    {% endif %}
+                                </div> <!-- agency -->
+
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+                        {% include 'partials/_submit_button.html' with title='Submit' type='submit' value='POST' button_class="btn btn-lg btn-primary" %}
+                        {% if client %}
+
+                            {% can_delete_client request.user client as user_can_delete %}
+                            {% if user_can_delete %}
+
+                                <a href="#" class="btn btn-lg btn-danger" data-toggle="modal"
+                                data-target="#danger-alert-modal-{{ client.id }}"> <i class="mdi mdi-delete"></i></a> <!-- delete -->
+                            {% endif %}
+                        {% endif %}
+                    </form>
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div> <!-- end col-->
+    </div> <!-- content_row -->
+
+    {% if client %}
+        {% include 'activities/partials/_list.html' with modal_target="add_activity_modal" form=activity_form %}
+        {% include 'partials/_delete_modal.html' with csrf_token=csrf_token delete_url='ui:client_delete' id=client.id%}
+    {% endif %}
+</div> <!-- container -->
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script src="{% static 'dist/js/custom/messages_fadeout.js' %}"></script>
+
+<script src="{% static 'dist/js/vendor/dragula.min.js' %}"></script>
+<script src="{% static 'dist/js/custom/activities_fk_objects_filter.js' %}"></script>
+<script src="{% static 'dist/js/ui/component.dragula.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load custom_tags %}
+{% load i18n %}
+<nav>
+    {% if is_paginated %}
+    <ul class="pagination pagination-rounded mb-0">
+        {% if page_obj.has_previous %}
+        <li class="mt-1"><a href="?{% url_replace page=1 %}">&laquo; {% trans 'first' %}</a></li>
+        <li class="page-item">
+            <a class="page-link" href="?{% url_replace page=page_obj.previous_page_number %}" aria-label="Previous">
+                <i class="mdi mdi-chevron-left"></i>
+            </a>
+        </li>
+        {% endif %}
+        {% for i in paginator.page_range %}
+        {% if page_obj.number == i %}
+        <li class="page-item active"><a class="page-link" href="?{% url_replace page=i %}">{{ i }}</a></li>
+        {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3' %}
+        <li class="page-item"><a class="page-link" href="?{% url_replace page=i%}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?{% url_replace page=page_obj.next_page_number %}" aria-label="Next">
+                <i class="mdi mdi-chevron-right"></i>
+            </a>
+        </li>
+        <li class="mt-1"><a href="?{% url_replace page=page_obj.paginator.num_pages %}">{% trans 'last' %} &raquo;</a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</nav>

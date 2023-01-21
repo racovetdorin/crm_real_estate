@@ -1,0 +1,38 @@
+{% load i18n %}
+{% load custom_tags %}
+
+<tr>
+    <td>
+        # {{ activity.id }}
+    </td>
+
+    <td>
+        {{ activity.get_type_display }}
+    </td>
+
+    <td>
+        {{ activity.phone }}
+    </td>
+
+    <td>
+        {{ activity.user.email }}
+    </td>
+
+    <td>
+        {{ activity.hyperlink }}
+    </td>
+
+    <td>
+        {% if activity.property %} {{ activity.property }}<br> {% endif %}
+        {% if activity.demand %} {{ activity.demand }}<br> {% endif %}
+        {% if activity.client %} {{ activity.client }} {% endif %}
+    </td>
+
+    <td>
+        {{ activity.created_at }}
+    </td>
+
+    <td>
+        {{ activity.description|textwrap_string|linebreaks }}
+    </td>
+</tr>

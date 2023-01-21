@@ -1,0 +1,16 @@
+// 
+// _inputformat.scss
+//
+
+input[type="date"]:before {
+content: attr(data-date); 
+width: 100%;
+}
+
+input[type="date"]::-webkit-datetime-edit, input[type="date"]::-webkit-inner-spin-button, input[type="date"]::-webkit-clear-button {
+display: none; 
+}
+
+#error-field-leads{
+    width:40% !important;
+}

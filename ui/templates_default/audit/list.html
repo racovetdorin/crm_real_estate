@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    {% include "partials/page_title.html" with title='Audit' %} <!-- page_title -->
+
+    {% include 'audit/partials/_filter_form.html' %}
+
+    <!-- content_row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive" id="properties-list">
+                        <table class="table table-centered w-100 dt-responsive nowrap dataTable no-footer dtr-inline collapsed" id="products-datatable">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>{% trans 'Object type' %}</th>
+                                <th>{% trans 'Action date' %}</th>
+                                <th>{% trans 'Action' %}</th>
+                                <th>{% trans 'Agent name' %}</th>
+                                <th style="width: 15%;">{% trans 'Action description' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for log in object_list %}
+                            {% include 'audit/partials/_list_row.html' with log=log %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div> <!-- properties list -->
+                    {% include 'partials/pagination.html' %}
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div> <!-- content_row -->
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- third party js -->
+<script src="{% static 'dist/js/vendor/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.bootstrap4.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.checkboxes.min.js' %}"></script>
+<script src="{% static 'dist/js/custom/messages_fadeout.js' %}"></script>
+<!-- third party js ends -->
+{% endblock %}

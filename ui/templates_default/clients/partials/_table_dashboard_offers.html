@@ -1,0 +1,39 @@
+{% load static %}
+{% load i18n %}
+<div class="table-responsive">
+    <table class="table table-centered table-striped dt-responsive nowrap w-100"
+           id="clients-offers-datatable">
+        <thead>
+        <tr>
+            <th>{% trans 'Client' %}</th>
+            <th>{% trans 'Phone' %}</th>
+            <th>{% trans 'Offers' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+        <tr>
+            <td class="table-user">
+                <img src="{% if client.is_agency %}{% static 'dist/images/clients/avatar-agency.png' %}{%else%}{% static 'dist/images/clients/avatar-client.png' %}{%endif%}" alt="table-user"
+             class="mr-2 rounded-circle">
+                <a href="javascript:void(0);" class="text-body font-weight-semibold">{{ client.name }}</a>
+            </td>
+            <td>
+                {{ client.phones }}
+            </td>
+            <td>
+                <a href="{% url 'ui:all_properties_list' %}?client={{ client.id }}"
+                   class="text-body font-weight-semibold">
+                    <i class="uil-home-alt"></i>
+                    <b>{{ client.properties_count }}</b> {% trans 'Properties' %}
+                </a>
+                <a href="{% url 'ui:all_demands_list' %}?client={{ client.id }}" class="text-body font-weight-semibold">
+                    <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                    <b>{{ client.demands_count }}</b> {% trans 'Demands' %}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

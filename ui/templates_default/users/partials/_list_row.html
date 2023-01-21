@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load custom_tags %}
+{% load static %}
+
+<tr>
+    <td>
+        {% if agent.get_thumbnail_url %}
+            <img src="{{ agent.get_full_thumbnail_url }}" class="user-thumbnail"/>
+        {% else %}
+            <img src="{% static 'dist/images/users/userportret.png' %}" class="user-thumbnail"/>
+        {% endif %}
+    </td>
+
+    <td>
+        {{ agent.get_display_full_name }} #{{ agent.id }} <br>
+        {{ agent.get_display_role|default_if_none:'' }}
+    </td>
+
+    <td>
+        {{ agent.email }} <br>
+        {{ agent.phone|default_if_none:'' }}
+    </td>
+
+    <td>
+        <a href="{% url 'ui:all_properties_list' %}?user={{ agent.id }}" class="impakt-text">{% trans 'Offers' %}: {{ agent.offers.values|to_list|length }}</a> <br>
+        <a href="{% url 'ui:all_demands_list' %}?user={{ agent.id }}" class="impakt-text">{% trans 'Demands' %}: {{ agent.demands.values|to_list|length }}</a>
+    </td>
+
+    <td>
+        {% if user == request.user or request.user.is_superuser %}
+        <a href="{% url 'ui:users_update' pk=agent.id %}" class="action-icon"> <i
+                class="mdi mdi-square-edit-outline"></i></a>
+        {% endif %}
+    </td>
+</tr>

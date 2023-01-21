@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% load i18n %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    {% include "partials/page_title.html" with title='Clients' %} <!-- page_title -->
+    {% include "partials/messages.html" %}
+    {% include 'clients/partials/_filter_form.html'%}
+
+    <!-- content_row-->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% include 'partials/_button.html' with button_url='ui:client_create' button_class="btn btn-success btn-lg mb-2"  title='New Client' icon_class="mdi mdi-plus-circle" %} <!-- client_create -->
+                    {% include 'partials/object_count.html' with object_list_1=object_list|length objects_1='clients' %}
+                    <div class="table-responsive">
+                        <table class="table table-centered w-100 dt-responsive nowrap dataTable no-footer dtr-inline collapsed"
+                               id="products-datatable">
+                            <thead class="thead-light">
+                            <tr>
+                                <th class="all">{% trans 'Client' %}</th>
+                                <th>{% trans 'Name' %}</th>
+                                <th>{% trans 'Agent' %} </th>
+                                <th>{% trans 'Phones' %} / {% trans 'Email' %}</th>
+                                <th>{% trans 'Created at/Updated at' %}</th>
+                                <th style="width: 85px;">{% trans 'Action' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if request.user.is_superuser or request.user.is_manager %}
+                                 {% for client in object_list %}
+                                    {% if client.office == request.user.office %}
+                                        {% include 'clients/_list_row.html' %}
+                                    {% endif %}    
+                                 {% endfor %}
+                            {% else %}
+                                 {% for client in object_list %}
+                                    {% if client.user.id == request.user.id %}
+                                        {% include 'clients/_list_row.html' %}
+                                    {% elif client.is_visible and client.office == request.user.office %}
+                                        {% include 'clients/_list_row.html' %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% include 'partials/pagination.html' %}
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+            <!-- end row -->
+        </div> <!-- end col -->
+    </div> <!-- content_row-->
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- third party js -->
+<script src="{% static 'dist/js/vendor/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.bootstrap4.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.checkboxes.min.js' %}"></script>
+<script src="{% static 'dist/js/custom/messages_fadeout.js' %}"></script>
+<!-- third party js ends -->
+
+<!-- demo app -->
+{% endblock %}

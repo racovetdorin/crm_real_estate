@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load custom_tags %}
+{% load ui_extras %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block body %}
+<div class="container mt_20 roboto" >
+    <div class="card" id="print">
+        <div class="card-body">
+            <div class="row blue_div">
+                <div class="col-md-6  roboto">
+                    {% if property.user.office.slug == "remax-invest" %}                    
+                        <img src="https://media.rmx.casa/static/report/logo/remax_invest.png" alt="Remax Invest" width="290">
+                    {% elif property.user.office.slug == "remax-total" %}
+                        <img src="https://media.rmx.casa/static/report/logo/remax_total.png" alt="Remax Total" width="290">
+                    {% elif property.user.office.slug == "remax-moldova" %}
+                        <img src="https://media.rmx.casa/static/brand/logo_REMAX_Moldova_white_transpsrent.png" alt="Remax Moldova" width="290">
+                    {% endif %}
+                    <p class="mt_30 " style="font-size:45px; color: #fff;">
+                        RAPORT <br>DE PROMOVARE <br>A PROPRIETĂȚII:
+                    </p>
+                    <p class="" style="font-size: 30px;"><a href="https://www.remax.md/details/{{offer.id}}" style="color: #fff;text-decoration: none;">{{ offer.display_title }}</a></p>
+                    <p style="font-size: 22px; color: #fff;">{{ property.street|default_if_none:"" }}, {{ property.city|default_if_none:"" }}, {{ property.region|default_if_none:"" }} </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="mt_20" style="display: flex; justify-content: center;">
+                        <img src="https://media.rmx.casa/static/report/logo/Remax.png" alt="" style="width: 300px;">
+                    </div>    
+                </div>
+            </div>
+            <div class="row blue_div roboto">
+                <div class="col-md-12" style="padding: 0; margin:0;">
+                    <div style="display: flex; justify-content: center;">
+                        <div style="padding: 15px; background-color: #fff;">
+                            <img src="{{ property.get_full_thumbnail_url }}" alt="no-offer-img" title="contact-img" style="max-width: 950px;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row blue_div roboto pt_40">
+                <div class="col-md-10" style="padding: 0; margin:0 auto; ">
+                    <div style="padding: 15px; background-color: red; display: flex; justify-content: center; border-radius: 30px; text-align: center;">
+                        <div class="col-md-12">
+                            <p style="font-size: 30px; color: #fff; margin-bottom: 0;">CONTACTEAZĂ-NE ACUM</p>
+                            <p style="font-size: 30px; color: #fff; margin-bottom: 0;">{{ property.user.phone }}</p>
+                            <p style="font-size: 18px; color: #fff;">{{ property.user.office.email }}</p>
+                            <p style="font-size: 18px; color: #fff;">{{ property.user.office.address }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt_40" style="background-color: #003DA5;">
+                <div class="col-md-12" style="margin-top: 15px;">
+                    <p style="font-size: 30px; color: #fff;text-align:center;vertical-align: middle;">
+                        RAPORT CU PRIVIRE LA ACTIVITATEA DE PROMOVARE PER ACTIVITATE
+                    </p>
+                    <p style="text-align:center;vertical-align: middle; font-size: 22px; color: #fff;"> perioada de raportare {{ property.report_start_date|date:DATE_FORMAT_RO|default_if_none:" " }} - {{ property.report_end_date|date:DATE_FORMAT_RO|default_if_none:" " }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt_40">
+            <div class="col-md-12">
+                <p style="text-align: center; font-size: 25px;">PROPRIETATE : {{ offer.display_title }}</p>
+                <div class="line_separator"></div> 
+                <table align="center" cellspacing="0" border="0" style="max-width: 800px;">
+                    <tr>
+                        <td style="width: 600px;text-align: left; font-size: 20px;">ACTIVITĂȚI EFECTUATE:</td>
+                        <td style="font-size: 20px;">{{ total_number_of_activities }}</td>
+                    </tr>
+                    {% for type,total in activities_type_list.items %}
+                    <tr>
+                        <td style="width: 600px;text-align: left; font-size: 20px;">{{type}}</td>
+                        <td style="font-size: 20px;">{{ total }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% for type,total in leads_type_list.items %}
+                    <tr>
+                        <td style="width: 600px;text-align: left; font-size: 20px;">{{type}}</td>
+                        <td style="font-size: 20px;">{{ total }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            
+        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="font-size: 30px; text-align: center;margin-top: 20px; margin-bottom: 0;">Listă de activități din perioada inclusă în acest raport:</p>
+                </div>
+            </div>
+            <div class="line_separator"></div>  
+            
+        {% for _, activity_column in activities_context_dict.items %}
+        {% for activity in activity_column.qs %}
+            <div class="row">
+                <div class="col-md-12">
+                    <table align="center"  border="0" style="max-width: 900px;">
+                        <tr>
+                            <td style="padding-left: 20px; width: 400px; text-align: left;font-size: 16px;">Tip activitate : {{ activity.get_type_display }}</td>
+                            <td style="width: 400px; text-align: right;font-size: 16px;"> {% if activity.due_date %} {{ activity.due_date|date:DATE_FORMAT_RO }} {% else %} {{ activity.created_at|date:DATE_FORMAT_RO }} {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; color: #000; font-size: 20px;">{{ activity.title|default_if_none:'' }}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;  text-align: left; font-size: 16px;">Descriere :</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: left; color: #000; font-size: 18px;">{{activity.description}}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 20px;  text-align: left; font-size: 16px;">Link :</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: left; color: #000; font-size: 18px;"><a href="{{activity.hyperlink}}" target="_blank">{{activity.hyperlink}}</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="line_separator"></div>
+        {% endfor %}
+        {% endfor %}
+        {% for _, activity_column in leads_context_dict.items %}
+        {% for activity in activity_column.qs %}
+        <div class="row">
+            <div class="col-md-12">
+                <table align="center"  border="0" style="max-width: 900px;">
+                    <tr>
+                        <td style="padding-left: 20px; width: 400px; text-align: left;font-size: 16px;">Tip activitate : {{ activity.get_type_display }}</td>
+                        <td style="width: 400px; text-align: right;font-size: 16px;">{{ activity.created_at|date:DATE_FORMAT_RO }}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; color: #000; font-size: 20px;">{{ activity.title|default_if_none:'' }}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 20px;  text-align: left; font-size: 16px;">Descriere :</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left; color: #000; font-size: 18px;">{{activity.description}}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 20px;  text-align: left; font-size: 16px;">Link :</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left; color: #000; font-size: 18px;"><a href="{{activity.hyperlink}}" target="_blank">{{activity.hyperlink}}</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="line_separator"></div>
+        {% endfor %}
+        {% endfor %}
+        
+
+            <div class="row">
+                <div class="col-md-12 ">
+                    <strong><h3 class="black_text" style="text-align: center;"> Concluzii:</h3></strong>
+                    <p style="padding: 0 55px; font-size: 18px;">{{ property.conclusion }}</p>
+                </div>
+            </div>
+            <div class="line_separator"></div>
+            <div class="row">
+                <div class="col-md-12 ">
+                    <strong><h3 class="black_text" style="text-align: center;"> Recomandări:</h3></strong>
+                    <p style="padding: 0 55px; font-size: 18px;">{{ property.recommendation }}</p>
+                </div>
+            </div>
+            <div class="line_separator"></div>
+                <div class="row blue_div_full" style="margin: 0 60px;">
+                    <div class="col-md-6">   
+                        {% if property.user.office.slug == "remax-invest" %}                    
+                            <img src="https://media.rmx.casa/static/report/logo/remax_invest.png" alt="Remax Invest" style="padding: 18px;" width="290">
+                        {% elif property.user.office.slug == "remax-total" %}  
+                            <img src="https://media.rmx.casa/static/report/logo/remax_total.png" alt="Remax Total" style="padding: 18px;" width="290">
+                        {% elif property.user.office.slug == "remax-moldova" %}
+                            <img src="https://media.rmx.casa/static/brand/logo_REMAX_Moldova_white_transpsrent.png"alt="Remax Moldova" style="padding: 18px;" width="290">
+                        {% endif %}
+                        {% if property.user.id == 5 %}
+                            <p style="font-weight: 700; font-size: 50px;  color: #fff; text-align: center;margin-top: 90px;margin-right:40px ;">CEO</p>
+                        {% elif property.user.id == 3 %}
+                            <p style="font-weight: 700; font-size: 50px;  color: #fff; text-align: center;margin-top: 90px;margin-right:40px ;">Președinte Master Franchisor</p>
+                        {% else %}
+                            <p style="font-weight: 700; font-size: 50px;  color: #fff; text-align: center;margin-top: 90px;margin-right:40px ;">{{ property.user.get_display_role }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6" style="padding: 0;">
+                        <img src="{{ storage_url }}{{ property.user.thumbnail.image_path }}"
+                         alt="no-offer-img"
+                         title="contact-img" style="width: 470px;" />
+                    </div>
+                </div>
+                <div class="row red_div_full" style="margin: 0 60px;">
+                    <div class="col-md-12" style="display: flex; justify-content: space-around;">
+                        <p style="font-size: 45px; color: #fff; margin-top: 15px;">{{property.user.get_display_full_name}}</p>
+                        {% if property.user.id == 5 %}
+                            <p style="font-size: 45px; color: #fff; margin-top: 15px;">CEO</p>
+                        {% elif property.user.id == 3 %}
+                            <p style="font-size: 45px; color: #fff; margin-top: 15px;">Președinte Master Franchisor</p>
+                        {% else %}
+                            <p style="font-size: 45px; color: #fff; margin-top: 15px;">{{ property.user.get_display_role }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row blue_div_full" style="margin: 0 60px;">
+                    <div class="col-md-4" style="padding: 30px 0 15px 0;">
+                        <p style="text-align: center; color: #fff; font-size: 22px;">{{ property.user.phone|default_if_none:"--" }}</p>
+                    </div>
+                    <div class="col-md-4" style="background-color: rgb(0, 43, 124); padding: 30px 0 15px 0;">
+                        <p style="text-align: center; color: #fff; font-size: 22px;">{{ property.user.office.email }}</p>
+                    </div>
+                    <div class="col-md-4" style="padding: 30px 0 15px 0;">
+                        <p style="text-align: center; color: #fff; font-size: 22px;">www.remax.md</p>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
+                    <div class="col-md-8">
+                        <p style="margin-left: 60px; font-size: 30px; font-weight: 700;color: red;">CONTACTEAZĂ-MĂ PENTRU O
+                            EVALUARE GRATUITĂ A PROPRIETĂȚII</p>
+                        <p style="margin-left: 60px; font-size: 20px;">Avem în permaneță o listă actualizată de persoane
+                            interesate de a cumpăra proprietăți imobiliare dar și o listă
+                            cu cele mai bune imobile din piață națională și internațională
+                            care pot ﬁ cumpărate.</p>
+                        <p style="margin-left: 60px; font-size: 20px;">Avem o rețea întreagă de experți și agenții imobiliare care
+                            să te ajute să vinzi sau să cumperi proprietăți imobiliare în
+                            cele mai bune condiții.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="https://media.rmx.casa/static/report/logo/Remax.png" alt="" style="width: 235px;">
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px; flex-direction: column; align-content: center;">
+        <button style="margin-bottom: 15px;" class="btn btn-primary"
+                onclick="document.title='{{ offer.display_title }} #{{ offer.id }}'; printContent('print');">
+            Printează raportul
+        </button>
+    </div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+function printContent(el){
+var restorepage = $('body').html();
+var printcontent = $('#' + el).clone();
+$('body').empty().html(printcontent);
+window.print();
+$('body').html(restorepage);
+}
+
+
+
+
+
+</script>
+
+{% endblock %}

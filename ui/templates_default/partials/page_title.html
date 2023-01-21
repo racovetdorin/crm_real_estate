@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="mt-3 mb-3">
+                <span>{% trans title %} {% if id %} #{{ id }} {% endif %}
+                    {% if id_sale %} | {% trans 'Sale' %}: #{{ id_sale }} {% endif %}
+                    {% if id_rent %} | {% trans 'Rent' %}: #{{ id_rent }} {% endif %}
+                </span>
+            </h4>
+        </div>
+    </div>
+</div>
+<!-- end page title -->

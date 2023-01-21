@@ -1,0 +1,121 @@
+{% load static %}
+{% load custom_tags %}
+{% load humanize %}
+{% load i18n %}
+{% load ui_extras %}
+
+
+<tr>
+    <td style="background-color: {{property.get_list_background_color_code}}">
+        {% with rent_offer=property.get_last_rent_offer sale_offer=property.get_last_sale_offer %}
+        {% if rent_offer %}
+        {% trans 'Rent' %} #{{ rent_offer.id }}<br> {% include 'partials/_status_filter.html' with status=rent_offer.status|default_if_none:'na' %} <br>
+            {% if rent_offer.status == 'active' and rent_offer.promote_site %}
+            <a target="_blank" href="{{ rent_offer.website_link }}">Website</a>
+            {% endif %}
+        {% endif %}
+        {% if sale_offer %}
+        {% trans 'Sale' %} #{{ sale_offer.id }}<br> {% include 'partials/_status_filter.html' with status=sale_offer.status|default_if_none:'na' %}
+            {% if sale_offer.status == 'active' and sale_offer.promote_site %}
+            <a target="_blank" href="{{ sale_offer.website_link }}">Website</a>
+            {% endif %}
+        {% endif %}
+        {% if not property.offers.values %}
+        --
+        {% endif %}
+        {% endwith %}
+        <br>
+    </td>
+
+    <td>
+        <img src="{{ property.get_full_thumbnail_url }}" alt="no-offer-img"
+             title="contact-img" height="120" width="180"/>
+    </td>
+
+    <td class="text-left">
+        {% trans 'Property' %} #{{ property.id }} <br>
+        {{ property.get_display_type }}
+
+        {% if property.is_exclusive %}
+            <i class="mdi mdi-crown"></i>
+        {% endif %}
+        {% if property.attributes_object.key_possession %}
+            <i class="mdi mdi-key-outline"></i>
+        {% endif %}
+        <br>
+        {% trans 'Rooms' %}: {{ property.attributes_object.rooms_number }}<br>
+        {% trans 'Surface Util' %}: {{ property.attributes_object.surface_util|default_if_none:'--' }}m<sup>2</sup>
+    </td>
+
+    <td>
+        {% if property.get_last_rent_offer %}
+            {% trans 'Price rent' %}: <br>
+            <p class="impakt-text mb-0"><strong>{{ property.get_last_rent_offer.price|default_if_none:'--'|intcomma}} EUR</strong></p><br>
+            <p class="impakt-text mb-0"><strong>({{ property.get_last_rent_offer.price_per_sqm|default_if_none:'--'|intcomma }} EUR / m<sup>2</sup>)</strong></p><br>
+            {% if property.floor %}
+                <p class="impakt-text mb-0"><strong>{% trans 'Floors' %}:
+                {% if property.type == 'apartment' or property.type == 'studio' %}
+                    {{ property.get_floor_display }}/{{ property.attributes_object.floors|default_if_none:''  }}
+                    {% elif property.type == 'commercial' or property.type == 'house' %}
+                    {{ property.attributes_object.floors|default_if_none:''  }}
+                {% endif %}
+            </strong></p>
+            {% endif %}
+        {% endif %}
+
+        {% if property.get_last_sale_offer %}
+            {% trans 'Price sale' %}: <br>
+            <p class="impakt-text mb-0"><strong>{{ property.get_last_sale_offer.price|default_if_none:'--'|intcomma }} EUR</strong></p><br>
+            <p class="impakt-text mb-0"><strong>({{ property.get_last_sale_offer.price_per_sqm|default_if_none:'--'|intcomma }} EUR / m<sup>2</sup></strong>)</p><br>
+            {% if property.attributes_object.floors %}
+                <p class="impakt-text mb-0"><strong>{% trans 'Floors' %}:
+                {% if property.type == 'apartment' or property.type == 'studio' %}
+                    {{ property.get_floor_display|default_if_none:'' }}/{{ property.attributes_object.floors|default_if_none:''  }}
+                    {% elif property.type == 'commercial' or property.type == 'house' %}
+                    {{ property.attributes_object.floors|default_if_none:''  }}
+                {% endif %}
+            </strong></p>
+            {% endif %}
+        {% endif %}
+
+    </td>
+
+    <td class="text-right">
+        {{ property.zone|default_if_none:'' }} <br>
+        {{ property.street|default_if_none:'' }} <br>
+        {{ property.city|default_if_none:'' }}
+    </td>
+
+    <td>
+        {% if property.client %}
+            <i class="dripicons-user"></i>&nbsp;<a target="_blank" href="{% url 'ui:client_update' pk=property.client.id %}"><strong>{{ property.client.get_display_full_name }}</strong></a> <br>
+            {% can_view_client_details request.user property.client as user_can_view %}
+            {% if user_can_view %}
+                <div data-toggle="tooltip" title="{{ property.client.get_display_phones_emails_text }}">
+                    <i class="mdi mdi-phone"></i> {{ property.client.get_display_phones_emails_partial_text }}
+                </div>
+            {% else %}
+                <i class="mdi mdi-phone-off"></i>{{  _('Private details for this user')}}
+            {% endif %}<br>
+
+
+        {% endif %}
+        <i class="uil-user"></i> <a target="_blank" href="{% url 'ui:users_update' pk=property.user.pk %}"><strong>{{ property.user.get_display_full_name }}</strong></a>
+    </td>
+
+    <td>
+        {{ property.created_at|date:DATETIME_FORMAT_RO }} <br>
+        {{ property.updated_at|date:DATETIME_FORMAT_RO }}
+    </td>
+
+    <td>
+        <a target="_blank" href="{% url 'ui:property_update' pk=property.id %}" class="action-icon"> <i
+                class="mdi mdi-square-edit-outline"></i></a>
+        {% if request.user.is_manager %}
+            <a href="#" class="action-icon" data-toggle="modal" data-target="#danger-alert-modal-{{ property.id }}"><i
+                    class="mdi mdi-delete"></i></a>
+        {% endif %}
+    </td>
+
+    {% include 'partials/_delete_modal.html' with csrf_token=csrf_token delete_url='ui:property_delete' id=property.id %}
+</tr>

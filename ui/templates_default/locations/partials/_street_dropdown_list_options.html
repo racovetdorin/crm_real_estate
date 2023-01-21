@@ -1,0 +1,8 @@
+<option value="">Choose a street...</option>
+{% for street in streets %}
+    {% if street.id_999 %}
+        <option value="{{ street.id }}">[999] - {{ street.name }}</option>
+    {% else %}
+        <option value="{{ street.id }}">{{ street.name }}</option>
+    {% endif %}
+{% endfor %}

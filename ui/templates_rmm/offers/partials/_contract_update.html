@@ -1,0 +1,20 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="col-md-6">
+    {{ form.contract_start_date|as_crispy_field }}
+</div> <!-- contract_start_date -->
+
+<div class="col-md-6">
+    {{ form.contract_end_date|as_crispy_field }}
+</div>
+
+<div class="col-md-6">
+    {{ form.contract_register_date|as_crispy_field }}
+</div> <!-- contract_register_date -->
+
+<div class="col-md-6">
+    {{ form.contract_number|as_crispy_field }}
+</div> <!-- contract_number -->
+{% block extra_scripts %}
+<script src="{% static 'dist/js/custom/input_format.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% load i18n %}
+
+<input type="hidden" name="is_details" value=True>
+<div class="col-12 col-md-12 col-lg-7 col-xl-6">
+    <div class="card" style="height: 95%">
+        <div class="card-body">
+            <label style="color: #449AB9">{% trans 'Property type' %}: {{ property.get_type_display }}</label><br><br>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Client' %}</label>
+                    <p>{{ property.client.get_display_full_name|default_if_none:"--" }}</p>
+                    <input type="hidden" name="" value="">
+                </div> <!-- client -->
+
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Agent' %}</label>
+                    <i class="uil-user"></i> <a target="_blank" href="{% url 'ui:users_update' pk=form.instance.user.pk %}"><strong>
+                    {{ property.user.get_display_full_name|default_if_none:"--" }}
+                </strong></a>
+                </div> <!-- user -->
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Region' %}</label>
+                    <p>{{ property.region|default_if_none:"--" }}</p>
+                </div> <!-- region -->
+
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'City' %}</label>
+                    <p>{{ property.city|default_if_none:"--" }}</p>
+                </div> <!-- city -->
+            </div>
+
+            <div class="form-row">
+                <div class=" col-md-6 mb-3">
+                    <label>{% trans 'Zone' %}</label>
+                    <p>{{ property.zone|default_if_none:"--" }}</p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Street' %}</label>
+                    <p>{{ property.street|default_if_none:"--" }}</p>
+                </div> <!-- street -->
+            </div> <!-- zone/street -->
+
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Street number' %}</label>
+                    <p>{{ property.street_number|default_if_none:"--" }}</p>
+                </div> <!-- street number -->
+
+                {% if property.type == 'apartment' %}
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Block number' %}</label>
+                    <p>{{ property.block_number|default_if_none:"--" }}</p>
+                </div> <!-- block_number -->
+
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Block entrance number' %}</label>
+                    <p>{{ property.block_entrance_number|default_if_none:"--" }}</p>
+                </div> <!-- block_entrance_number -->
+
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Floor' %}</label>
+                    <p>{{ property.floor|default_if_none:"--" }}</p>
+
+                </div> <!-- floor -->
+
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Apartment number' %}</label>
+                    <p>{{ property.apartment_number|default_if_none:"--" }}</p>
+                </div> <!-- apartment_number -->
+                {% endif %}
+            </div> <!-- street_number/block/apartment number -->
+
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Latitude' %}</label>
+                    <p>{{ property.latitude }}</p>
+                </div> <!-- video_tour -->
+
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Longitude' %}</label>
+                    <p>{{ property.longitude }}</p>
+                </div> <!-- video_tour -->
+
+                {% if property.virtual_tour %}
+                <div class="col-md-6 mb-3">
+                    <label>{% trans "Virtual tour" %}</label>
+                    <a href="{{ property.virtual_tour }}">{{ property.virtual_tour|default_if_none:"--"|truncatechars:39 }}</a>
+                </div> <!-- virtual_tour -->
+                {% endif %}
+
+                {% if property.video_tour %}
+                <div class="col-md-6 mb-3">
+                    <label>{% trans 'Video tour' %}</label>
+                    <a href="{{ property.video_tour }}">{{ property.video_tour|default_if_none:"--"|truncatechars:39 }}</a>
+                </div> <!-- video_tour -->
+              {% endif %}
+            </div>
+        </div> <!-- end card-body -->
+    </div>
+</div> <!-- end general card-->

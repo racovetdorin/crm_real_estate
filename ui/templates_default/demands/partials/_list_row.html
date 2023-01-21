@@ -1,0 +1,94 @@
+{% load static %}
+{% load custom_tags %}
+{% load i18n %}
+{% load humanize %}
+{% load ui_extras %}
+
+{% if demand %}
+<tr>
+    <td style="background-color: {{ demand.get_background_color }}">
+        {{ demand.get_display_type }} #{{ demand.id }}<br>
+        {{ demand.get_display_property_type }} <br>
+        <div data-toggle="tooltip" title="{{ demand.get_full_zone_text }}">
+            {{ demand.get_zone_partial_text }}
+        </div>
+    </td>
+
+    <td>{% trans 'Price' %}:
+        <p class='impakt-text m-0 font-weight-bold'>{{ demand.price_min|intcomma|default_if_none:'--' }} - </p>
+        <p class='impakt-text m-0 font-weight-bold'>{{ demand.price_max|intcomma|default_if_none:'--' }} EUR</p> <br>
+
+        {% trans 'Rooms' %}:
+        <p class='impakt-text m-0 font-weight-bold'> {{ demand.get_rooms_display|default_if_none:'--' }}</p><br>
+
+        {% trans 'Surface' %}:
+        <p class='impakt-text m-0 font-weight-bold'>{{ demand.surface_min|default_if_none:'--' }}m<sup>2</sup></p> -
+        <p class='impakt-text m-0 font-weight-bold'>{{ demand.surface_max|default_if_none:'--' }}m<sup>2</sup></p>
+    </td>
+
+    <td>
+        {% if demand.ground_floor_excluded %} {% trans 'Ground floor excluded' %}<br> {% endif %}
+        {% if demand.top_floor_excluded %} {% trans 'Top floor excluded' %}<br> {% endif %}
+        {% if demand.mansard_excluded %} {% trans 'Mansard excluded' %}<br> {% endif %}
+
+        {% for feature in demand.features.values %}
+        {% trans feature.name %} <br>
+        {% endfor %}
+    </td>
+
+    <td>
+        {% if demand.client %}
+            {% if request.user.is_superuser or request.user.is_manager %}
+                {% if demand.office == request.user.office %}
+                    <i class="dripicons-user"></i>&nbsp;<a href="{% url 'ui:client_update' pk=demand.client.id %}"><strong>{{ demand.client.get_display_full_name }}</strong></a> <br>
+                    <div data-toggle="tooltip" title="{{ demand.client.get_display_phones_emails_text }}">
+                        <i class="mdi mdi-phone"></i> {{ demand.client.get_display_phones_emails_partial_text }}
+                    </div>
+                {% endif %}    
+            {% else %}
+                {% if demand.user.id == request.user.id %}
+                    <i class="dripicons-user"></i>&nbsp;<a href="{% url 'ui:client_update' pk=demand.client.id %}"><strong>{{ demand.client.get_display_full_name }}</strong></a> <br>
+                    <div data-toggle="tooltip" title="{{ demand.client.get_display_phones_emails_text }}">
+                        <i class="mdi mdi-phone"></i> {{ demand.client.get_display_phones_emails_partial_text }}
+                    </div>
+                {% endif %}
+            {% endif %}<br>
+        {% endif %}
+        <i class="uil-user"></i> <a href="{% url 'ui:users_update' pk=demand.user.pk %}"><strong>{{ demand.user.get_display_full_name }}</strong></a>
+    </td>
+
+    <td>
+        {{ demand.created_at|date:DATE_FORMAT_RO }} <br>
+        {{ demand.limit_date|date:DATE_FORMAT_RO }}
+    </td>
+
+    <td>
+
+        
+        {% if request.user.is_superuser or request.user.is_manager %}
+            {% if demand.office == request.user.office %}
+                <a href="{% url 'ui:demand_update' pk=demand.id %}" class="action-icon">
+                    <i class="mdi mdi-square-edit-outline"></i>
+                </a>
+                <a href="javascript:void(0);" class="action-icon" data-toggle="modal"
+                data-target="#danger-alert-modal-{{ demand.id }}">
+                    <i class="mdi mdi-delete"></i>
+                </a>
+            {% endif %}        
+        {% else %}
+            {% if demand.user.id == request.user.id %}
+                <a href="{% url 'ui:demand_update' pk=demand.id %}" class="action-icon">
+                    <i class="mdi mdi-square-edit-outline"></i>
+                </a>
+                <a href="javascript:void(0);" class="action-icon" data-toggle="modal"
+                data-target="#danger-alert-modal-{{ demand.id }}">
+                    <i class="mdi mdi-delete"></i>
+                </a>
+            {% endif %}
+        {% endif %} 
+    </td>
+
+    {% include 'partials/_delete_modal.html' with csrf_token=csrf_token delete_url='ui:demand_delete' id=demand.id %}
+    <!-- /.modal -->
+</tr>
+{% endif %}

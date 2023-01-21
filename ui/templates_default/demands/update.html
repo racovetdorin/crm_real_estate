@@ -1,0 +1,363 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load custom_tags %}
+
+{% translate 'Update Demand' %}
+{% translate 'Add Demand' %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    {% if not demand %} {% include "partials/page_title.html" with title='Add Demand' %} <!-- page_title -->
+    {% else %} {% include "partials/page_title.html" with title='Update Demand' id=demand.id %}<!-- page_title -->
+    {% include "partials/messages.html" %}
+    {% trans 'You have' %} {{ properties|length }} {% trans 'matching properties for this demand' %}<a href="#id-matching-properties">&nbsp({% trans 'properties' %})</a>
+    {% endif %}
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item">
+            <a href="#demand" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Demand' %}</span>
+            </a>
+        </li> <!-- demand -->
+        <li class="nav-item">
+            <a href="#features" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Features' %}</span>
+            </a>
+        </li> <!-- features -->
+        <li class="nav-item">
+            <a href="#matching_offers" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Matching offers' %}
+                    <span class="badge badge-success-lighten float-end ms-2">{{ properties|length }}</span>
+                </span>
+            </a>
+        </li> <!-- matched offers -->
+    </ul> <!-- tabs -->
+
+    <form method="POST" class="col-12 p-0">
+    {% csrf_token %}
+        <div class="tab-content">
+            <div class="tab-pane show active" id="demand">
+                <div class="row">
+                    <div class="form-group col-12 col-md-6">
+                        <div class="card col-lg-12 p-0" style="height: 98%;">
+                            <div class="card-body">
+
+                                <div class="form-errors">
+                                {% include 'partials/form_errors.html' %}
+                                </div> <!-- form errors -->
+                                <div class="form-group">
+                                    {{ form.active|as_crispy_field }}
+                                </div>
+                                <div class="col-xl-12" style="padding: 0">
+                                    <div class="js-container-client">
+                                        <label>{{ form.client.label }}</label>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-10">
+                                                <select id="id-client-select" name="{{ form.client.name }}"
+                                                        class="form-control select2"
+                                                        data-toggle="select2"
+                                                        data-search-url="{% url 'ui:ajax_search_clients' %}">
+
+                                                    {% if demand and selected_client%}
+                                                        <option value="{{ selected_client.id }}" selected>{{ selected_client }}</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <a href="#new_client" id="id-form-client-add-trigger" class="btn btn-primary">+</a>
+                                            </div>
+                                        </div> <!-- client -->
+                                    </div> <!--client -->
+                                </div>
+
+
+                                <div class="form-group">
+                                    {% if request.user.is_manager %}
+                                        {{ form.user|as_crispy_field }}
+                                    {% elif form.instance.user %}
+                                        <i class="uil-user"></i> <a target="_blank" href="{% url 'ui:users_update' pk=form.instance.user.pk %}"><strong>{{ form.instance.user.get_display_full_name }}</strong></a>
+                                    {% endif %}
+                                </div> <!-- user -->
+
+                                <div class="form-row">
+                                    <div class="js-container-type col-md-4">
+                                        {{ form.type|as_crispy_field }}
+                                    </div> <!-- transaction type -->
+
+                                    <div class="js-container-property-type col-md-4">
+                                        {{ form.property_type|as_crispy_field }}<!-- property_type -->
+                                    </div>
+
+                                    {% if demand %}
+                                    <div class="js-container-property-subtype col-md-4">
+                                        {{ form.property_subtype|as_crispy_field }}<!-- property_subtype -->
+                                    </div>
+                                    {% endif %}
+                                </div> <!-- transaction type/property type / subtype -->
+
+                                <div class="form-row">
+                                    <div class="js-container-region col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ form.region.label }}</label>
+
+                                            <select id="region-select"
+                                                    name="{{ form.region.name }}"
+                                                    class="form-control select2"
+                                                    data-toggle="select2">
+
+                                                {% for value, region in form.region.field.choices %}
+                                                <option value="{{ value }}" {% if value == form.region.value %} selected {% endif %}>{{ region }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div> <!-- region -->
+
+                                    <div class="js-container-city col-md-6"
+                                     data-cities-url="{% url 'ui:ajax_load_cities' %}">
+                                        <label>{{ form.city.label }}</label>
+                                            <div class="form-group">
+
+                                                <select id="city-select" name="{{ form.city.name }}"
+                                                        class="form-control select2"
+                                                        data-toggle="select2">
+
+                                                    {% for value, city in form.city.field.choices %}
+                                                        <option value="{{ value }}" {% if value == form.city.value %} selected {% endif %}>{{ city }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                    </div> <!-- city -->
+                                </div> <!-- region/city -->
+
+                                <div class="form-row">
+                                    <div class="js-container-zone col-md-12"
+                                         data-zones-url="{% url 'ui:ajax_load_zones' %}">
+                                        <label>{{ form.zones.label }}</label>
+                                            <div class="form-group">
+                                                <select id="zone-select" name="{{ form.zones.name }}"
+                                                        class="select2 form-control select2-multiple"
+                                                        data-toggle="select2"
+                                                        multiple="multiple">
+                                                    {% for value, zone in form.zones.field.choices %}
+                                                        <option value="{{ value }}" {% if value in form.zones.value %} selected {% endif %}>{{ zone }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                    </div> <!-- zone -->
+                                </div> <!-- zone -->
+
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        {{ form.lead_source|as_crispy_field }}<!-- property_type -->
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-row col">
+                                        <div class="mr-3 col">{{ form.top_floor_excluded|as_crispy_field }}</div>
+                                        <div class="mr-3 col">{{ form.mansard_excluded|as_crispy_field }}</div>
+
+                                        <div class="w-100"></div>
+
+                                        <div class="mr-3 col">{{ form.ground_floor_excluded|as_crispy_field }}</div>
+                                        <div class="mr-3 col">{{ form.new_building|as_crispy_field }}</div>
+
+                                         <div class="w-100"></div>
+
+                                        <div class="mr-3 col">{{ form.in_development|as_crispy_field }}</div>
+                                        <div class="mr-3 col">{{ form.key_holding|as_crispy_field }}</div>
+                                    </div>
+                                </div>
+
+                            </div> <!-- fields -->
+                        </div>
+                    </div> <!-- client/type/address/features -->
+
+                    <div class="form-group col-12 col-md-6">
+                        <div class="card col-lg-12 p-0" style="height: 98%;">
+                            <div class="card-body">
+                                <div class="col-xl-12 p-0">
+                                    <div class="container-contract">
+                                        <div class="form-row">
+                                            <div class="col-lg-6">
+                                                {{ form.status|as_crispy_field }}
+                                            </div> <!-- contract_number -->
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-lg-6">
+                                                {{ form.contract_number|as_crispy_field }}
+                                            </div> <!-- contract_number -->
+
+                                            <div class="col-lg-6">
+                                                {{ form.contract_signing_date|as_crispy_field }}
+                                            </div> <!-- contract_signing_date -->
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-lg-6">
+                                                {{ form.contract_start_date|as_crispy_field }}
+                                            </div> <!-- contract_start_date -->
+
+                                            <div class="col-lg-6">
+                                                {{ form.contract_type|as_crispy_field }}
+                                            </div>  <!-- contract type -->
+                                        </div>
+                                    </div> <!-- contract -->
+
+                                    <div class="container-price">
+
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                {{ form.price_min|as_crispy_field }}
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                {{ form.price_max|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                    </div> <!-- price -->
+
+                                    <div class="container-surface">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                {{ form.surface_min|as_crispy_field }}
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                {{ form.surface_max|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                    </div> <!-- surface -->
+
+                                    <div class="container-rooms">
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label> {{ form.rooms.label }}</label>
+
+                                                <select id="rooms-select" name="{{ form.rooms.name }}"
+                                                        class="select2 form-control select2-multiple"
+                                                        data-toggle="select2"
+                                                        multiple="multiple">
+
+                                                    {% for value, rooms in form.rooms.field.choices %}
+                                                    <option {% if value|to_str in form.rooms.value %} selected {% endif %} value="{{ value }}" >{{ rooms }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div> <!-- rooms -->
+
+                                            <div class="form-group mb-3 col-md-6">
+                                                <label>{{ form.limit_date.label }}</label>
+                                                <input type="date"
+                                                       name="{{ form.limit_date.name }}" class="form-control"
+                                                       value="{{ form.limit_date.value }}">
+                                            </div> <!-- limit_Date -->
+                                        </div>
+                                    </div> <!-- rooms/limit_date -->
+
+                                    <div class="container-comments">
+                                        <div class="form-row">
+                                            <div class="form-group mb-3 col-md-12">
+                                                <label>{{ form.comments.label }}</label>
+                                                <textarea
+                                                        name="{{ form.comments.name }}"
+                                                        class="form-control"
+                                                        rows="8"
+                                                        >{{ form.comments.value|default_if_none:'' }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div> <!-- comments -->
+                                </div> <!-- fields -->
+                            </div>
+                        </div>
+                    </div> <!-- contract/price/surface/rooms/date/comments-->
+                </div>
+            </div> <!-- demand -->
+            <div role="tabpanel" class="tab-pane" id="features">
+                {% if demand %}
+                <div class="form-group col-12" id="new client">
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="mb-1">{{ form.features.label }}</label><br>
+                            <div class="form-row">
+                                {% for feature_group in feature_groups %}
+                                <div class="form-group mb-3 col-md-4 col-lg-3 col-xl-2">
+                                    <label class="mt-2 mb-1 mb-0">{{ feature_group.display_name }}</label>
+                                    {% for feature in feature_group.features.values %}
+                                        <div class="custom-control custom-checkbox">
+                                            <input {% if feature in demand.features.values %} checked {% endif %}
+                                                   type="checkbox" value="{{ feature.id }}" class="custom-control-input"
+                                                   name="{{ form.features.name }}" id="feature-{{ feature.id }}">
+                                            <label class="custom-control-label" for="feature-{{ feature.id }}">{% trans feature.name %}</label>
+                                        </div>
+                                    {% endfor %}
+                                </div> <!-- features -->
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end features col-->
+                {% endif %}
+            </div> <!-- features -->
+            <div role="tabpanel" class="tab-pane" id="matching_offers">
+                {% include 'demands/partials/_matching_properties.html' %}
+            </div> <!-- matching offers -->
+        </div> <!-- offers -->
+
+        <div class="row">
+            {% include 'partials/_submit_button.html' with title='Submit' type='submit' value='POST' button_class="btn btn-lg btn-primary"  %} <!-- submit -->
+
+        {% if demand and request.user.is_manager %}
+            <a href="#" class="btn btn-lg btn-danger" data-toggle="modal"
+               data-target="#danger-alert-modal-{{ demand.id }}"> <i class="mdi mdi-delete"></i></a> <!-- delete -->
+        {% endif %}
+        </div>
+    </form> <!-- end form -->
+
+    <div class="row">
+        <div id="id-form-client" class="col-12 col-lg-6 col-xl-6">
+            {% include 'partials/_client_create.html' with form=client_form %}
+        </div> <!-- hidden client form -->
+    </div> <!-- hidden client create -->
+
+    {% if demand %}
+    {% include 'activities/partials/_list.html' with modal_target="add_activity_modal" form=activity_form demand=demand %}
+    {% include 'partials/_delete_modal.html' with csrf_token=csrf_token delete_url='ui:demand_delete' id=demand.id %}
+    {% endif %}
+
+</div> <!-- container -->
+{% endblock %}
+
+
+{% block extra_scripts %}
+<!-- third party js -->
+<script src="{% static 'dist/js/vendor/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.bootstrap4.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.checkboxes.min.js' %}"></script>
+<!-- third party js ends -->
+
+<!-- custom js -->
+<script src="{% static 'dist/js/custom/messages_fadeout.js' %}"></script>
+<script src="{% static 'dist/js/custom/locations.js' %}"></script>
+<script src="{% static 'dist/js/custom/client_form_show.js' %}"></script>
+<!-- custom js ends -->
+
+<!-- activity js -->
+
+<script src="{% static 'dist/js/vendor/dragula.min.js' %}"></script>
+<script src="{% static 'dist/js/custom/activities_fk_objects_filter.js' %}"></script>
+<script src="{% static 'dist/js/ui/component.dragula.js' %}"></script>
+
+<!-- activity js ends -->
+{% endblock %}

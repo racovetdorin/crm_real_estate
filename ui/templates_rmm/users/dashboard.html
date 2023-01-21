@@ -1,0 +1,215 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% load i18n %}
+{% trans 'Add Client' %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    {% include "partials/page_title.html" with title='Dashboard' %}
+
+    <div class="row">
+        <div class="col-xl-5 col-lg-4 row">
+            <div class="card tilebox-one col-5 mr-2">
+                <div class="card-body">
+                    <i class="uil uil-users-alt float-right mt-2"></i>
+                    <h6 class="text-uppercase mt-0">
+                        {% trans 'Active agents this month' %}<br>
+                        <a href="{% url 'ui:users_list' %}#agents-list">({% trans 'Agents' %})</a>
+                    </h6>
+                    <h2 class="my-2" id="active-users-count">{{ active_agents_this_month }}</h2>
+                    <p class="mb-0 text-muted">
+                    {% include 'partials/_dashboard_analytics_filter.html' with this=active_agents_this_month last=active_agents_last_month %}
+                        <span>{{ agents_percent_difference|floatformat:2|default_if_none:'na' }}% ({{ active_agents_last_month }})</span>
+                        <span class="text-nowrap">{% trans 'Since last month' %}</span>
+                    </p>
+                    <h6 class="text-uppercase">
+                        {% trans 'Total' %} : {{ total_users }}<br>
+                    </h6>
+                </div> <!-- end card-body-->
+            </div> <!-- agents -->
+
+            <div class="card tilebox-one col-5 mr-2">
+                <div class="card-body">
+                    <i class="uil uil-home-alt float-right mt-2"></i>
+                    <h6 class="text-uppercase mt-0">
+                        {% trans 'Active offers this week' %}<br>
+                        <a href="{% url 'ui:all_properties_list' %}#properties-list">({% trans 'Offers' %})</a>
+                    </h6>
+                    <h2 class="my-2" id="active-offers-count">{{ active_offers_this_week }}</h2>
+                    <p class="mb-0 text-muted">
+                        {% include 'partials/_dashboard_analytics_filter.html' with this=active_offers_this_week last=active_offers_last_week %}
+                        <span>{{ offers_percent_difference|floatformat:2|default_if_none:'na' }}% ({{ active_offers_last_week }})</span>
+                        <span class="text-nowrap">{% trans 'Since last week' %}</span>
+                    </p>
+                    <h6 class="text-uppercase">
+                        {% trans 'Total : ' %}{{ total_offers }}<br>
+                    </h6>
+                </div> <!-- end card-body-->
+            </div> <!-- offers -->
+
+            <div class="card tilebox-one col-5 mr-2">
+                <div class="card-body">
+                    <i class="uil uil-file-alt float-right mt-2"></i>
+                    <h6 class="text-uppercase mt-0">
+                        {% trans 'Active demands this week' %}<br>
+                        <a href="{% url 'ui:all_demands_list' %}#demands_list">({% trans 'Demands' %})</a>
+                    </h6>
+                    <h2 class="my-2" id="active-demands-count">{{ active_demands_this_week }}</h2>
+                    <p class="mb-0 text-muted">
+                        {% include 'partials/_dashboard_analytics_filter.html' with this=active_demands_this_week last=active_demands_last_week %}
+                        <span>{{ demands_percent_difference|floatformat:2|default_if_none:'na' }}% ({{ active_demands_last_week }})</span>
+                        <span class="text-nowrap">{% trans 'Since last week' %}</span>
+                    </p>
+                    <h6 class="text-uppercase">
+                        {% trans 'Total' %} : {{ total_demands }}<br>
+                    </h6>
+                </div> <!-- end card-body-->
+            </div> <!-- demands -->
+
+            <div class="card tilebox-one col-5 mr-2">
+                <div class="card-body">
+                    <i class="dripicons-user float-right mt-2"></i>
+                    <h6 class="text-uppercase mt-0">
+                        {% trans 'New clients this month' %}<br>
+                        <a href="{% url 'ui:all_clients_list' %}">({% trans 'Clients' %})</a>
+                    </h6>
+                    <h2 class="my-2" id="new-clients-count">{{ new_clients_this_month }}</h2>
+                    <p class="mb-0 text-muted">
+                        {% include 'partials/_dashboard_analytics_filter.html' with this=new_clients_this_month last=new_clients_last_month %}
+                        <span>{{ clients_percent_difference|floatformat:2|default_if_none:'na' }}% ({{ new_clients_last_month }})</span>
+                        <span class="text-nowrap">{% trans 'Since last month' %}</span>
+                    </p>
+                    <h6 class="text-uppercase">
+                        {% trans 'Total : ' %}{{ total_clients }}<br>
+                    </h6>
+                </div> <!-- end card-body-->
+            </div> <!-- clients -->
+        </div> <!-- stats -->
+
+        <div class="col-xl-7 col-lg-8">
+            <div class="card">
+                <div class="card-body" style="position: relative;">
+                    <div class="row mb-3">
+                        {% translate "Client's name or phone" as placeholder %}
+                        <label>{% trans "Client" %}</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control js-search-clients-input"
+                                   placeholder="{{ placeholder }}"
+                                   aria-label="{{ placeholder }}">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary js-search-clients mdi mdi-account-search" type="button"
+                                    data-get-form-url="{% url 'ui:ajax_load_clients_by_phone' %}">
+                            </button>
+                            </div>
+                        </div>
+                    </div> <!-- client search -->
+
+                    <div class="row">
+                        <div id="js-clients-container-id" class="col p-0">
+
+                        </div>
+                    </div> <!-- search results -->
+
+                    <div class="row">
+                        {% include 'partials/_button.html' with title='Add Client' button_url='ui:client_create' button_class="btn btn-lg btn-success mb-2" icon_class='mdi mdi-plus-circle mr-2' %}
+                        {% include 'partials/_button.html' with title='Add Property' button_url='ui:property_create' button_class="ml-2 btn btn-lg btn-success mb-2" icon_class='mdi mdi-plus-circle mr-2' %}
+                        {% include 'partials/_button.html' with title='Add Demand' button_url='ui:demand_create' button_class="ml-2 btn btn-lg btn-success mb-2" icon_class='mdi mdi-plus-circle mr-2' %}
+                    </div> <!-- buttons -->
+                </div>
+            </div>
+        </div> <!-- search/objects count -->
+        <div class="col-xl-5 col-lg-4 row">
+            <div class="card tilebox-one col-5 mr-2">
+                <div class="card-body">
+                    <h6 class="text-uppercase mt-0">
+                        {% trans 'Total activities this month' %}<br>
+                        <a href="{% url 'ui:my_activities_list' %}#agents-list">({% trans 'Activities' %})</a>
+                    </h6>
+                    <h2 class="my-2" id="activities--count">{{ number_of_total_activities_this_month }}</h2>
+                    <p class="mb-0 text-muted">
+                        {% include 'partials/_dashboard_analytics_filter.html' with this=number_of_total_activities_this_month last=number_of_total_activities_last_month %}
+                        <span>{{ activities_percent_diffrence|floatformat:2|default_if_none:'na' }}% ({{ number_of_total_activities_this_month }})</span>
+                        <span class="text-nowrap">{% trans 'Since last month' %}</span>
+                    </p>
+
+                    <h6 class="text-uppercase">
+                        {% trans 'Done activities this month' %}: {{ number_of_done_activities_this_month }}<br>
+                        {% trans 'In progress activities this month' %}: {{ number_of_in_progress_activities_this_month }}<br>
+                        {% trans 'To do activities this month' %}: {{ number_of_to_do_activities_this_month }}<br>
+                    </h6>
+                </div> <!-- end card-body-->
+            </div> <!-- activities -->
+
+            <div class="card tilebox-one col-5 mr-2">
+                <div class="card-body">
+                    <h6 class="text-uppercase mt-0">
+                        {% trans 'Total properties this month' %}<br>
+                        <a href="{% url 'ui:my_properties_list' %}">({% trans 'Properties' %})</a>
+                    </h6>
+                    <h2 class="my-2" id="properties--count">{{ number_of_total_properties_this_month }}</h2>
+                    <p class="mb-0 text-muted">
+                        {% include 'partials/_dashboard_analytics_filter.html' with this=number_of_total_properties_this_month last=number_of_total_properties_last_month %}
+                        <span>{{ properties_percent_diffrence|floatformat:2|default_if_none:'na' }}% ({{ number_of_total_properties_this_month }})</span>
+                        <span class="text-nowrap">{% trans 'Since last month' %}</span>
+                    </p>
+                </div> <!-- end card-body-->
+            </div> <!-- properties -->
+
+            <div class="card tilebox-one col-5 mr-2">
+                <div class="card-body">
+                    <h6 class="text-uppercase mt-0">
+                        {% trans 'Total offers this month' %}<br>
+                        <a href="{% url 'ui:my_properties_list' %}">({% trans 'Offers' %})</a>
+                    </h6>
+                    <h2 class="my-2" id="offers--count">{{ number_of_total_offers_this_month }}</h2>
+                    <p class="mb-0 text-muted">
+                        {% include 'partials/_dashboard_analytics_filter.html' with this=number_of_total_offers_this_month last=number_of_total_offers_last_month %}
+                        <span>{{ offers_percent_diffrence_agent|floatformat:2|default_if_none:'na' }}% ({{ number_of_total_offers_this_month }})</span>
+                        <span class="text-nowrap">{% trans 'Since last month' %}</span>
+                    </p>
+                    <h6 class="text-uppercase">
+                        {% trans 'Transacted offers this month' %}: {{ number_of_total_transacted_offers_this_month }}<br>
+                        {% trans 'Active offers this month' %}: {{ number_of_total_active_offers_this_month }}<br>
+                        {% trans 'Potential commission this month' %}: {{ sum_of_commissions }} <br>
+                    </h6>
+                </div> <!-- end card-body-->
+            </div> <!-- offers -->
+
+            <div class="card tilebox-one col-5 mr-2">
+                <div class="card-body">
+                    <h6 class="text-uppercase mt-0">
+                        {% trans 'Total demands this month' %}<br>
+                        <a href="{% url 'ui:my_demands_list' %}">({% trans 'Demands' %})</a>
+                    </h6>
+                    <h2 class="my-2" id="demands--count">{{ number_of_total_demands_this_month }}</h2>
+                    <p class="mb-0 text-muted">
+                        {% include 'partials/_dashboard_analytics_filter.html' with this=number_of_total_demands_this_month last=number_of_total_demands_last_month %}
+                        <span>{{ demands_percent_difference_agent|floatformat:2|default_if_none:'na' }}% ({{ number_of_total_demands_this_month }})</span>
+                        <span class="text-nowrap">{% trans 'Since last month' %}</span>
+                    </p>
+                </div> <!-- end card-body-->
+            </div> <!-- demands/user -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extra_scripts %}
+<!-- third party js -->
+<script src="{% static 'dist/js/vendor/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.bootstrap4.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.checkboxes.min.js' %}"></script>
+<script src="{% static 'dist/js/custom/clients.js' %}"></script>
+<!-- third party js ends -->
+{% endblock %}

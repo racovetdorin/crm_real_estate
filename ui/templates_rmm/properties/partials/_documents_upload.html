@@ -1,0 +1,34 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load custom_tags %}
+{% load i18n %}
+{% trans 'Submit documents' as _ %}
+
+<form method="POST" action="{% url 'ui:property_upload_documents' pk=property.pk %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input hidden name="property_id" value="{{ property.id }}">
+    <input hidden name="property_path" value="{{ request.path }}">
+    <div class="col-12 col-md-12 col-lg-5 col-xl-6 pl-0">
+        <div class="card" style="height: 95%">
+            <div class="card-body">
+                {{ form.documents|as_crispy_field }}
+                <div class="form-group">
+                    {% for document in documents %}
+                    <a href="{{ storage_url }}{{ document.document_path }}" value="{{ document.id }}"><strong>{{ document.document_name }}</strong></a>
+
+                    {% if request.user.is_manager %}
+                    <input id="id-delete-{{ storage_url }}{{ document.document_path }}" class="js-delete-checkbox" type="checkbox" name="delete-document-{{ document.id }}" value="{{ document.id }}">
+                    <label class="text-danger font-weight-bold" for="id-delete-{{ storage_url }}{{ document.document_path }}">{% trans 'Delete' %}</label>
+                    {% endif %}
+
+                    <br>
+                    {% endfor %}
+                </div>
+                <div class="float-right">
+                    {% include 'partials/_submit_button.html' with title='Submit documents' type='submit' value='POST' button_class="btn btn-sm btn-primary" %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

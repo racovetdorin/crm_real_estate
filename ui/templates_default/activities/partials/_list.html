@@ -1,0 +1,205 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load custom_tags %}
+{% load ui_extras %}
+
+{% trans 'Leads' as _ %}
+<div class="container-fluid" id="activities_list">
+    {% if leads %}
+        {% include "partials/page_title.html" with title='Leads' %} <!-- page_title -->
+    {% else %}
+        {% include "partials/page_title.html" with title='Activities' %} <!-- page_title -->
+    {% endif %}
+
+
+    {% if property or client or demand %}
+    <!-- DO NOT ADD FILTERS -->
+    {% else %}
+        {% include "partials/messages.html" %}
+        {% include "activities/partials/_filter_form.html" %}
+    {% endif %}
+
+    <div class="row">
+        <a href="#" data-toggle="modal" data-target="#{{ modal_target }}" class="btn btn-success btn-lg mb-3 ml-2">
+            <i class="mdi mdi-plus-circle mr-2"></i>{% if leads %} {% trans 'Add New Lead' %} {% else %} {% trans 'Add New Activity' %} {% endif %}
+        </a>
+    </div>
+    <!-- content_row -->
+    <strong>*{% trans 'Hold down CTRL to select text from the cards without moving them.' %}</strong>
+    <div class="row mt-2">
+        <div class="col-12">
+            <div class="board" id='js-activities-list' data-activities-ids={{ activities_ids }}>
+                <div data-plugin="dragula" data-containers="[&quot;task-list-sale&quot;, &quot;task-list-rent&quot;, &quot;task-list-done&quot;, &quot;task-list-to-do&quot;, &quot;task-list-in-progress&quot;, &quot;task-list-processed&quot; ]">
+                    {% for _, activity_column in activities_context_dict.items %}
+                    {% include 'activities/partials/_activities_columns.html' with activity_column=activity_column %}
+                    {% endfor %}
+                </div>
+            </div> <!-- end .board-->
+        </div> <!-- end col -->
+    </div> <!-- content_row -->
+</div>
+
+<div class="modal fade task-modal-content" id="{{ modal_target }}" tabindex="-1" role="dialog" aria-labelledby="NewTaskModalLabel" style="display: none;" aria-hidden="true">
+    <form method="POST" action="{% url 'ui:activity_create' %}?{{request.GET|query_params_from_dict}}">
+        {% csrf_token %}
+        <input type="hidden" name="{{ form.object_id.name }}" value="{{ object_id }}">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="NewTaskModalLabel">
+                        {% if leads %} {% trans 'Add New Lead' %}
+                        {% else %} {% trans 'Add New Activity' %}
+                        {% endif %}
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+
+                <div class="modal-body">
+                    <form class="p-2">
+                        <div class="form-row">
+                            <div class="col-12">
+                                {{ form.title|as_crispy_field }}
+                            </div> <!-- title -->
+                        </div> <!-- title -->
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label>{{ form.status.label }}</label>
+
+                                <select class="form-control" id="modal-select-{{ activity.id }}" name="{{ form.status.name }}">
+                                    {% if activities %}
+                                    {% for value, status in form.status.field.choices|slice:':3' %}
+                                    <option {% if activity.status == value %} selected {% endif %}
+                                            value="{{ value }}">{{ status }}</option>
+                                    {% endfor %}
+
+                                    {% elif leads %}
+                                    {% for value, status in form.status.field.choices|slice:'3:' %}
+                                    <option {% if activity.status == value %} selected {% endif %}
+                                            value="{{ value }}">{{ status }}</option>
+                                    {% endfor %}
+
+                                    {% else %}
+                                    {% for value, status in form.status.field.choices %}
+                                    <option {% if activity.status == value %} selected {% endif %}
+                                            value="{{ value }}">{{ status }}</option>
+                                    {% endfor %}
+
+                                    {% endif %}
+                                </select>
+                            </div> <!-- status -->
+
+                            <div class="col-lg-4"> <!-- type -->
+                                {{ form.type|as_crispy_field }}
+                            </div> <!-- type -->
+
+                            <div class="col-lg-4">
+                                {{ form.priority|as_crispy_field }}
+                            </div> <!-- priority -->
+                        </div> <!-- priority/status/type -->
+
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                    <label>{{ form.user.label }}</label>
+
+                                    <select name="{{ form.user.name }}"
+                                            class="form-control select2">
+
+                                        {% for value, user in form.user.field.choices %}
+                                        <option {% if request.user.id|to_str == value|to_str %} selected {% endif %} value="{{ value }}">{{ user }}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div> <!-- user(agent) -->
+                            <div class="col-lg-1 mt-4 ml-2">
+                                <div class="custom-control custom-switch">
+                                        <input type="checkbox"
+                                               name="{{ form.is_taken.html_name }}"
+                                               {% if activity.is_taken %} checked {% endif %} value=True
+                                               class="custom-control-input"
+                                               id="id_is_taken_{{ activity.id }}">
+                                        <label for="id_is_taken_{{ activity.id }}" class="custom-control-label">
+                                               {% if activity.is_taken %} {{ form.is_taken.label }}
+                                               {% else %} {% trans 'Take!' %} {% endif %}
+                                        </label>
+                                </div> <!-- is_taken -->
+                            </div> <!-- user/is_taken -->
+                        </div> <!-- user/is_taken -->
+
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label>{{ form.description.label }}</label>
+
+                                <textarea class="form-control" name="{{ form.description.name }}" rows="4">{{ activity.description|default_if_none:'' }}</textarea>
+                            </div>
+                        </div> <!-- description -->
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                            <label>{{ form.phone.label }}</label>
+
+                            <input type="text" name="{{ form.phone.name }}" class="form-control" value="{{ activity.phone }}">
+                        </div> <!-- phone -->
+
+                            <div class="form-group col-md-9">
+                            <label>{{ form.hyperlink.label }}</label>
+
+                            <input type="text" name="{{ form.hyperlink.name }}" class="form-control" value="{{ activity.hyperlink }}">
+                        </div> <!-- hyperlink -->
+                        </div> <!-- phone/hyperlink -->
+
+                        <div class="form-row">
+
+                            <div class="form-group col">
+                                <label>{{ form.due_date.label }}</label>
+                                <input type="date" name="{{ form.due_date.name }}" class="form-control" placeholder="{{ activity.due_date }}">
+                            </div> <!-- due_date -->
+                        </div>
+
+                        {% if not activity_fk_object_id %}
+                        <div class="form-row">
+                            {% include 'activities/partials/_fk_object_div.html' with fk_obj=activity.property html_name=form.property.name html_label=form.property.label select_el_id='activity_property_fk' url='ui:ajax_search_properties' %}
+
+                            {% include 'activities/partials/_fk_object_div.html' with fk_obj=activity.client html_name=form.client.name html_label=form.client.label select_el_id='activity_client_fk' url='ui:ajax_search_clients' %}
+
+                            {% include 'activities/partials/_fk_object_div.html' with fk_obj=activity.demand html_name=form.demand.name html_label=form.demand.label select_el_id='activity_demand_fk' url='ui:ajax_search_demands' %}
+                        </div> <!-- fk_objects -->
+                        {% else %}
+
+                        {% endif %}
+
+                        <div class="text-left">
+                            <div class="col-6 col-lg-3 p-0">
+                                <div class="form-group">
+                                    {% if user.is_superuser %}
+                                    <div class="text-left">
+                                        <div class="custom-control custom-switch">
+                                        <input type="checkbox"
+                                               name="{{ form.is_available.html_name }}"
+                                               checked value=True
+                                               class="custom-control-input"
+                                               id="id_is_available_{{ activity.id }}">
+                                        <label for="id_is_available_{{ activity.id }}" class="custom-control-label">{{ form.is_available.label }}</label>
+                                        </div>
+                                    </div> <!-- is_available -->
+                                    {% else %}
+                                    <input type="hidden" name="{{ form.is_available.name }}" value=True>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div> <!-- is_available -->
+
+                        <input type="hidden" value="{{ activity_fk_object_name }}" name="activity_fk_object_model_name">
+                        <input type="hidden" value="{{ activity_fk_object_id }}" name="activity_fk_object_id">
+                        <input type="hidden" value="{{ request.path }}" name="current_path">
+
+                        <div class="text-right">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">{% trans 'Cancel' %}</button>
+                            <button type="submit" value="POST" class="btn btn-primary">{% trans 'Create' %}</button>
+                        </div> <!-- submit/cancel -->
+
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </form>
+</div>

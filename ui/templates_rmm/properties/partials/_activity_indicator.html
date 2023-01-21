@@ -1,0 +1,12 @@
+{% load custom_tags %}
+
+{% if offer.validation_date %}
+{% if today|date_subtraction:offer.validation_date < 30 %}
+<i class="mdi mdi-check-circle rem2 green"></i>
+{% elif today|date_subtraction:offer.validation_date > 30 and today|date_subtraction:offer.validation_date < 60 %}
+<i class="mdi mdi-alert-circle rem2 yellow"></i>
+{% else %}
+<i class="mdi mdi-close-circle rem2 red"></i>
+{% endif %}
+<br>
+{% endif %}

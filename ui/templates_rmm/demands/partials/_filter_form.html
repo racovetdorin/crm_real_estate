@@ -1,0 +1,159 @@
+{% load custom_tags %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+<div class="row">
+    <div class="col-12 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <form method="GET">
+                    <strong><label class="mb-2">{% trans 'Filters' %}</label></strong>
+                    <a class="ml-2" href="{{request.path}}"><strong>{% trans 'Reset filters' %}</strong></a>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <select class="form-control" name="sort_by">
+                                {% for value, label in sort_values %}
+                                    <option {% if value == request.GET.sort_by %} selected {% endif %} value="{{ value }}">{% trans label %}</option>
+                                {% endfor %}
+    </select><!-- sort -->
+                        </div> <!-- sort -->
+
+                        <div class="form-group col-md-3">
+                            <input class="form-control" name="{{ filter.form.id.name }}"
+                                   value="{{ filter.form.id.value|default_if_none:'' }}" placeholder="{% trans 'Demand ID' %}">
+                        </div> <!-- id -->
+
+                        <div class="form-group col-md-6 col-lg-3">
+                            <label>{% trans 'Primary filters' %}</label>
+                            <strong><a class="toggle-text-primary filters-toggle-primary btn btn-primary fa fa-angle-double-down ml-2" href="javascript: void(0)"></a></strong>
+                        </div> <!-- primary filters toggle -->
+                        <div class="col-md-6 col-lg-3">
+                            {{ filter.form.user|as_crispy_field }}
+                        </div> <!-- user(agent) -->
+                        <div class="col-md-6 col-lg-3">
+                            {{ filter.form.active|as_crispy_field }}
+                        </div> <!-- price_min -->
+                    </div> <!-- sort/id/primary_filters_toggle -->
+
+                    <div class="primary-filters">
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-lg-3">
+                                <label>{{ filter.form.type.label }}</label>
+
+                                <select id="type-select"
+                                        name="{{ filter.form.type.name }}"
+                                        class="form-control select2"
+                                        data-toggle="select2">
+
+                                    {% for value, type in filter.form.type.field.choices %}
+                                    <option {% if filter.form.type.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ type }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div> <!-- type -->
+
+                            <div class="form-group col-md-6 col-lg-3">
+                                <label>{{ filter.form.property_type.label }}</label>
+
+                                <select id="property_type-select"
+                                        name="{{ filter.form.property_type.name }}"
+                                        class="form-control select2"
+                                        data-toggle="select2">
+
+                                    {% for value, property_type in filter.form.property_type.field.choices %}
+                                    <option {% if filter.form.property_type.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ property_type }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div> <!-- property_type -->
+
+                            <div class="form-group col-md-6 col-lg-3">
+                                <label>{{ filter.form.property_subtype.label }}</label>
+
+                                <select id="property_subtype-select"
+                                        name="{{ filter.form.property_subtype.name }}"
+                                        class="form-control select2"
+                                        data-toggle="select2">
+
+                                    {% for value, property_subtype in filter.form.property_subtype.field.choices %}
+                                    <option {% if filter.form.property_subtype.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ property_subtype }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div> <!-- property_subtype -->
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.price_min|as_crispy_field }}
+                            </div> <!-- price_min -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.price_max|as_crispy_field }}
+                            </div> <!-- price_max -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.rooms_min|as_crispy_field }}
+                            </div> <!-- rooms_min -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.rooms_max|as_crispy_field }}
+                            </div> <!-- rooms_max -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.surface_min|as_crispy_field }}
+                            </div> <!-- surface_min -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.surface_max|as_crispy_field }}
+                            </div>  <!-- surface_max -->
+
+                            <div class="form-group col-md-6 col-lg-3">
+                                <div class="js-container-region">
+                                    <label>{{ filter.form.region.label }}</label>
+
+                                    <select id="region-select"
+                                            name="{{ filter.form.region.name }}"
+                                            data-toggle="select2">
+
+                                        {% for value, region in filter.form.region.field.choices %}
+
+                                        <option {% if filter.form.region.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ region }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div> <!-- region -->
+
+                            <div class="form-group col-md-6 col-lg-3">
+                                <div class="js-container-city"
+                                         data-cities-url="{% url 'ui:ajax_load_cities' %}">
+                                <label>{{ filter.form.city.label }}</label>
+
+                                <select id="city-select"
+                                        name="{{ filter.form.city.name }}"
+                                        data-toggle="select2">
+
+                                    {% for value, city in filter.form.city.field.choices %}
+                                    <option {% if filter.form.city.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ city }}</option>
+                                    {% endfor %}
+                                </select>
+                                </div>
+                            </div> <!-- city -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.lead_source|as_crispy_field }}
+                            </div>  <!-- surface_max -->
+
+                        </div>
+                    </div> <!-- all_filters -->
+
+                    <div hidden>
+                        {{ filter.form.client|as_crispy_field }}
+                    </div> <!-- client -->
+
+                    <div class="float-right">
+                        {% include 'partials/_filter_button.html' %}
+                    </div> <!-- filter -->
+                </form>
+            </div> <!-- end card-body -->
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+</div> <!-- end row -->

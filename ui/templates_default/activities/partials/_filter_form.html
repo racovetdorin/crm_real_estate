@@ -1,0 +1,141 @@
+{% load crispy_forms_tags %}
+{% load custom_tags %}
+{% load i18n %}
+
+
+<div class="row">
+    <div class="col-lg-12 col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="GET">
+                    <strong><label class="mb-3">{% trans 'Filters' %}</label></strong>
+                    <a class="ml-2" href="{{request.path}}"><strong>{% trans 'Reset filters' %}</strong></a>
+
+                    <div class="form-row">
+                        <div class="col-md-6 col-lg-4">
+                            {{ filter.form.phone|as_crispy_field }}
+                        </div> <!-- phone -->
+
+                        <div class="col-md-6 col-lg-4">
+                            {{ filter.form.user|as_crispy_field }}
+                        </div> <!-- user(agent) -->
+
+                        <div class="col-md-6 col-lg-4">
+                            {{ filter.form.id|as_crispy_field }}
+                        </div> <!-- id -->
+
+                        <div class="form-group col-lg-4">
+                            <label>{{ filter.form.status.label }}</label>
+
+                            <select class="form-control" id="modal-select-{{ activity.id }}" name="{{ form.status.name }}">
+                                <option value="">---------</option>
+                                {% if activities %}
+                                {% for value, status in form.status.field.choices|slice:'0:3' %}
+                                <option {% if value == filter.form.status.value %} selected {% endif %}
+                                        value="{{ value }}">{{ status }}</option>
+                                {% endfor %}
+
+                                {% elif leads %}
+                                {% for value, status in form.status.field.choices|slice:'3:6' %}
+                                <option {% if value == filter.form.status.value %} selected {% endif %}
+                                        value="{{ value }}">{{ status }}</option>
+                                {% endfor %}
+
+                                {% endif %}
+                            </select>
+                        </div> <!-- status -->
+
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label>{{ filter.form.client.label }}</label><br>
+                            <select id="id-client-filter-select" name="{{ filter.form.client.name }}"
+                                    class="form-control select2"
+                                    data-toggle="select2"
+                                    data-search-url="{% url 'ui:ajax_search_clients' %}">
+
+                                {% if filtered_client %}
+                                    <option value="{{ filtered_client.id }}" selected>{{ filtered_client }}</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label>{{ filter.form.property.label }}</label><br>
+                            <select id="id-property-filter-select" name="{{ filter.form.property.name }}"
+                                    class="form-control select2"
+                                    data-toggle="select2"
+                                    data-search-url="{% url 'ui:ajax_search_properties' %}">
+
+                                {% if filtered_property %}
+                                    <option value="{{ filtered_property.id }}" selected>{{ filtered_property }}</option>
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+                            {{ filter.form.title|as_crispy_field }}
+                        </div> <!-- title -->
+
+                        <div class="col-md-6 col-lg-4">
+                            {{ filter.form.priority|as_crispy_field }}
+                        </div> <!-- priority -->
+
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label>{{ filter.form.created_at_min.label }}</label>
+                            <input type="date"
+                                   name="{{ filter.form.created_at_min.name }}" class="form-control"
+                                   value="{{ filter.form.created_at_min.value }}" data-date-format="DD/MM/YYYY">
+                        </div> <!-- created_at_min -->
+
+                        <div class="col-md-6 col-lg-4">
+                            <label>{{ filter.form.created_at_max.label }}</label>
+                            <input type="date"
+                                   name="{{ filter.form.created_at_max.name }}" class="form-control"
+                                   value="{{ filter.form.created_at_max.value }}" data-date-format="DD/MM/YYYY">
+                        </div> <!-- created_at_max -->
+
+                        <div class="form-group col-md-4 mt-4">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"
+                                       {% if filter.form.is_taken.value %} checked {% endif %} value=True
+                                       name="{{ filter.form.is_taken.name }}" id="id-is_taken">
+                                <label class="custom-control-label" for="id-is_taken">{{ filter.form.is_taken.label }}</label>
+                            </div>
+                        </div> <!-- is_taken -->
+
+                    </div> <!-- filters -->
+
+                    <div class="float-right">
+                        {% include 'partials/_filter_button.html' %}
+                    </div> <!-- filter -->
+                    <div class="float-right mr-3">
+                        <a class="btn btn-primary btn-warning btn-lg"  data-toggle="modal" data-target="#warning-alert-modal">{% trans 'Archive ' %} {% if activities %} {% trans 'finished activities' %} {% else %} {% trans 'processed leads' %} {% endif %}</a>
+                    </div> <!-- filter -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% load i18n %}
+
+<form action="{% url 'ui:archive_activities' %}" method="POST">
+    {% csrf_token %}
+    <div id="warning-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content modal-filled bg-warning">
+                <div class="modal-body p-4">
+                    <div class="text-center">
+                        <i class="dripicons-warning h1"></i>
+
+                        {% if leads %} <p class="mt-3">{% trans 'Are you sure you want to archive all your finished leads ' %} ?</p>
+                        {% elif activities %} <p class="mt-3">{% trans 'Are you sure you want to archive all your finished activities ' %} ?</p> {% endif %}
+
+                        <input class="btn btn-light my-2" value="Archive" type="submit">
+                        <input type="hidden" value=True
+                               {% if leads %} name="leads" {% elif activities %} name="activities" {% endif %}>
+
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</form>
+

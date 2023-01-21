@@ -1,0 +1,101 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+<div class="form-row mb-3">
+    <div class="col-md-4 col-lg-2">
+        {{ form.surface_total|as_crispy_field }}
+    </div> <!-- surface_util -->
+    <div class="col-md-4 col-lg-2">
+        <div id="div_id_surface_util" class="form-group">
+            <label for="div_id_surface_util" class> {% trans 'Surface util' %}</label>
+            <div>
+                <input type="number"
+                       name="{{ form.surface_util.html_name }}"
+                       value="{{ form.surface_util.value }}"
+                       step="any"
+                       class="numberinput form-control"
+                       id="id_{{ form.surface_util.html_name }}"/>
+            </div>
+        </div>
+    </div> <!-- surface_util -->
+
+    <div class="col-md-4 col-lg-2">
+        <div id="div_id_surface_built" class="form-group">
+            <label for="div_id_surface_built" class> {% trans 'Surface built' %}</label>
+            <div class>
+                <input type="number"
+                       name="{{ form.surface_built.html_name }}"
+                       value="{{ form.surface_built.value }}"
+                       step="any"
+                       class="numberinput form-control"
+                       id="id_{{ form.surface_built.html_name }}">
+            </div>
+        </div>
+    </div> <!-- surface_built -->
+    
+    <div class="col-md-6 col-lg-2">
+        <div id="div_id_surface_field" class="form-group">
+            <label for="div_id_surface_field" class> {% trans 'Field surface' %}</label>
+            <div class>
+                <input
+                    type="number"
+                    name="{{ form.surface_field.html_name }}"
+                    value="{{ form.surface_field.value }}"
+                    step="any"
+                    class="numberinput form-control"
+                    id="id_{{ form.surface_field.html_name }}">
+            </div>
+        </div>
+    </div> <!-- 'surface_field -->
+    {% if property.type == 'apartment' or property.type == 'house' %}
+        <div class="col-md-6 col-lg-2">
+            <div id="div_id_surface_kitchen" class="form-group">
+                <label for="div_id_surface_kitchen" class> {% trans 'Surface kitchen' %}</label>
+                <div class>
+                    <input type="number"
+                        name="{{ form.surface_kitchen.html_name }}"
+                        value="{{ form.surface_kitchen.value }}"
+                        step="any"
+                        class="numberinput form-control"
+                        id="id_{{ form.surface_kitchen.html_name }}">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-2">
+            <div id="div_id_ceiling_height" class="form-group">
+                <label for="div_id_ceiling_height" class> {% trans 'Ceiling height (cm)' %}</label>
+                <div class>
+                    <input type="number"
+                        name="{{ form.ceiling_height.html_name }}"
+                        value="{{ form.ceiling_height.value }}"
+                        step="any"
+                        class="numberinput form-control"
+                        id="id_{{ form.ceiling_height.html_name }}">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+<div class="form-row mb-3">
+    <div class="col-md-6 col-lg-2">
+        <div id="div_id_surface_garden" class="form-group">
+            <label for="div_id_surface_garden" class> {% trans 'Garden surface' %}</label>
+            <div class>
+                <input type="number"
+                    name="{{ form.surface_garden.html_name }}"
+                    value="{{ form.surface_garden.value }}"
+                    step="any"
+                    class="numberinput form-control"
+                    id="id_{{ form.surface_garden.html_name }}">
+            </div>
+        </div>
+    </div> <!-- surface_garden -->
+     <div class="col-md-6 col-lg-2">
+        <div id="div_id_surface_total" class="form-group">
+                <div>
+                        {{ form.units_of_measure|as_crispy_field }}
+                </div>
+        </div>
+    </div>
+
+</div> <!-- surface -->

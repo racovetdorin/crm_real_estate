@@ -1,0 +1,366 @@
+{% load crispy_forms_tags %}
+{% load custom_tags %}
+{% load ui_extras %}
+
+{% load i18n %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="GET">
+                    <strong><label class="mb-3">{% trans 'Filters' %}</label></strong>
+                    <a class="ml-2" href="{{request.path}}"><strong>{% trans 'Reset filters' %}</strong></a>
+
+                    <div class="form-row col-lg-12 pl-0">
+                        <div class="form-group col-lg-2">
+                            <select class="form-control" name="sort_by">
+                            {% for value, label in sort_values %}
+                                <option {% if value == request.GET.sort_by %} selected {% endif %} value="{{ value }}">{% trans label %}</option>
+
+                            {% endfor %}
+                            </select>
+                        </div> <!-- sort -->
+
+                        <div class="col-md-6 col-lg-2 mb-3">
+                            <input class="form-control" name="{{ filter.form.offer_id.name }}"
+                                   value="{{ filter.form.offer_id.value|default_if_none:'' }}" placeholder="{% trans 'Offer ID' %}">
+                        </div> <!-- offer_id -->
+
+                        <div class="form-group col-md-6 col-lg-2 mb-3">
+
+                                <select id="user-select" name="{{ filter.form.user.name }}"
+                                        data-toggle="select2" data-placeholder="{% trans 'Agent' %}">
+                                    {% for value, user in filter.form.user.field.choices %}
+                                    <option {% if filter.form.user.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ user }}</option>
+                                    {% endfor %}
+                                </select>
+                        </div> <!-- user(agent) -->
+
+                        <div class="form-group col-md-6 col-lg-2 mb-3">
+                                <select id="office-select" name="{{ filter.form.office.name }}"
+                                        data-toggle="select2" data-placeholder="{% trans 'Office' %}">
+                                    {% for value, office in filter.form.office.field.choices %}
+                                    <option {% if filter.form.office.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ office }}</option>
+                                    {% endfor %}
+                                </select>
+                        </div> <!-- office(birouri) -->
+
+                        <div class="form-group col-lg-1">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"
+                                       {% if filter.form.sale_offers.value %} checked {% endif %} value=True
+                                       name="{{ filter.form.sale_offers.name }}" id="id-sale_offers">
+                                <label class="custom-control-label" for="id-sale_offers">{{ filter.form.sale_offers.label }}</label>
+                            </div>
+                        </div> <!-- sale_offers -->
+
+                        <div class="form-group col-lg-1">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"
+                                       {% if filter.form.rent_offers.value %} checked {% endif %} value=True
+                                       name="{{ filter.form.rent_offers.name }}" id="id-rent_offers">
+                                <label class="custom-control-label" for="id-rent_offers">{{ filter.form.rent_offers.label }}</label>
+                            </div>
+                        </div> <!-- rent_offers -->
+
+                        <div class="form-group col-lg-1">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"
+                                       {% if filter.form.exclusive.value %} checked {% endif %} value=True
+                                       name="{{ filter.form.exclusive.name }}" id="id-exclusive">
+                                <label class="custom-control-label" for="id-exclusive">{{ filter.form.exclusive.label }}</label>
+                            </div>
+                        </div> <!-- exclusive -->
+                        <div class="form-group col-lg-1">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input"
+                                       {% if filter.form.key_holding.value %} checked {% endif %} value=True
+                                       name="{{ filter.form.key_holding.name }}" id="id-key_holding">
+                                <label class="custom-control-label" for="id-key_holding">{{ filter.form.key_holding.label }}</label>
+                            </div>
+                        </div> <!-- key_holding -->
+                    </div><!-- generic filters filters -->
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6 col-lg-3">
+                            <label> {{ filter.form.type.label }}</label>
+
+                            <select id="type-select" name="{{ filter.form.type.name }}"
+                                    class="select2 form-control select2-multiple"
+                                    data-toggle="select2"
+                                    multiple="multiple">
+
+                                {% for value, type in filter.form.type.field.choices %}
+                                <option {% if value in filter.form.type.value %} selected {% endif %} value="{{ value }}" >{{ type }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div> <!-- type -->
+
+                        <div class="form-group col-md-6 col-lg-3">
+                            <label> {{ filter.form.subtype.label }}</label>
+
+                            <select id="subtype-select" name="{{ filter.form.subtype.name }}"
+                                    class="select2 form-control select2-multiple"
+                                    data-toggle="select2"
+                                    multiple="multiple">
+
+                                {% for value, subtype in filter.form.subtype.field.choices %}
+                                <option {% if value in filter.form.subtype.value %} selected {% endif %} value="{{ value }}" >{{ subtype }}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div> <!-- subtype -->
+
+                        <div class="form-group col-md-6 col-lg-3">
+                            <label>{{ filter.form.status.label }}</label>
+
+                            <select id="status-select"
+                                    name="{{ filter.form.status.name }}"
+                                    data-toggle="select2">
+
+                                {% for value, status in filter.form.status.field.choices %}
+                                <option {% if filter.form.status.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ status }}</option>
+                                {% endfor %}
+                            </select>
+                        </div> <!-- status -->
+
+
+                        <div class="form-group col-md-6 col-lg-3 mt-3 pt-1">
+
+                            <label>{% trans 'Primary filters' %}</label>
+                            <strong><a class="toggle-text-primary filters-toggle-primary btn btn-primary uil fa fa-angle-double-down ml-2" href="javascript: void(0)"></a></strong>
+                        </div>
+                    </div> <!-- user(agent)/primary filters toggle -->
+
+                    <div class="primary-filters">
+                        <div class=" form-row">
+
+                            <div class="form-group col-md-3 col-md-6 col-lg-3">
+                                <div class="js-container-region">
+                                    <label>{{ filter.form.region.label }}</label>
+
+                                    <select id="region-select"
+                                            name="{{ filter.form.region.name }}"
+                                            data-toggle="select2">
+
+                                        {% for value, region in filter.form.region.field.choices %}
+
+                                        <option {% if filter.form.region.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ region }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div> <!-- region -->
+
+                            <div class="form-group col-md-3 col-md-6 col-lg-3">
+                                <div class="js-container-city"
+                                         data-cities-url="{% url 'ui:ajax_load_cities' %}">
+                                <label>{{ filter.form.city.label }}</label>
+
+                                <select id="city-select"
+                                        name="{{ filter.form.city.name }}"
+                                        data-toggle="select2">
+
+                                    {% for value, city in filter.form.city.field.choices %}
+                                    <option {% if filter.form.city.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ city }}</option>
+                                    {% endfor %}
+                                </select>
+                                </div>
+                            </div> <!-- city -->
+
+                            <div class="form-group col-md-6 col-lg-3">
+                                <div class="js-container-zone"
+                                         data-zones-url="{% url 'ui:ajax_load_zones' %}">
+                                    <label> {{ filter.form.zone.label }}</label>
+                                    <select id="zone-select" name="{{ filter.form.zone.name }}"
+                                            class="select2 form-control select2-multiple"
+                                            data-toggle="select2"
+                                            multiple="multiple">
+
+
+                                        {% for value, zone in filter.form.zone.field.choices %}
+                                        <option {% if value|to_str in filter.form.zone.value %} selected {% endif %}
+                                                value="{{ value }}">{{ zone }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div> <!-- zone -->
+                            </div> <!-- zone -->
+
+                            <div class="form-group col-md-3 col-md-6 col-lg-3">
+                                <div class="js-container-street"
+                                         data-streets-url="{% url 'ui:ajax_load_streets' %}">
+                                    <label>{{ filter.form.street.label }}</label>
+
+                                    <select id="street-select"
+                                            name="{{ filter.form.street.name }}"
+                                            data-toggle="select2">
+
+                                        {% for value, street in filter.form.street.field.choices %}
+                                        <option {% if filter.form.street.value == value|to_str %} selected {% endif %} value="{{ value }}">{{ street }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div> <!-- street -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                <label> {{ filter.form.rooms_number.label }}</label>
+
+                                <select id="rooms_number-select" name="{{ filter.form.rooms_number.name }}"
+                                        class="select2 filter.form-control select2-multiple"
+                                        data-toggle="select2"
+                                        multiple="multiple">
+
+                                    {% for value, rooms_number in filter.form.rooms_number.field.choices %}
+                                    <option {% if value|to_str in filter.form.rooms_number.value %} selected {% endif %} value="{{ value }}" >{{ rooms_number }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div> <!-- rooms_number -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                <label> {{ filter.form.bathrooms_number.label }}</label>
+
+                                <select id="bathrooms_number-select" name="{{ filter.form.bathrooms_number.name }}"
+                                        class="select2 filter.form-control select2-multiple"
+                                        data-toggle="select2"
+                                        multiple="multiple">
+
+                                    {% for value, bathrooms_number in filter.form.bathrooms_number.field.choices %}
+                                    <option {% if value|to_str in filter.form.bathrooms_number.value %} selected {% endif %} value="{{ value }}" >{{ bathrooms_number }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div> <!-- bathrooms_number -->
+
+                            <div class="col-md-3">
+                                {{ filter.form.price_min|as_crispy_field }}
+                            </div> <!-- price_min -->
+
+                            <div class="col-md-3">
+                                {{ filter.form.price_max|as_crispy_field }}
+                            </div> <!-- price_max -->
+
+                            <div class="form-group col-md-6 col-lg-3 mt-3 pt-1">
+                                <label>{% trans 'Secondary filters' %}</label>
+                                <a class="toggle-text-secondary filters-toggle-secondary btn btn-primary uil fa fa-angle-double-down ml-2" href="javascript: void(0)"></a> <!-- seocndary filters toggle -->
+                            </div> <!-- secondary_filter_toggle -->
+                        </div> <!-- primary -->
+                    </div> <!-- primary filters -->
+
+                    <div class="secondary-filters">
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6 col-lg-3">
+                                <label>{{ filter.form.created_at_min.label }}</label>
+                                <input type="date"
+                                       name="{{ filter.form.created_at_min.name }}" class="form-control"
+                                       value="{{ filter.form.created_at_min.value }}" data-date-format="DD/MM/YYYY">
+                            </div> <!-- created_at_min -->
+
+                            <div class="form-group col-md-6 col-lg-3">
+                                <label>{{ filter.form.created_at_max.label }}</label>
+                                <input type="date"
+                                       name="{{ filter.form.created_at_max.name }}" class="form-control"
+                                       value="{{ filter.form.created_at_max.value }}" data-date-format="DD/MM/YYYY">
+
+                            </div> <!-- created_at_max -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.partitioning|as_crispy_field }}
+                            </div> <!-- partitioning -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.comfort|as_crispy_field }}
+                            </div> <!-- comfort -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.built|as_crispy_field }}
+                            </div> <!-- built -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.interior_state|as_crispy_field }}
+                            </div> <!-- interior_state -->
+
+                            <div class="col-md-6 col-lg-3">
+                                {{ filter.form.heating_source|as_crispy_field }}
+                            </div><!-- heating_source -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                {{ filter.form.surface_total_min|as_crispy_field }}
+                            </div> <!-- surface min -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                {{ filter.form.surface_total_max|as_crispy_field }}
+                            </div> <!-- surface max -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                {{ filter.form.surface_util_min|as_crispy_field }}
+                            </div> <!-- surface min -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                {{ filter.form.surface_util_max|as_crispy_field }}
+                            </div> <!-- surface max -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                {{ filter.form.furnished|as_crispy_field }}
+                            </div> <!-- furnished -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                {{ filter.form.garage|as_crispy_field }}
+                            </div> <!-- garage -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                {{ filter.form.windows|as_crispy_field }}
+                            </div> <!-- windows -->
+
+                            <div class="col-md-3 col-md-6 col-lg-3">
+                                {{ filter.form.internet_connection|as_crispy_field }}
+                            </div> <!-- internet -->
+
+                            <div class="form-group col-md-3 col-md-6 col-lg-3">
+                                <label>{{ filter.form.client.label }}</label><br>
+                                <select id="id-client-filter-select" name="{{ filter.form.client.name }}"
+                                        class="form-control select2"
+                                        data-toggle="select2"
+                                        data-search-url="{% url 'ui:ajax_search_clients' %}">
+
+                                    {% if filtered_client %}
+                                        <option value="{{ filtered_client.id }}" selected>{{ filtered_client }}</option>
+                                    {% endif %}
+                                </select>
+                            </div>
+
+                        </div> <!-- secondary filters -->
+
+                        <div class="form-row col-12 col-lg-8 p-0 ml-0">
+                            {% for feature in features %}
+                            <div class="form-group mr-5 col">
+                                <div class="custom-control custom-checkbox">
+                                        {% with filter_name=feature.name|get_filter_name %}
+                                        <input type="checkbox" class="custom-control-input"
+                                               {% if filter_name in request.GET %} checked {% endif %} value="{{ feature.id }}"
+                                               name="{{ filter_name }}" id="id-{{ filter_name }}">
+                                        <label class="custom-control-label" for="id-{{ filter_name }}">{% trans feature.name %}</label>
+                                        {% endwith %}
+                                </div>
+                            </div> <!-- dynamic_feature_filters -->
+
+                            {% if forloop.counter|is_even %}
+                            <div class="w-100"></div>
+                            {% endif %}
+                            {% endfor %}
+
+
+                        </div> <!-- checkboxes -->
+
+                    </div> <!-- secondary filters -->
+
+                    <div class="float-right">
+                        {% include 'partials/_filter_button.html' %}
+                    </div> <!-- filter -->
+                </form> <!-- end filters -->
+            </div> <!-- end card-body -->
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+</div> <!-- end row -->
+

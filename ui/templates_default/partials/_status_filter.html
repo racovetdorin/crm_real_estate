@@ -1,0 +1,15 @@
+{% load i18n %}
+
+<span
+    {% if status == 'incomplete' %}
+    class="badge badge-secondary">{% trans 'Incomplete' %}
+    {% elif status == 'pending' %}
+    class="badge badge-light">{% trans 'Pending' %}
+    {% elif status == 'withdrawn' %}
+    class="badge badge-light">{% trans 'Withdrawn' %}
+    {% elif status == 'active' %}
+    class="badge badge-success">{% trans 'Active' %}
+    {% elif status == 'transacted' %}
+    class="badge badge-primary">{% trans 'Transacted' %}
+    {% endif %}
+</span>

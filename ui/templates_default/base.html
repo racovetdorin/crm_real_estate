@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block page_title %} {{ TITLE }} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Real Estate CRM and Listing Management Software" name="description"/>
+    <meta content="Coderthemes" name="author"/>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ FAVICON }}">
+
+    {% block stylesheets %}
+        {% block extra_stylesheets %}
+        {% endblock %}
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="{% static 'dist/css/icons.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'dist/css/app-creative.min.css' %}" rel="stylesheet" type="text/css" id="light-style"/>
+    <link href="{% static 'dist/css/app-creative-dark.min.css' %}" rel="stylesheet" type="text/css" id="dark-style"/>
+    <link href="{% static 'dist/css/default_styles.css' %}" rel="stylesheet" type="text/css"/>
+    {% include 'extra_styles.html' %}
+    {% endblock %}
+</head>
+
+{% with layout_config=user.get_layout_config %}
+<body data-layout-config="{{ layout_config }}">
+{% endwith %}
+{% block body %}
+<div class="wrapper">
+    {% include 'partials/navigation.html' %}
+    <div class="content-page">
+        <div class="content">
+            {% include 'partials/header.html' %}
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% include 'partials/footer.html' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'dist/js/vendor.min.js' %}"></script>
+    <script src="{% static 'dist/js/app.min.js' %}"></script>
+    <script src="{% static 'dist/js/vendor/jquery-ui.min.js' %}"></script>
+    <script>
+    $('#id-sidebar-toggle').click(function() {
+        if ($('body').attr('data-leftbar-compact-mode') === 'condensed') {
+            $('body').attr('data-leftbar-compact-mode', '')
+        }
+        else {
+            $('body').attr('data-leftbar-compact-mode', 'condensed')
+        }
+    })
+    </script>
+    <script src="{% static 'dist/js/custom/input_format.js' %}"></script>
+    {% block extra_scripts %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

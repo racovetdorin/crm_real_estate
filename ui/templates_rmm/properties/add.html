@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load custom_tags %}
+{% load i18n %}
+{% translate 'Add Property' %}
+
+{% block content %}
+<div class="container-fluid">
+    {% include "partials/page_title.html" with title='Add Property' %} <!-- page_title -->
+
+    <div class="row">
+        <div class="col-12 col-lg-6 col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-errors">
+                        {% include 'partials/form_errors.html' %}
+                        </div> <!-- form errors -->
+
+                        <div class="row">
+                            <div class="form-row col">
+                                <div class="js-container-type form-group col-6 m-0">
+                                    <label>{{ form.type.label }}</label>
+
+                                    <select id="type-select"
+                                            name="{{ form.type.name }}"
+                                            class="form-control select2"
+                                            data-toggle="select2">
+
+                                        {% for value, type in form.type.field.choices|slice:"1:" %}
+                                        <option value="{{ value }}">{{ type }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div> <!-- type -->
+
+                                <div class="js-container-client col-md-6">
+                                    <label>{% translate 'Owner' %}</label>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-10">
+                                            <select id="id-client-select" name="{{ form.client.name }}"
+                                                    class="form-control select2"
+                                                    data-toggle="select2"
+                                                    data-search-url="{% url 'ui:ajax_search_clients' %}">
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <a href="#new_client" id="id-form-client-add-trigger" class="btn btn-primary">+</a>
+                                        </div>
+                                    </div> <!-- client -->
+                                </div> <!--client -->
+
+                                <div class="js-container-type form-group col-12">
+                                    <label>{% translate 'Complex' %}</label>
+
+                                    <select id="type-select"
+                                            name="{{ form.complex.name }}"
+                                            class="form-control select2"
+                                            data-toggle="select2">
+
+                                            {% for value, complex in form.complex.field.choices %}
+                                            <option value="{{ value }}" {% if value|to_str == form.complex.value|to_str %} selected {% endif %}>{{ complex }}</option>
+                                            {% endfor %}
+                                    </select>
+                                </div> <!-- type -->
+
+                                <div class="js-container-region form-group col-6">
+                                    <label>{{ form.region.label }}</label>
+
+                                    <select id="region-select"
+                                            name="{{ form.region.name }}"
+                                            class="form-control select2"
+                                            data-toggle="select2" required>
+
+                                        {% for value, region in form.region.field.choices %}
+                                         <option value="{{ value }}" {% if value == form.region.value %} selected {% endif %}>{{ region }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div> <!-- region -->
+
+                                <div class="js-container-city form-group col-6"
+                                     data-cities-url="{% url 'ui:ajax_load_cities' %}">
+                                    <label>{{ form.city.label }}</label>
+                                    <select id="city-select" name="{{ form.city.name }}"
+                                            class="form-control select2"
+                                            data-toggle="select2" required>
+
+                                        {% for value, city in form.city.field.choices %}
+                                        <option value="{{ value }}">{{ city }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div> <!-- city -->
+
+                                <div class="js-container-zone form-group col-6"
+                                     data-zones-url="{% url 'ui:ajax_load_zones' %}">
+                                        <label>{{ form.zone.label }}</label>
+                                        <select id="zone-select" name="{{ form.zone.name }}"
+                                                class="form-control select2"
+                                                data-toggle="select2" required>
+
+                                            {% for value, zone in form.zone.field.choices %}
+                                            <option value="{{ value }}">{{ zone }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                </div> <!-- zone -->
+
+                                <div class="js-container-street form-group col-6"
+                                     data-streets-url="{% url 'ui:ajax_load_streets' %}"
+                                     data-no-zone-filtering=true >
+                                    <label>{{ form.street.label }}</label>
+
+                                    <select id="street-select"
+                                            name="{{ form.street.name }}"
+                                            class="form-control select2"
+                                            data-toggle="select2" required>
+
+                                    </select>
+                                </div> <!-- street -->
+
+                                <div class="form-row">
+                                    <div class="col-md-3 street-number-container">
+                                        {{ form.street_number|as_crispy_field }}
+                                    </div> <!-- number -->
+
+                                    <div class="col-md-3">
+                                        {{ form.block_number|as_crispy_field }}
+                                    </div> <!-- block_number -->
+
+                                    <div class="col-md-3">
+                                        {{ form.block_entrance_number|as_crispy_field }}
+                                    </div> <!-- block_number -->
+
+                                    <div class="col-md-3">
+                                        {{ form.floor|as_crispy_field }}
+                                    </div> <!-- floor -->
+
+                                    <div class="col-md-3">
+                                        {{ form.apartment_number|as_crispy_field }}
+                                    </div> <!-- apartment_number -->
+
+                                    <div class="col-md-3">
+                                        {{ form.latitude|as_crispy_field }}
+                                    </div> <!-- apartment_number -->
+
+                                    <div class="col-md-3">
+                                        {{ form.longitude|as_crispy_field }}
+                                    </div> <!-- apartment_number -->
+
+                                </div> <!-- address -->
+                            </div>
+                        </div> <!-- end col -->
+                        {% include 'partials/_submit_button.html' with title='Submit' type='submit' value='POST' button_class="btn btn-lg btn-primary" %} <!-- submit -->
+                    </form> <!-- form -->
+                </div> <!-- end card-body -->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div> <!-- content row-->
+    <div class="row">
+        <div id="id-form-client" class="col-12 col-lg-6 col-xl-6">
+            {% include 'partials/_client_create.html' with form=client_form %}
+        </div>
+    </div> <!-- hidden client form -->
+
+</div> <!-- container -->
+{% endblock %}
+
+
+{% block extra_scripts %}
+<!-- custom js -->
+<script src="{% static 'dist/js/custom/messages_fadeout.js' %}"></script>
+<script src="{% static 'dist/js/custom/locations.js' %}"></script>
+<script src="{% static 'dist/js/custom/client_form_show.js' %}"></script>
+{% endblock %}
+

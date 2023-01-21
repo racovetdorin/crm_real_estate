@@ -1,0 +1,470 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load custom_tags %}
+{% load i18n %}
+{% translate 'Property Update' as _ %}
+
+{% block extra_stylesheets %}
+<!-- third party css -->
+<link href="{% static 'dist/css/vendor/dataTables.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'dist/css/vendor/responsive.bootstrap4.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    {% include "partials/page_title.html" with title='Property Update' id_rent=property.get_last_rent_offer.id id_sale=property.get_last_sale_offer.id id=property.id %} <!-- page_title -->
+    {% include "partials/messages.html" %}
+
+    <p>{% trans 'You have' %} {{ demands|length }} {% trans 'matching demands for this property' %}<a href="#id-matching-demands">&nbsp({% trans 'demands' %})</a></p>
+
+    {% include 'partials/form_errors.html' with form=form%}
+    {% include 'partials/form_errors.html' with form=offer_form_set%}
+    {{ offer_form_set.non_form_errors }}
+    <input type="hidden" name="{{ form.type.name }}" value="{{ form.type.value }}">
+    <input type="hidden" name="{{ form.client.name }}" value="{{ form.client.value }}">
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item">
+            <a href="#property" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                <i class="mdi mdi-home-variant d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Property' %}</span>
+            </a>
+        </li> <!-- property -->
+        <li class="nav-item">
+            <a href="#images" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <i class="mdi mdi-image-filter d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Images' %}</span>
+            </a>
+        </li> <!-- images -->
+        <li class="nav-item">
+            <a href="#documents" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <i class="mdi mdi-file-document-edit-outline d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Documents' %}</span>
+            </a>
+        </li> <!-- documents -->
+        <li class="nav-item">
+            <a href="#attributes-object" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <i class="mdi mdi-format-list-bulleted d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Property details' %}</span>
+            </a>
+        </li> <!-- attributes object -->
+        <li class="nav-item">
+            <a href="#features" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <i class="mdi mdi-toolbox d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Features' %}</span>
+            </a>
+        </li> <!-- features -->
+        <li class="nav-item">
+            <a href="#offer-cards" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <i class="mdi mdi-currency-usd d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Offers' %}</span>
+            </a>
+        </li> <!-- offers -->
+        <li class="nav-item">
+            <a href="#matching_demands" data-toggle="tab" aria-expanded="false" class="nav-link">
+                <i class="mdi mdi-human-greeting d-md-none d-block"></i>
+                <span class="d-none d-md-block">{% trans 'Matching demands' %}
+                    <span class="badge badge-success-lighten float-end ms-2">{{ demands|length }}</span>
+                </span>
+
+            </a>
+        </li> <!-- matching_demands -->
+    </ul> <!-- tabs -->
+
+    <form id="id-property-update-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="tab-content">
+            <div class="tab-pane show active" id="property">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-7 col-xl-6">
+                        <div class="card" style="height: 95%">
+                            <div class="card-body">
+                                <div class="js-container-client">
+                                    <label>{{ form.client.label }}</label>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-11">
+                                            <select id="id-client-select" name="{{ form.client.name }}"
+                                                    class="form-control select2"
+                                                    data-toggle="select2"
+                                                    data-search-url="{% url 'ui:ajax_search_clients' %}">
+
+                                                {% if user and selected_client %}
+                                                    <option value="{{ selected_client.id }}" selected>{{ selected_client }}</option>
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <a href="#new_client" id="id-form-client-add-trigger" class="btn btn-primary">+</a>
+                                        </div>
+
+                                    </div> <!-- client -->
+
+                                </div> <!--client -->
+
+                                <div class="form-group">
+                                    {% if request.user.is_manager %}
+                                        {{ form.user|as_crispy_field }}
+                                    {% elif form.instance.user %}
+                                        <i class="uil-user"></i> <a target="_blank" href="{% url 'ui:users_update' pk=form.instance.user.pk %}"><strong>{{ form.instance.user.get_display_full_name }}</strong></a>
+                                    {% endif %}
+                                </div> <!-- user -->
+
+                                <div class="form-row">
+                                    <div class="js-container-region col-lg-6">
+                                        <div class="form-group mb-3 col p-0">
+                                            <label>{{ form.region.label }}</label>
+
+                                            <select id="region-select"
+                                                    name="{{ form.region.name }}"
+                                                    class="form-control select2"
+                                                    data-toggle="select2">
+
+                                                {% for value, region in form.region.field.choices %}
+                                                <option value="{{ value }}" {% if value|to_str == form.region.value|to_str %} selected {% endif %}>{{ region }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div> <!-- region -->
+
+                                    <div class="js-container-city col-lg-6" data-cities-url="{% url 'ui:ajax_load_cities' %}">
+                                        <div class="form-group mb-3 col p-0">
+                                            <label>{{ form.city.label }}</label>
+                                            <select id="city-select" name="{{ form.city.name }}"
+                                                    class="form-control select2"
+                                                    data-toggle="select2">
+
+                                                {% for value, city in form.city.field.choices %}
+                                                <option value="{{ value }}" {% if value|to_str == form.city.value|to_str %} selected {% endif %}>{{ city }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div> <!-- city -->
+                                </div> <!-- region/city -->
+
+                                <div class="form-row">
+                                    <div class="js-container-zone col-lg-6" data-zones-url="{% url 'ui:ajax_load_zones' %}">
+                                        <div class="form-group mb-3 col p-0">
+                                            <label>{{ form.zone.label }}</label>
+                                            <select id="zone-select" name="{{ form.zone.name }}"
+                                                        class="form-control select2"
+                                                        data-toggle="select2">
+
+                                                {% for value, zone in form.zone.field.choices %}
+                                                <option value="{{ value }}" {% if value|to_str == form.zone.value|to_str %} selected {% endif %}>{{ zone }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div> <!-- zone -->
+
+                                    <div class="js-container-street col-lg-6" data-streets-url="{% url 'ui:ajax_load_streets' %}">
+                                        <div class="form-group mb-3 col p-0">
+                                            <label>{{ form.street.label }}</label>
+                                            <select id="street-select"
+                                                    name="{{ form.street.name }}"
+                                                    class="form-control select2"
+                                                    data-toggle="select2">
+
+                                                {% for value, street in form.street.field.choices %}
+                                                <option value="{{ value }}" {% if value|to_str == form.street.value|to_str %} selected {% endif %}>{{ street }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div> <!-- street -->
+                                    </div> <!-- street -->
+                                </div> <!-- zone/street -->
+
+                                <div class="form-row">
+                                    <div class="col-sm-3">
+                                        {{ form.street_number|as_crispy_field }}
+                                    </div> <!-- street number -->
+
+                                    <div class="col-sm-3">
+                                        {{ form.block_number|as_crispy_field }}
+                                    </div> <!-- block_number -->
+
+                                    <div class="col-sm-3">
+                                        {{ form.block_entrance_number|as_crispy_field }}
+                                    </div> <!-- block_entrance_number -->
+
+                                    <div class="col-sm-3">
+                                        {{ form.floor|as_crispy_field }}
+                                    </div> <!-- floor -->
+
+                                    <div class="col-sm-3">
+                                        {{ form.apartment_number|as_crispy_field }}
+                                    </div> <!-- apartment_number -->
+
+                                    <div class="col-sm-3">
+                                        {{ form.virtual_tour|as_crispy_field }}
+                                    </div> <!-- virtual_tour -->
+
+                                    <div class="col-sm-3">
+                                        {{ form.video_tour|as_crispy_field }}
+                                    </div> <!-- video_tour -->
+
+                                    <div class="col-sm-3">
+                                        {{ form.latitude|as_crispy_field }}
+                                    </div> <!-- video_tour -->
+
+                                    <div class="col-sm-3">
+                                        {{ form.longitude|as_crispy_field }}
+                                    </div> <!-- video_tour -->
+
+                                </div> <!-- street_number/block/apartment number -->
+                            </div> <!-- end card-body -->
+                        </div>
+                    </div> <!-- end general card-->
+
+                    <div class="col-12 col-md-12 col-lg-5 col-xl-6">
+                        <div class="card" style="height: 95%">
+                            <div class="card-body">
+                                <!-- <iframe width="100%" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas"
+                                    src="https://maps.google.com/maps?width=554&amp;height=404&amp;hl=en&amp;q={{ property.latitude }},{{ property.longitude }}&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe> -->
+                                <div id="map-canvas" style="height: 500px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div> <!-- google_maps -->
+                </div>
+            </div> <!-- property/google maps -->
+            <div class="tab-pane" id="images">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>*{% trans 'File extension must be .jpg!' %}</p>
+                            <div action="{% url 'ui:property_upload_images' pk=property.pk %}" class="dropzone" id="images-dropzone"  data-plugin="dropzone" data-previews-container=".upload-file-previews"
+                                data-upload-preview-template="#uploadPreviewTemplate">
+
+                                <div class="dz-message needsclick">
+                                    <i class="h1 text-muted dripicons-cloud-upload"></i>
+                                    <h3>Drop files here or click to upload.</h3>
+
+                                </div>
+                            </div> <!-- dropzone -->
+
+                            <div class="dropzone-previews mt-3 upload-file-previews"></div> <!-- preview -->
+
+                            <div class="d-none" id="uploadPreviewTemplate">
+                                <div class="card mt-1 mb-0 shadow-none border">
+                                    <div class="p-2">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                                            </div>
+                                            <div class="col pl-0">
+                                                <a href="javascript:void(0);" class="text-muted font-weight-bold" data-dz-name></a>
+                                                <p class="mb-0" data-dz-size></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- file preview template -->
+                        </div>
+                    </div>
+                </div> <!-- images_upload -->
+                {% if property.images.count > 0 %}
+                <div class="col-12">
+                    <div class="card">
+                        <p class="mt-2 ml-2 mb-0">*{% trans 'First image is thumbnail' %}</p>
+                        <div class="card-body">
+                            <input id="js-delete-all" class="js-delete-all-checkbox" type="checkbox">
+                            <label for="js-delete-all">{% trans 'Delete all images' %}</label>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row col file-previews p-0">
+                                {% for image in images %}
+                                {% include 'properties/partials/property_image.html' with image=image %}
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-row">
+                                {% include 'partials/_submit_button.html' with title='Save images' type='submit' value='POST' button_class="btn btn-primary" %}
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- image_thumbnails -->
+                {% endif %}
+            </div> <!-- images upload/thumbnails -->
+            <div class="tab-pane" id="attributes-object"> <!-- attributes object -->
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            {% if attributes_form.errors %}
+                                {% for field, error in attributes_form.errors.items %}
+                                    <p>{{ field }}: {{ error.as_text }}</p>
+                                {% endfor %}
+                            {% endif %}
+                            <label class="mb-3 font-weight-bold">{% trans 'Attributes' %} {% trans property.get_display_type %}</label>
+                            {% include attributes_form_template with form=attributes_form %}
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- attributes -->
+            <div class="tab-pane" id="features">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <label class="mb-1">{{ form.features.label }}</label>
+                            <br>
+                            <div class="form-row">
+                                {% for feature_group in feature_groups %}
+                                <div class="form-group mb-3 col-md-4 col-lg-3 col-xl-2">
+                                    <label class="mt-2 mb-1 mb-0">{% trans feature_group.display_name %}</label>
+                                    {% for feature in feature_group.features.values %}
+                                        <div class="custom-control custom-checkbox">
+                                            <input {% if feature in property.features.values %} checked {% endif %}
+                                                   type="checkbox" value="{{ feature.id }}" class="custom-control-input"
+                                                   name="{{ form.features.name }}" id="feature-{{ feature.id }}">
+                                            <label class="custom-control-label" for="feature-{{ feature.id }}">{% trans feature.name %}</label>
+                                        </div>
+                                    {% endfor %}
+                                </div> <!-- features -->
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- features -->
+            </div> <!-- features -->
+            <div class="tab-pane" id="offer-cards">
+                {{ offer_form_set.management_form }}
+                <div class="row">
+                    {% for offer_form in offer_form_set %}
+                    <div id="offers" class="col-12 col-md-6 col-xl-6 {% if forloop.counter >= 3 %}d-none{% endif %}">
+                        <div class="card">
+                            <div class="card-body">
+                                {% include 'offers/partials/update.html' with form=offer_form %}
+                            </div>
+                        </div>
+                    </div> <!-- offers -->
+                    {% endfor %}
+                </div>
+
+                {% if closed_offers %}
+                <div class="mb-3">
+                    <label>{% trans 'Closed offers' %}</label>
+                    <a id="closed_offers_toggle" class="toggle-text-primary filters-toggle-primary btn btn-primary uil fa fa-angle-double-down ml-1" href="javascript: void(0)"></a>
+                </div>
+                {% endif %}
+
+                {% include 'properties/partials/_closed_offers.html' %}
+            </div> <!-- offers -->
+
+            <div class="tab-pane" id="matching_demands"> <!-- matching_demands -->
+                {% include 'properties/partials/_matching_demands.html' %}
+            </div> <!-- matching_demands -->
+        </div> <!-- offers -->
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                {% include 'partials/_submit_button.html' with title='Submit' type='submit' value='POST' button_class="btn btn-lg btn-primary" %}
+
+                {% if property and request.user.is_manager %}
+                            <a href="#" class="btn btn-lg btn-danger ml-2" data-toggle="modal" data-target="#danger-alert-modal-{{ property.id }}"> <i class="mdi mdi-delete"></i></a>
+                {% endif %}
+            </div> <!-- submit -->
+        </div> <!-- submit/delete -->
+
+    </form> <!-- form cards -->
+
+    {% include 'properties/partials/_documents_upload.html' %}
+
+    {% if property %}
+        {% include 'activities/partials/_list.html' with modal_target="add_activity_modal" form=activity_form %}
+        {% include 'partials/_delete_modal.html' with csrf_token=csrf_token delete_url='ui:property_delete' id=property.id %}
+    {% endif %}
+
+    <div class="row">
+        <div id="id-form-client" class="col-12 col-lg-6 col-xl-6">
+            {% include 'partials/_client_create.html' with form=client_form %}
+        </div>
+    </div> <!-- hidden client form -->
+
+</div> <!-- container -->
+
+{% endblock %}
+
+
+{% block extra_scripts %}
+<script>
+    $( function() {
+        $( ".file-previews" ).sortable();
+        $( ".file-previews" ).disableSelection();
+    } );
+</script>
+
+<!-- third party js -->
+<script src="{% static 'dist/js/vendor/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.bootstrap4.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dataTables.checkboxes.min.js' %}"></script>
+<!-- third party js ends -->
+
+<script src="{% static 'dist/js/vendor/dropzone.min.js' %}"></script>
+<script src="{% static 'dist/js/ui/component.fileupload.js' %}"></script>
+
+<script src="{% static 'dist/js/vendor/dragula.min.js' %}"></script>
+<script src="{% static 'dist/js/ui/component.dragula.js' %}"></script>
+
+<script src="{% static 'dist/js/custom/hidden_images_show.js' %}"></script>
+<script src="{% static 'dist/js/custom/offer.js' %}"></script>
+<script src="{% static 'dist/js/custom/messages_fadeout.js' %}"></script>
+<script src="{% static 'dist/js/custom/locations.js' %}"></script>
+<script src="{% static 'dist/js/custom/client_form_show.js' %}"></script>
+<script src="{% static 'dist/js/custom/closed_offers.js' %}"></script>
+<script src="{% static 'dist/js/custom/activities_fk_objects_filter.js' %}"></script>
+<script type="text/javascript"> 
+    var map = null;
+    var marker;
+    
+    function showlocation() {
+        
+        if (marker != null) {
+            marker.setMap(null);
+        }
+        
+        var geocoder = new google.maps.Geocoder();
+        var lat = document.getElementById('id_latitude').value;
+        var lon = document.getElementById('id_longitude').value;
+        var latLong = new google.maps.LatLng(lat, lon);
+        marker = new google.maps.Marker({
+        position: latLong,
+        draggable:true
+        });
+        marker.setMap(map);
+        map.setZoom(16);
+        map.setCenter(marker.getPosition());
+    
+        google.maps.event.addListener(marker, 'dragend', function() {
+            geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
+                console.log(status, results);
+                if (status == google.maps.GeocoderStatus.OK) {
+                if (results[0]) {
+                    $('#id_latitude').val(marker.getPosition().lat());
+                    $('#id_longitude').val(marker.getPosition().lng());
+                `enter code here` }
+                }
+            });
+        });
+    
+    }
+                                        
+    function initMap() {
+        var mapOptions = {
+            center: new google.maps.LatLng(0, 0),
+            zoom: 1,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+        showlocation()
+    }
+
+    // google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&key={{ google_maps_apikey }}&callback=initMap"></script>
+
+{% include 'partials/_tab_script.html' %}
+{% endblock %}

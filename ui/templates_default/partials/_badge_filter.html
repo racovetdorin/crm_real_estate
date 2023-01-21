@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<span
+    {% if activity.priority == 'high' %}
+    class="badge badge-danger">{% trans 'High' %}
+    {% elif activity.priority == 'medium' %}
+    class="badge badge-warning">{% trans 'Medium' %}
+    {% else %}
+    class="badge badge-success">{% trans 'Low' %}
+    {% endif %}
+</span>

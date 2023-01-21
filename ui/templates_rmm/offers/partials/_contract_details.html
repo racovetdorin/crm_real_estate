@@ -1,0 +1,45 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="col-md-6">
+    <label>{{ form.contract_start_date.label}}</label><br>
+    <p class="mt-1"><strong>{{ form.contract_start_date.value|default_if_none:'--' }}</strong></p>
+    <input hidden
+           name="{{ form.contract_start_date.html_name }}"
+           type="date"
+           value="{{ form.contract_start_date.value }}"
+           class="form-control" data-date-format="DD/MM/YYYY"/>
+</div> <!-- contract_start_date -->
+
+<div class="col-md-6">
+    <label>{{ form.contract_end_date.label}}</label><br>
+    <p class="mt-1"><strong>{{ form.contract_end_date.value|default_if_none:'--' }}</strong></p>
+    <input hidden
+           name="{{ form.contract_end_date.html_name }}"
+           type="date"
+           value="{{ form.contract_end_date.value }}"
+           class="form-control" data-date-format="DD/MM/YYYY"/>
+</div> <!-- contract_end_date -->
+
+<div class="col-md-6">
+    <label>{{ form.contract_register_date.label}}</label><br>
+    <p class="mt-1"><strong>{{ form.contract_register_date.value|default_if_none:'--' }}</strong></p>
+    <input hidden
+           name="{{ form.contract_register_date.html_name }}"
+           type="date"
+           value="{{ form.contract_register_date.value|date }}"
+           class="form-control" data-date-format="DD/MM/YYYY"/>
+</div> <!-- contract_register_date -->
+
+<div class="col-md-6">
+    <label>{{ form.contract_number.label}}</label><br>
+    <p class="mt-1"><strong>{{ form.contract_number.value|default_if_none:'--' }}</strong></p>
+    <input hidden
+           name="{{ form.contract_number.html_name }}"
+           value="{{ form.contract_number.value|default_if_none:'--' }}"
+           class="form-control"/>
+</div> <!-- contract_number -->
+
+{% block extra_scripts %}
+<script src="{% static 'dist/js/custom/input_format.js' %}"></script>
+{% endblock %}

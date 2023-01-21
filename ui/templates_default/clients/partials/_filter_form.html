@@ -1,0 +1,61 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+<div class="row">
+    <div class="col-12 col-lg-6">
+        <div class="card card-body">
+            <form method="GET">
+                <strong><label class="mb-3">{% trans 'Filters' %}</label></strong>
+                <a class="ml-2" href="{{request.path}}"><strong>{% trans 'Reset filters' %}</strong></a>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <select class="form-control" name="sort_by">
+                            {% for value, label in sort_values %}
+                                <option {% if value == request.GET.sort_by %} selected {% endif %} value="{{ value }}">{% trans label %}</option>
+                            {% endfor %}
+</select><!-- sort -->
+                    </div> <!-- sort -->
+
+                    <div class="form-group col-md-3">
+                        <input class="form-control" name="{{ filter.form.id.name }}"
+                               value="{{ filter.form.id.value|default_if_none:'' }}" placeholder="{% trans 'Client ID' %}">
+                    </div> <!-- id -->
+                </div> <!-- sort/id -->
+
+                <div class="form-row">
+                    <div class="form-group mb-3 col-md-4">
+                        {{ filter.form.full_name|as_crispy_field }}
+                    </div> <!-- names -->
+                    <div class="form-group mb-3 col-md-4">
+                        {{ filter.form.email|as_crispy_field }}
+                    </div> <!-- email -->
+                    <div class="form-group mb-3 col-md-4">
+                        {{ filter.form.all_phones|as_crispy_field }}
+                    </div> <!-- phones -->
+                </div> <!-- names/email/phones -->
+
+                {% if request.user.is_manager or request.user.is_superuser %}
+                <div class="form-row">
+                         {{filter.form.all_agents | as_crispy_field }}
+                </div> <!-- agents -->
+                {% endif %}
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox"
+                           value=True
+                           class="custom-control-input"
+                           name="{{ filter.form.is_agency.name }}"
+                           id="{{ filter.form.is_agency.name }}"
+                           {% if filter.form.is_agency.value %} checked {% endif %}>
+
+                    <label class="custom-control-label" for="{{ filter.form.is_agency.name }}">{% trans 'Agencies only' %}</label>
+                </div> <!-- agency -->
+
+                <div class="float-right">
+                    {% include 'partials/_filter_button.html' %}
+                </div> <!-- filter -->
+            </form>
+        </div>
+    </div>
+</div>

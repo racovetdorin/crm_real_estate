@@ -1,0 +1,13 @@
+{% if activity_fk_object_name or activity.property or activity.demand or activity.client %}
+{% else %}
+    {% if not activity.linked_with %}
+    <div class="form-group col-md-8">
+        <label>{{ form.linked_with.label }}</label><br>
+        {% for field in form.linked_with %}
+        <div class="d-inline p-0 mr-5">
+            {{ field }}
+        </div>
+        {% endfor %}
+    </div> <!-- layout_settings -->
+    {% endif %}
+{% endif %}

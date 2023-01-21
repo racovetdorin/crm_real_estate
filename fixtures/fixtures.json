@@ -1,0 +1,4606 @@
+[ {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "Region Managers",
+      "permissions": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        53,
+        54,
+        55,
+        56,
+        61,
+        62,
+        63,
+        64,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        93,
+        94,
+        95,
+        96,
+        89,
+        90,
+        91,
+        92,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "Office Managers",
+      "permissions": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        53,
+        54,
+        55,
+        56,
+        61,
+        62,
+        63,
+        64,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        93,
+        94,
+        95,
+        96,
+        89,
+        90,
+        91,
+        92,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104
+      ]
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+      "name": "Agents",
+      "permissions": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        53,
+        54,
+        55,
+        56,
+        61,
+        62,
+        63,
+        64,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        93,
+        94,
+        95,
+        96,
+        89,
+        90,
+        91,
+        92,
+        97,
+        98,
+        99,
+        100
+      ]
+    }
+  },
+  {
+    "model": "offices.office",
+    "pk": 1,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "name": "office1",
+      "email": "office1@mail.ro",
+      "phone_1": "000",
+      "phone_2": "222",
+      "phone_3": null,
+      "slug": "office1",
+      "address": "",
+      "show_on_site": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "offices.office",
+    "pk": 2,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "name": "IMPAKT REAL ESTATE",
+      "email": "office@impakt-imobiliare.ro",
+      "phone_1": "0364 410193",
+      "phone_2": "0745 790475",
+      "phone_3": null,
+      "slug": "impakt-real-estate",
+      "address": "str. Pitești nr. 12, ap. 1-2, Cluj-Napoca, jud. Cluj",
+      "show_on_site": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "offices.office",
+    "pk": 3,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "name": "IMPAKT ELITE REAL ESTATE",
+      "email": "elite@impakt-imobiliare.ro",
+      "phone_1": "0364 410193",
+      "phone_2": "0752 788817",
+      "phone_3": null,
+      "slug": "impakt-elite-real-estate",
+      "address": "str. Oțetului, nr. 5, Cluj-Napoca, jud. Cluj",
+      "show_on_site": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "offices.office",
+    "pk": 4,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "name": "NEWOFFICE",
+      "email": "some@gmail.com",
+      "phone_1": "02312321",
+      "phone_2": "12321321321",
+      "phone_3": null,
+      "slug": "newoffice",
+      "address": "Str Calea Victoriei",
+      "show_on_site": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$yQNSIbcVGBZu$IYU71/582puYXwKOM4SS+4DmJEmmhmIyNfzwoJwTEFo=",
+      "last_login": "2021-01-09T00:14:16.573",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-11-17T20:13:04",
+      "first_name": "Bogdan",
+      "last_name": "Raicu",
+      "email": "raicubogdan15@gmail.com",
+      "phone": null,
+      "office": 2,
+      "role": null,
+      "layout_settings": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$jJ4Rgg2MtIyz$9QCLmAF7+cQx9FOdQjCgxpqQdSyD1DpwcWiReywiEyY=",
+      "last_login": "2020-11-19T18:46:29",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2020-11-19T18:41:47",
+      "first_name": "Alin",
+      "last_name": "Manea",
+      "email": "am@mail.com",
+      "phone": "0988888888",
+      "office": 2,
+      "role": null,
+      "layout_settings": "",
+      "groups": [
+        3
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$gv1GT1XGhAng$LF45jDb5ATGASsP9YHWoaYwjpb1v2CNQuYCvZcZs1v0=",
+      "last_login": null,
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2020-11-23T12:29:20",
+      "first_name": "nume",
+      "last_name": "altnume",
+      "email": "mailnou@mail.com",
+      "phone": "111",
+      "office": 3,
+      "role": null,
+      "layout_settings": "",
+      "groups": [
+        3
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$t72XNodHqSlN$/4nyhytcGWT78NyZVYrzs6wSjMYWeI45A7tpO4HRak0=",
+      "last_login": "2021-01-07T12:20:18.439",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-12-05T11:06:16",
+      "first_name": "",
+      "last_name": "",
+      "email": "ovidiu.stetco@impakt-imobiliare.ro",
+      "phone": null,
+      "office": 3,
+      "role": "it_administrator",
+      "layout_settings": "leftSidebarCondensed",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$qHOxQPL1QrAk$B8r2dHVAvaBQUjmmgXzacgpy/TKLjOXVxiY3la/Wj+M=",
+      "last_login": "2020-12-20T01:19:15",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-12-05T11:06:36",
+      "first_name": "",
+      "last_name": "",
+      "email": "bogdan.bura@bithesion.com",
+      "phone": null,
+      "office": 3,
+      "role": null,
+      "layout_settings": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$ppA9XPopE3u9$AsZSK57D0M+o0+Qa3h8I0yG0ACPlIsgfkYCtV5SFaUk=",
+      "last_login": "2021-01-06T17:53:56",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-12-19T22:49:19",
+      "first_name": "Victor",
+      "last_name": "Danila",
+      "email": "victor.danila@bithesion.com",
+      "phone": null,
+      "office": 4,
+      "role": null,
+      "layout_settings": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$o2ubeeZvIbD6$fWIuqkM6H5WiLi8gXvGXkYv7YIb+DCsaMH0yuBao2pw=",
+      "last_login": "2021-01-07T15:44:28.883",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-12-22T14:29:35",
+      "first_name": "",
+      "last_name": "",
+      "email": "adriana@mail.com",
+      "phone": null,
+      "office": 3,
+      "role": null,
+      "layout_settings": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$216000$1bvxBCdEwVjM$t+0spgSOeNLeOV6CIFE7y3YsojGS/C0DlrEWWgD9Ltk=",
+      "last_login": "2020-12-29T11:55:51",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2020-12-28T12:06:00",
+      "first_name": "",
+      "last_name": "",
+      "email": "andrei@mail.com",
+      "phone": null,
+      "office": 2,
+      "role": null,
+      "layout_settings": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.userimage",
+    "pk": 1,
+    "fields": {
+      "image_path": "images/user/7/7793c02df88bcdd3f545c29ae126fa2e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "user": 7
+    }
+  },
+  {
+    "model": "users.userimage",
+    "pk": 2,
+    "fields": {
+      "image_path": "images/user/5/7793c02df88bcdd3f545c29ae126fa2e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "user": 5
+    }
+  },
+  {
+    "model": "users.userimage",
+    "pk": 3,
+    "fields": {
+      "image_path": "images/user/2/7793c02df88bcdd3f545c29ae126fa2e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "user": 2
+    }
+  },
+  {
+    "model": "users.userimage",
+    "pk": 4,
+    "fields": {
+      "image_path": "images/user/6/7793c02df88bcdd3f545c29ae126fa2e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "user": 6
+    }
+  },
+  {
+    "model": "users.userimage",
+    "pk": 5,
+    "fields": {
+      "image_path": "images/user/3/7793c02df88bcdd3f545c29ae126fa2e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "user": 3
+    }
+  },
+  {
+    "model": "users.userimage",
+    "pk": 6,
+    "fields": {
+      "image_path": "images/user/1/7793c02df88bcdd3f545c29ae126fa2e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 0,
+      "user": 1
+    }
+  },
+  {
+    "model": "users.userimage",
+    "pk": 7,
+    "fields": {
+      "image_path": "images/user/4/7793c02df88bcdd3f545c29ae126fa2e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 0,
+      "user": 4
+    }
+  },
+  {
+    "model": "users.userimage",
+    "pk": 8,
+    "fields": {
+      "image_path": "images/user/8/7793c02df88bcdd3f545c29ae126fa2e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "user": 8
+    }
+  },
+  {
+    "model": "locations.country",
+    "pk": 1,
+    "fields": {
+      "name": "Romania",
+      "code": "RO"
+    }
+  },
+  {
+    "model": "locations.region",
+    "pk": 1,
+    "fields": {
+      "name": "Cluj",
+      "country": 1
+    }
+  },
+  {
+    "model": "locations.region",
+    "pk": 2,
+    "fields": {
+      "name": "Braila",
+      "country": 1
+    }
+  },
+  {
+    "model": "locations.city",
+    "pk": 1,
+    "fields": {
+      "name": "Cluj-Napoca",
+      "region": 1,
+      "type": "city"
+    }
+  },
+  {
+    "model": "locations.city",
+    "pk": 2,
+    "fields": {
+      "name": "Braila",
+      "region": 2,
+      "type": "city"
+    }
+  },
+  {
+    "model": "locations.zone",
+    "pk": 1,
+    "fields": {
+      "name": "Zorilor",
+      "city": 1
+    }
+  },
+  {
+    "model": "locations.zone",
+    "pk": 2,
+    "fields": {
+      "name": "Obor",
+      "city": 2
+    }
+  },
+  {
+    "model": "locations.zone",
+    "pk": 3,
+    "fields": {
+      "name": "Centru",
+      "city": 2
+    }
+  },
+  {
+    "model": "locations.zone",
+    "pk": 4,
+    "fields": {
+      "name": "Hasdeu",
+      "city": 1
+    }
+  },
+  {
+    "model": "locations.zone",
+    "pk": 5,
+    "fields": {
+      "name": "Centru",
+      "city": 1
+    }
+  },
+  {
+    "model": "locations.zone",
+    "pk": 6,
+    "fields": {
+      "name": "Mărăști",
+      "city": 1
+    }
+  },
+  {
+    "model": "locations.street",
+    "pk": 1,
+    "fields": {
+      "name": "Gh Dima",
+      "city": 1,
+      "zone": 1
+    }
+  },
+  {
+    "model": "locations.street",
+    "pk": 2,
+    "fields": {
+      "name": "Micsunelelor",
+      "city": 2,
+      "zone": 2
+    }
+  },
+  {
+    "model": "locations.street",
+    "pk": 3,
+    "fields": {
+      "name": "Mihai Eminescu",
+      "city": 2,
+      "zone": 3
+    }
+  },
+  {
+    "model": "locations.street",
+    "pk": 4,
+    "fields": {
+      "name": "Bogdan Petriceicu Hasdeu",
+      "city": 1,
+      "zone": 5
+    }
+  },
+  {
+    "model": "locations.street",
+    "pk": 5,
+    "fields": {
+      "name": "Patriciu Barbu",
+      "city": 1,
+      "zone": 6
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 10,
+    "fields": {
+      "display_name": "Dotări/Echipamente interioare",
+      "slug": "dotari",
+      "property_type": "house,apartment,studio,commercial"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 11,
+    "fields": {
+      "display_name": "Facilități",
+      "slug": "facilitati",
+      "property_type": "house,apartment,studio,commercial"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 13,
+    "fields": {
+      "display_name": "Amenajări interioare",
+      "slug": "amenajari",
+      "property_type": "house,apartment,studio,commercial"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 25,
+    "fields": {
+      "name": "Frigider",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 26,
+    "fields": {
+      "name": "Mașină de spălat",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 27,
+    "fields": {
+      "name": "Aer condiționat",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 28,
+    "fields": {
+      "name": "Aragaz",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 29,
+    "fields": {
+      "name": "TV",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 30,
+    "fields": {
+      "name": "Apă",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 31,
+    "fields": {
+      "name": "Electricitate",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 32,
+    "fields": {
+      "name": "Sistem Alarmă",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 33,
+    "fields": {
+      "name": "Gaz",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 34,
+    "fields": {
+      "name": "Canalizare",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 35,
+    "fields": {
+      "name": "Interfon",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 36,
+    "fields": {
+      "name": "Lift",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 41,
+    "fields": {
+      "name": "Pet Friendly",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 42,
+    "fields": {
+      "name": "Cheia la noi",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 43,
+    "fields": {
+      "name": "Loc de parcare",
+      "group": 11,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 44,
+    "fields": {
+      "name": "Faianță clasică",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 45,
+    "fields": {
+      "name": "Faianță Modernă",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 46,
+    "fields": {
+      "name": "Parchet lemn masiv",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 47,
+    "fields": {
+      "name": "Gresie Clasică",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 48,
+    "fields": {
+      "name": "Gresie Modernă",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 49,
+    "fields": {
+      "name": "Parchet Laminat",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 50,
+    "fields": {
+      "name": "Finisaje marmură",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 51,
+    "fields": {
+      "name": "Geamuri Termopan",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 52,
+    "fields": {
+      "name": "Mobilat",
+      "group": 11,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 53,
+    "fields": {
+      "name": "Garaj",
+      "group": 11,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 54,
+    "fields": {
+      "name": "Internet",
+      "group": 11,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 1,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "first_name": "Vasi",
+      "last_name": "Bej",
+      "phone_1": "1111",
+      "phone_2": "2222",
+      "phone_3": "3333",
+      "prefix_1": "+40",
+      "prefix_2": "+40",
+      "prefix_3": "+40",
+      "email": "vs@mail.com",
+      "company": "s",
+      "is_agency": false,
+      "address": "s",
+      "user": 1,
+      "office": 1,
+      "created_at": "2020-11-17T20:18:25.797",
+      "updated_at": "2020-11-18T20:07:11.659"
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 3,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "first_name": "Asdf",
+      "last_name": "Client",
+      "phone_1": "000000009",
+      "phone_2": "",
+      "phone_3": "",
+      "prefix_1": "+40",
+      "prefix_2": null,
+      "prefix_3": null,
+      "email": "clnou@mail.com",
+      "company": "d",
+      "is_agency": false,
+      "address": null,
+      "user": 1,
+      "office": 1,
+      "created_at": "2020-11-23T18:02:15.806",
+      "updated_at": "2020-11-23T18:02:15.824"
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 4,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "first_name": "Asdf",
+      "last_name": "Client",
+      "phone_1": "8282828282",
+      "phone_2": "8282828282",
+      "phone_3": "8282828282",
+      "prefix_1": "+40",
+      "prefix_2": "+40",
+      "prefix_3": "+40",
+      "email": "mm@mail.com",
+      "company": "fasd",
+      "is_agency": false,
+      "address": "fasd",
+      "user": null,
+      "office": null,
+      "created_at": "2020-11-27T10:57:17.339",
+      "updated_at": "2020-11-27T11:27:48.921"
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 5,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "first_name": "Asdf",
+      "last_name": "Client",
+      "phone_1": "",
+      "phone_2": "",
+      "phone_3": "",
+      "prefix_1": null,
+      "prefix_2": null,
+      "prefix_3": null,
+      "email": "raicubogdan15@gmail.com",
+      "company": "s",
+      "is_agency": false,
+      "address": "s",
+      "user": 1,
+      "office": 1,
+      "created_at": "2020-11-29T13:57:34.869",
+      "updated_at": "2020-11-29T13:57:34.893"
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 6,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "first_name": "Caian",
+      "last_name": "Gabriel",
+      "phone_1": "0753043041",
+      "phone_2": "",
+      "phone_3": "",
+      "prefix_1": null,
+      "prefix_2": null,
+      "prefix_3": null,
+      "email": null,
+      "company": null,
+      "is_agency": false,
+      "address": null,
+      "user": null,
+      "office": 1,
+      "created_at": "2020-12-28T12:25:50.014",
+      "updated_at": "2020-12-28T12:25:50.014"
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 7,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "first_name": "Gorgeta",
+      "last_name": "G",
+      "phone_1": "0742919273",
+      "phone_2": "",
+      "phone_3": "",
+      "prefix_1": null,
+      "prefix_2": null,
+      "prefix_3": null,
+      "email": null,
+      "company": null,
+      "is_agency": false,
+      "address": null,
+      "user": null,
+      "office": 1,
+      "created_at": "2020-12-28T12:36:01.779",
+      "updated_at": "2020-12-28T12:36:01.779"
+    }
+  },
+  {
+    "model": "clients.client",
+    "pk": 8,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "first_name": "Exemplu",
+      "last_name": "2",
+      "phone_1": "754038635",
+      "phone_2": "",
+      "phone_3": "",
+      "prefix_1": "+40",
+      "prefix_2": null,
+      "prefix_3": null,
+      "email": "exemplu@gmail.com",
+      "company": null,
+      "is_agency": false,
+      "address": "Pitesti",
+      "user": null,
+      "office": 3,
+      "created_at": "2021-01-07T17:30:58.174",
+      "updated_at": "2021-01-07T17:30:58.174"
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 13,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 7,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "900",
+      "created_at": "2020-11-20T16:49:28.741",
+      "updated_at": "2021-01-12T13:43:45.133",
+      "region": 1,
+      "city": 1,
+      "zone": 1,
+      "street": 1,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 22,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 9,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "300",
+      "created_at": "2020-11-20T17:56:40.357",
+      "updated_at": "2021-01-12T14:34:34.758",
+      "region": 1,
+      "city": 1,
+      "zone": 4,
+      "street": null,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 23,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 10,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "90991",
+      "created_at": "2020-11-23T15:55:06.002",
+      "updated_at": "2021-01-12T14:34:21.947",
+      "region": 2,
+      "city": 2,
+      "zone": 3,
+      "street": 3,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 24,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 11,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "1",
+      "created_at": "2020-11-23T16:31:20.644",
+      "updated_at": "2021-01-12T14:34:14.186",
+      "region": 1,
+      "city": 1,
+      "zone": 5,
+      "street": 4,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 26,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 12,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "",
+      "created_at": "2020-11-23T16:47:06.630",
+      "updated_at": "2021-01-12T14:09:08.534",
+      "region": null,
+      "city": null,
+      "zone": null,
+      "street": null,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 27,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 13,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "",
+      "created_at": "2020-11-23T16:58:04.158",
+      "updated_at": "2021-01-12T14:08:57.088",
+      "region": null,
+      "city": null,
+      "zone": null,
+      "street": null,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 28,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 14,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "",
+      "created_at": "2020-11-23T17:03:22.816",
+      "updated_at": "2021-01-12T13:55:40.039",
+      "region": null,
+      "city": null,
+      "zone": null,
+      "street": null,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 30,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 16,
+      "contract_number": "57758111/11.11.1111",
+      "contract_type": "",
+      "created_at": "2020-11-25T12:22:41.752",
+      "updated_at": "2021-01-12T13:54:48.775",
+      "region": 1,
+      "city": 1,
+      "zone": 5,
+      "street": 4,
+      "street_number": "112",
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 31,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "studio",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 25,
+      "attributes_object_id": 1,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "100",
+      "created_at": "2020-11-27T14:17:55.862",
+      "updated_at": "2021-01-12T13:54:35.889",
+      "region": 2,
+      "city": 2,
+      "zone": 3,
+      "street": 3,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 32,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 6,
+      "attributes_type": 24,
+      "attributes_object_id": 17,
+      "contract_number": "11/11.11.1111",
+      "contract_type": "",
+      "created_at": "2020-12-28T12:26:49.375",
+      "updated_at": "2021-01-12T13:49:53.756",
+      "region": 1,
+      "city": 1,
+      "zone": 1,
+      "street": 1,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 33,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 8,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 18,
+      "contract_number": "12321321/02.12.2020",
+      "contract_type": "12321321/02.12.2020",
+      "created_at": "2020-12-28T12:33:33.944",
+      "updated_at": "2021-01-12T13:49:44.383",
+      "region": 1,
+      "city": 1,
+      "zone": 5,
+      "street": 4,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 34,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 7,
+      "attributes_type": 24,
+      "attributes_object_id": 19,
+      "contract_number": "11/11.11.1111",
+      "contract_type": "",
+      "created_at": "2020-12-28T12:36:18.159",
+      "updated_at": "2021-01-12T13:49:36.051",
+      "region": 1,
+      "city": 1,
+      "zone": 5,
+      "street": 4,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 35,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 8,
+      "office": 1,
+      "client": 3,
+      "attributes_type": 24,
+      "attributes_object_id": 20,
+      "contract_number": "12321321/02.12.2020",
+      "contract_type": "12321321/02.12.2020",
+      "created_at": "2020-12-28T12:40:31.720",
+      "updated_at": "2021-01-12T13:49:26.408",
+      "region": 1,
+      "city": 1,
+      "zone": 1,
+      "street": 1,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 36,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 6,
+      "attributes_type": 24,
+      "attributes_object_id": 21,
+      "contract_number": "11/11.11.1111",
+      "contract_type": "",
+      "created_at": "2020-12-28T12:43:09.585",
+      "updated_at": "2021-01-12T13:49:05.817",
+      "region": 1,
+      "city": 1,
+      "zone": 6,
+      "street": 5,
+      "street_number": "99",
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 37,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 8,
+      "office": 1,
+      "client": 5,
+      "attributes_type": 24,
+      "attributes_object_id": 22,
+      "contract_number": "12321321/02.12.2020",
+      "contract_type": "12321321/02.12.2020",
+      "created_at": "2020-12-28T12:44:56.713",
+      "updated_at": "2021-01-12T13:48:55.995",
+      "region": 2,
+      "city": 2,
+      "zone": 3,
+      "street": 3,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 38,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "apartment",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 1,
+      "office": 1,
+      "client": 7,
+      "attributes_type": 18,
+      "attributes_object_id": 1,
+      "contract_number": "11/11.11.1111",
+      "contract_type": "",
+      "created_at": "2020-12-28T12:53:33.203",
+      "updated_at": "2021-01-12T13:48:44.738",
+      "region": 1,
+      "city": 1,
+      "zone": 5,
+      "street": 4,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 39,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 8,
+      "office": 1,
+      "client": 4,
+      "attributes_type": 24,
+      "attributes_object_id": 23,
+      "contract_number": "12321321/02.12.2020",
+      "contract_type": "12321321/02.12.2020",
+      "created_at": "2020-12-28T12:55:14.624",
+      "updated_at": "2021-01-12T13:48:14.614",
+      "region": 1,
+      "city": 1,
+      "zone": 6,
+      "street": 5,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 40,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "house",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 8,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 24,
+      "attributes_object_id": 24,
+      "contract_number": "12321321/02.12.2020",
+      "contract_type": "12321321/02.12.2020",
+      "created_at": "2020-12-29T11:56:24.916",
+      "updated_at": "2021-01-12T13:46:28.495",
+      "region": 1,
+      "city": 1,
+      "zone": 4,
+      "street": null,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 41,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "apartment",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 8,
+      "office": null,
+      "client": 1,
+      "attributes_type": null,
+      "attributes_object_id": null,
+      "contract_number": "12321321/02.12.2020",
+      "contract_type": "12321321/02.12.2020",
+      "created_at": "2020-12-29T14:28:22.953",
+      "updated_at": "2020-12-29T14:28:22.968",
+      "region": 1,
+      "city": 1,
+      "zone": 6,
+      "street": 5,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 42,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "apartment",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 8,
+      "office": 1,
+      "client": 1,
+      "attributes_type": 18,
+      "attributes_object_id": 2,
+      "contract_number": "12321321/02.12.2020",
+      "contract_type": "12321321/02.12.2020",
+      "created_at": "2020-12-29T14:47:46.026",
+      "updated_at": "2021-01-12T13:47:41.046",
+      "region": 1,
+      "city": 1,
+      "zone": 1,
+      "street": 1,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 43,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "apartment",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 8,
+      "office": 1,
+      "client": 3,
+      "attributes_type": 18,
+      "attributes_object_id": 3,
+      "contract_number": "12321321/02.12.2020",
+      "contract_type": "12321321/02.12.2020",
+      "created_at": "2020-12-29T14:52:37.986",
+      "updated_at": "2021-01-12T13:47:32.429",
+      "region": 1,
+      "city": 1,
+      "zone": 5,
+      "street": 4,
+      "street_number": null,
+      "features": []
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 44,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "apartment",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 4,
+      "office": 3,
+      "client": 8,
+      "attributes_type": null,
+      "attributes_object_id": null,
+      "contract_number": "44/23.11.2020",
+      "contract_type": "Inchiriere",
+      "created_at": "2021-01-07T17:32:48.087",
+      "updated_at": "2021-01-07T17:32:48.103",
+      "region": 1,
+      "city": 1,
+      "zone": 1,
+      "street": 1,
+      "street_number": null,
+      "features": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        43,
+        44,
+        46,
+        47,
+        52
+      ]
+    }
+  },
+  {
+    "model": "properties.property",
+    "pk": 45,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "type": "apartment",
+      "promote_site": false,
+      "promote_site_homepage": false,
+      "promoted": false,
+      "user": 4,
+      "office": 3,
+      "client": 7,
+      "attributes_type": null,
+      "attributes_object_id": null,
+      "contract_number": "44/23/11/2020",
+      "contract_type": "Vanzare",
+      "created_at": "2021-01-08T14:41:05.984",
+      "updated_at": "2021-01-08T14:41:05.997",
+      "region": 1,
+      "city": 1,
+      "zone": 1,
+      "street": 1,
+      "street_number": "12",
+      "features": []
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 1,
+    "fields": {
+      "title": null,
+      "description": "",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": null,
+      "surface_util": null,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 2,
+    "fields": {
+      "title": null,
+      "description": "",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": null,
+      "surface_util": null,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 3,
+    "fields": {
+      "title": "sdfsd",
+      "description": "fsdf",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 100.0,
+      "surface_util": 100.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 4,
+    "fields": {
+      "title": null,
+      "description": "",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": null,
+      "surface_util": null,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 5,
+    "fields": {
+      "title": "asdf",
+      "description": "asdf",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 1234.0,
+      "surface_util": 4123.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 6,
+    "fields": {
+      "title": "asdf",
+      "description": "asdf",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": null,
+      "surface_util": 100.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 7,
+    "fields": {
+      "title": "Casa de vanzare",
+      "description": "Comision 0%! Va prezentam un apartament cu 2 camere de vanzare, situat in cel mai modern complex rezidential din zona Borhanci. Apartamentul se afla la etajul 2 din 3 si se compune din hol, living cu bucatarie, dormitor, baie, cu suprafata utila de 51,50 mp plus un balcon cu suprafata de 9,60 mp.\r\nAparamentul este finisat modern si dispune de o priveliste foarte frumoasa. Bucataria este dotata cu electrocasnice noi: combina frigorifica incorporata, masina de spalat vase, plita cu inductie si cuptor electric, hota.\r\nTamplaria exterioara este cu geamuri tripan de foarte buna calitate. Izolatia exterioara este realizata cu vata bazaltica. Balconul dispune de o suprafata generoasa si este placat cu greso-granit, iar balustrada este inchisa cu sticla securizata. Pentru siguranta si confortul viitorilor locatari, locuinta dispune de video-interfon.\r\nDesi imobilul are doar 3 etaje, acesta dispune de lift silentios, cu usi si cabina din inox, cu acces din parcarea subterana. Gratie atentiei la detalii a dezvoltatorilor acestui imobil, inghetul rampei de acces in garajele subterane in timpul iernii nu va constitui o problema datorita rampei de degivrare care asigura dezghetul rampelor de acces. De asemenea, imobilul beneficiaza de sistem de colectare inteligenta a deseurilor – platforma subterana.\r\nApartamentul se poate achizitiona si cu credit bancar. Optional, se poate achizitiona si locul de parcare subterana.",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 80.0,
+      "surface_util": 72.0,
+      "surface_built": 92.0,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a1plus",
+      "construction_year": 2000,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 2,
+      "floor": null,
+      "rooms_number": 3,
+      "bathrooms_number": 2,
+      "kitchens_number": 1,
+      "balconies_number": 2,
+      "internet_connection": null,
+      "garage": "true",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": "individual_central_heating"
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 8,
+    "fields": {
+      "title": "sdf",
+      "description": "fsd",
+      "description_private": "sdf",
+      "description_sentimental": "fsd",
+      "surface_total": 100.0,
+      "surface_util": 100.0,
+      "surface_built": 100.0,
+      "surface_field": 100.0,
+      "front_line": 100.0,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a2plus",
+      "construction_year": 100,
+      "built": "",
+      "interior_state": "semi-finished",
+      "construction_material": "concrete",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "true",
+      "furnished": "true",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 9,
+    "fields": {
+      "title": "Casa de vanzare",
+      "description": "Impakt Imobiliare Elite va propune spre inchiriere o casa tip Duplex cu 26 mp terase private, gradina si curte cu gazon/dale/pietris + acces la terasa de 40 mp, situata in cartierul Gruia!\r\nCasa e situata intr-un complex rezidential linistit cu acces restrans.\r\nProprietatea este dispusa pe 2 niveluri P+E, dispune de 120 mp utili si are urmatoarea compartimentare:\r\nParter: Living + dinning cu bucatarie complet utilata cu electrocasnice Bosch baie, hol, debara, pivnita si iesire in gradina;\r\nEtaj: Dormitor matrimonial cu terasa de 14 mp, dressing mobilat si baie de 6 mp deosebita;\r\ndormitor copil (transformabil in birou) complet mobilat;\r\nbaie;\r\nhol cu dulapuri incorporate.\r\nVedere panoramica.\r\nApartamentul se inchiriaza complet mobilat si utilat, cu mobila incorporata si utilari de foarte buna calitate fiind pregatit si utilizat in ultimul an de catre proprietar.\r\nImobilul este situat intr-o zona linistita a Clujului, aproape de mijloace de transport in comun si cu acces facil la centrul orasului. Exista posibiliate de parcare pentru maxim 3 masini (in curte si pe strada).\r\nPentru a afla mai multe detalii referitoare la aceasta casa deosebita va rugam sa ne contactati. Merita toata atentia Dvs.",
+      "description_private": "",
+      "description_sentimental": "asd",
+      "surface_total": 312.0,
+      "surface_util": 120.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a1plus",
+      "construction_year": 2008,
+      "built": "",
+      "interior_state": "lux",
+      "construction_material": "brick",
+      "floors": 2,
+      "floor": null,
+      "rooms_number": 3,
+      "bathrooms_number": 2,
+      "kitchens_number": 2,
+      "balconies_number": 2,
+      "internet_connection": null,
+      "garage": "true",
+      "furnished": "true",
+      "windows": null,
+      "heating_source": "underfloor_heating"
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 10,
+    "fields": {
+      "title": null,
+      "description": "descr",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 1.0,
+      "surface_util": 1.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 11,
+    "fields": {
+      "title": "asdf",
+      "description": "asdf",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 1.0,
+      "surface_util": 1.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a2plus",
+      "construction_year": 2002,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 4,
+      "bathrooms_number": 3,
+      "kitchens_number": 3,
+      "balconies_number": 3,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 12,
+    "fields": {
+      "title": "sd",
+      "description": "sd",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 1.0,
+      "surface_util": 1.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 13,
+    "fields": {
+      "title": null,
+      "description": "",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": null,
+      "surface_util": null,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 14,
+    "fields": {
+      "title": null,
+      "description": "",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": null,
+      "surface_util": null,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 15,
+    "fields": {
+      "title": "asd",
+      "description": "asd",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 11.0,
+      "surface_util": 11.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 16,
+    "fields": {
+      "title": "Casa individuala in centrul Clujului!",
+      "description": "Impakt Imobiliare, va propune spre vanzare, o casa individuala cu 4 camere in centrul Clujului!\r\n\r\nCasa are suprafata utila de 126 mp dispusa pe 3 niveluri (S+P+E) si compartimentata astfel: la subsol gasim un beci de aproximativ 15 mp, la parter avem 2 garsoniere care sunt compuse fiecare dintr-o camera, o bucatarie si baie, prima garsoniera poate fi amenajata si ca spatiu comercial cu intrare din strada, iar la etaj avem un dormitor, un living, o baie, un hol, o bucatarie si 2 balcoane.  Suprafata terenului este de 180 mp, cu front la strada de 7 ml. Casa dispune de clasa energetica clasa B.\r\n\r\nCasa a fost construita in anul 2009, constructie din caramida, izolata exterior, dispune de finisaje moderne, incalzirea se realizeaza prin calorifere, tamplarie PVC, geamuri termopan, parchet laminat, gresie si faianta moderna, usi interioare, o centrala termica individuala, frigider, masina de spalat rufe si se vinde complet mobilata si utilata conform fotografiilor de prezentare\r\n\r\nCasa se afla la 5 minute de USAMV, la 5 minute de parcul central, in apropierea facultatilor, a statiilor de autobus, a farmaciilor, a magazinelor si a altor puncte de intreres.\r\n\r\nPentru mai multe detalii sau stabilirea unei vizionari va astepam la sediul nostru pe str. Pitesti nr. 12 sau ne puteti contacta la numerele de telefon afisate!",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 160.0,
+      "surface_util": 126.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": null,
+      "construction_material": null,
+      "floors": null,
+      "floor": null,
+      "rooms_number": null,
+      "bathrooms_number": null,
+      "kitchens_number": null,
+      "balconies_number": null,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 17,
+    "fields": {
+      "title": "Cladire multifunctionala in zona rezidentiala strada Rene Descartes nr",
+      "description": "Cladirea are o suprafata utila de 476 mp si este dispusa pe 4 niveluri (S+P+E+M). Aceasta este autorizata ca si locuinta semicolectiva cu doua unitati locative (duplex).\r\n\r\nCladirea poate fi folosita in diverse scopuri precum birouri sau clinica sau mai poate fi compartimentata si in 8 apartamente.\r\n\r\nConstructia se vinde la stadiul de semifinisat cu toate utilitatiile trase la pozitie, incalzire in pardoseala, centrala termica, tamplarie tripan.\r\n\r\nCladirea este amplasata pe un teren de 709 mp si dispune de o curte generoasa de 550 mp unde sunt amplasate 4 locuri de parcare ce pot fi extinse la 10.\r\n\r\nPretul de vanzare pentru intreaga constructie este de 980.000 euro negociabil.\r\n\r\nFinalizare proiect iulie 2021.",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 250.0,
+      "surface_util": 200.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": null,
+      "construction_material": null,
+      "floors": null,
+      "floor": null,
+      "rooms_number": null,
+      "bathrooms_number": null,
+      "kitchens_number": null,
+      "balconies_number": null,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 18,
+    "fields": {
+      "title": "Casa de vanzare",
+      "description": "Impakt Imobiliare Elite va propune spre inchiriere o casa tip Duplex cu 26 mp terase private, gradina si curte cu gazon/dale/pietris + acces la terasa de 40 mp, situata in cartierul Gruia!\r\n\r\nCasa e situata intr-un complex rezidential linistit cu acces restrans.\r\n\r\nProprietatea este dispusa pe 2 niveluri P+E, dispune de 120 mp utili si are urmatoarea compartimentare:\r\nParter: Living + dinning cu bucatarie complet utilata cu electrocasnice Bosch baie, hol, debara, pivnita si iesire in gradina;\r\n\r\nEtaj: Dormitor matrimonial cu terasa de 14 mp, dressing mobilat si baie de 6 mp deosebita;\r\ndormitor copil (transformabil in birou) complet mobilat;\r\nbaie;\r\nhol cu dulapuri incorporate.\r\n\r\nVedere panoramica.\r\n\r\nApartamentul se inchiriaza complet mobilat si utilat, cu mobila incorporata si utilari de foarte buna calitate fiind pregatit si utilizat in ultimul an de catre proprietar.\r\n\r\n\r\nImobilul este situat intr-o zona linistita a Clujului, aproape de mijloace de transport in comun si cu acces facil la centrul orasului. Exista posibiliate de parcare pentru maxim 3 masini (in curte si pe strada).\r\n\r\nPentru a afla mai multe detalii referitoare la aceasta casa deosebita va rugam sa ne contactati. Merita toata atentia Dvs.",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 150.0,
+      "surface_util": 120.0,
+      "surface_built": 200.0,
+      "surface_field": 100.0,
+      "front_line": 23.0,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a2plus",
+      "construction_year": 2010,
+      "built": "",
+      "interior_state": "finished",
+      "construction_material": "brick",
+      "floors": 2,
+      "floor": null,
+      "rooms_number": 3,
+      "bathrooms_number": 2,
+      "kitchens_number": 1,
+      "balconies_number": 2,
+      "internet_connection": null,
+      "garage": "true",
+      "furnished": "true",
+      "windows": null,
+      "heating_source": "underfloor_heating"
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 19,
+    "fields": {
+      "title": "Casa individuala in Floresti, zona Tauti!",
+      "description": "Impakt Imobiliare, va propune spre vanzare, o casa individuala cu 5 camere in Floresti, zona Tauti!\r\n\r\nCasa are suprafata utila de 300 mp dispusa pe 3 niveluri (S+P+E) si compartimentata astfel:la subsol are garaj ,camera centralei si o camera pentru depozitare, la parter avem un living cu bucatarie, scari interioare, o baie, un hol si un birou, iar la etaj avem 3 dormitoare, 2 bai si un hol.  Suprafata terenului este de 400 mp, cu front de 23 ml si un garaj dublu.\r\n\r\nCasa a fost construita in anul 2019, constructie din caramida, izolata exterior, dispune de finisaje moderne, incalzirea se realizeaza prin calorifere, tamplarie PVC, geamuri termopan, parchet laminat, gresie si faianta moderna, centrala termica individuala, cuptor electric, plita electrica pe inductie, frigider, masina de spalat rufe/vase si se vinde complet mobilata si utilat conform fotografiilor de prezentare.\r\n\r\nSe afla in apropierea mijloacelor de transport in comun, a magazinelor si altor puncte de interes!\r\n\r\nPentru mai multe detalii sau stabilirea unei vizionari va astepam la sediul nostru pe str. Pitesti nr. 12 sau ne puteti contacta la numerele de telefon afisate!",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 350.0,
+      "surface_util": 300.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": null,
+      "construction_material": null,
+      "floors": null,
+      "floor": null,
+      "rooms_number": null,
+      "bathrooms_number": null,
+      "kitchens_number": null,
+      "balconies_number": null,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 20,
+    "fields": {
+      "title": "Casa de vanzare",
+      "description": "Impakt Imobiliare va propune spre vanzare o proprietate deosebita situata in cartierul Grigorescu.\r\n\r\nEdificata in anul 2020, casa dispune de 375 mp teren si are aproximativ 280 mp utili , fiind impartita astfel:\r\n\r\nDemisol: garaj pentru 2 masini, camera tehnica, debara si un hobbyroom generos de 30 mp.\r\n\r\nParter: living spatios cu iesire pe balcon, bucatarie cu dining si acces pe terasa, hol, debara si o baie.\r\n\r\nEtaj: dormitor matrimonial cu baie proprie, dressing si balcon, 2 dormitoare cu acces pe balcon , hol si inca o baie.\r\n\r\nEtaj retras: dormitor cu baie proprie si dressing ( sau hobbyroom) cu iesire pe terasa de 60 mp si priveliste deosebita catre centrul orasului.\r\n\r\nCasa este construita cu materiale de inalta calitate si se preda la stadiul finisat exterior, balcoane si terase amenajate cu balustrada de sticla si pardosea cu decking, curte amenajata, iar la interior la stadiul semifinisat: CT, usa de intrare de lemn masiv, tamplarie premium, incalzire in pardoseala, peretii tencuiti si gletuiti cu un strat, sapa autonivelanta. Termen de finalizare : august 2021",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 250.0,
+      "surface_util": 200.0,
+      "surface_built": 270.0,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a2plus",
+      "construction_year": 2019,
+      "built": "",
+      "interior_state": "lux",
+      "construction_material": "brick",
+      "floors": 2,
+      "floor": null,
+      "rooms_number": 6,
+      "bathrooms_number": 3,
+      "kitchens_number": 2,
+      "balconies_number": 2,
+      "internet_connection": null,
+      "garage": "true",
+      "furnished": "true",
+      "windows": null,
+      "heating_source": "individual_central_heating"
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 21,
+    "fields": {
+      "title": "Casa individuala in Marasti, ideala pentru spatiu!",
+      "description": "Impakt Imobiliare va propune spre inchiriere o casa individuala,  situata in Marasti, zona strazii Paris!\r\n\r\nCasa este dispusa pe 3 niveluri (S+P+E), cu suprafata utila de 240 mp, amplasata intr-o curte individuala. La subsol gasim spatii de depozitare, camera server, posibil de amenajat uscator, spatii de relaxare – are acces dublu: din curte si din casa. La parter avem o incapere spatioasa, o bucatarie, birou, baie, hol cu casa scarii iar etajul este open space, amenajabil.\r\n\r\nCasa este in constructie, se poate preda semifinisata sau finisata in functie de solicitarile chiriasului. Ca si dotari mentionam incalzirea in pardoseala, curent trifazic si monofazic, camere de supraveghere, sistem de alarma.\r\n\r\nTermenul de predare este mai 2021.\r\n\r\nPentru mai multe detalii sau stabilirea unei vizionari va asteptam la sediul nostru pe str. Pitesti nr. 12 sau ne puteti contacta la numerele de telefon afisate!",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 300.0,
+      "surface_util": 240.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": null,
+      "construction_material": null,
+      "floors": null,
+      "floor": null,
+      "rooms_number": null,
+      "bathrooms_number": null,
+      "kitchens_number": null,
+      "balconies_number": null,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 22,
+    "fields": {
+      "title": "Casa de vanzare",
+      "description": "Impakt Imobiliare va propune spre vanzare o casa cuplata tip duplex, situata Floresti, zona Atelierul de Pizza!\r\n\r\nDuplexul are o suprafata utila de 174 mp, balcon, amplasata pe un teren de 200 mp, compusa din 3 camere si dispusa pe 3 niveluri, P+E+M, astfel: La parter gasim o camera de zi spatioasa si luminata natural, bucatarie,dressing si o baie. Scara interioara acceseaza etajul unde regasim, 2 dormitorare, o baie, hol si la Mansarda gasim un dormitor, o baie si un hol. Imobilul dispune de certificat energetic clasa A.\r\n\r\nDuplexul este construit pe fundatie din beto, realizata din cărămidă, izolata cu polistiren, se preda la stadiul de semifinisat cu usa antiefractie, tâmplărie pvc si geamuri termopan. Duplexul se va vinde la stadiul semifinisat.\r\n\r\nDuplexul propus este situat într-o zonă liniștită plină de verdeață, unde vă puteți bucura de liniștea naturii,-aproape de magazine, banci, transport in comun, aer proaspat nepoluat asigurat de padurea din vecinatate, accesul se face pe drum privata, situata in zona rezidentiala cu panorama deosebita si cu orientare nord-sud, cu Soare pe tot parcusul zilei\r\n\r\nDuplexul se adreseaza celor care doresc libertate de miscare intr-un spatiu luminat natural abundent. Este ideala pentru o familie!\r\n\r\nPentru mai multe detaii sau stabilirea unei vizionari va asteptam la sediul nostru pe str. Pitesti nr. 12 sau ne puteti contacta la numerele de telefon afisate!",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 210.0,
+      "surface_util": 200.0,
+      "surface_built": 300.0,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a1plus",
+      "construction_year": 2020,
+      "built": "",
+      "interior_state": "unfinished",
+      "construction_material": "brick",
+      "floors": 2,
+      "floor": null,
+      "rooms_number": 3,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 2,
+      "internet_connection": null,
+      "garage": "true",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": "individual_central_heating"
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 23,
+    "fields": {
+      "title": "Casa de vanzare",
+      "description": "Impakt Imobiliare, va propune spre vanzare, o casa individuala cu 4 camere in Floresti, zona Vivo!\r\n\r\nCasa are suprafata utila de 172 mp dispusa pe 2 niveluri (P+E) si compartimentata astfel: la parter avem un living cu bucatarie, scari interioare, baie, iar la etaj avem 3 dormitoare, 2 bai, un dessing si un hol. Suprafata terenului este de 500 mp, cu front de 23 ml si un garaj dublu.\r\n\r\nCasa a fost construita in anul 2013, constructie din caramida, izolata exterior, dispune de finisaje moderne, incalzirea se realizeaza prin calorifere, tamplarie PVC, geamuri termopan, parchet laminat, gresie si faianta moderna, centrala termica individuala, cuptor electric, plita electrica pe inductie, frigider, aer conditionat, masina de spalat rufe/vase si se vinde complet mobilata si utilat conform fotografiilor de prezentare.\r\n\r\nSe afla in apropierea mijloacelor de transport in comun, a magazinelor si altor puncte de interes!\r\n\r\nPentru mai multe detalii sau stabilirea unei vizionari va astepam la sediul nostru pe str. Pitesti nr. 12 sau ne puteti contacta la numerele de telefon afisate!",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 210.0,
+      "surface_util": 200.0,
+      "surface_built": 250.0,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a2plus",
+      "construction_year": 2017,
+      "built": "",
+      "interior_state": "lux",
+      "construction_material": "brick",
+      "floors": 2,
+      "floor": null,
+      "rooms_number": 4,
+      "bathrooms_number": 2,
+      "kitchens_number": 2,
+      "balconies_number": 3,
+      "internet_connection": null,
+      "garage": "true",
+      "furnished": "true",
+      "windows": null,
+      "heating_source": "individual_central_heating"
+    }
+  },
+  {
+    "model": "properties.houseattributes",
+    "pk": 24,
+    "fields": {
+      "title": "Apartament de vanzare",
+      "description": "",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 60.0,
+      "surface_util": 55.0,
+      "surface_built": 62.0,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": null,
+      "comfort": null,
+      "orientation": null,
+      "energy_class": "a1plus",
+      "construction_year": 2018,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": null,
+      "rooms_number": 3,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "true",
+      "windows": null,
+      "heating_source": "central_heating"
+    }
+  },
+  {
+    "model": "properties.apartmentattributes",
+    "pk": 1,
+    "fields": {
+      "title": "Apartament cu 2 camere de vanzare in zona The Office!",
+      "description": "Impakt Imobiliare va propune spre vanzare un apartament in bloc nou, situat in zona centrala, la doar 10 min de orice punc de interes!\r\n\r\nApartamentul are o suprafata utila de 55 mp si este compus dintr-o camera de zi cu bucatarie, dormitor, dressing o baie, hol, Wintergarden cu o priveliste deosebita asupra orasului si o terasa de 60 mp. Apartamentul se afla intr-un bloc nou cu 3 etaje si este dotat cu parcare subterana, lift si videointerfon.\r\n\r\nApartamentul se vinde finisat si izolat interior si exterior.\r\nAcesta detine centrala termica individuala, incalzire in pardoseala, usa antifractie, instalatii electrice si sanitare, geamuri termopan, parchet trafic intens, elecrocasnice noi cu minim 3 ani garantie: mașină de spălat vase, frigider, cuptor, plită, masină spălat haine cu uscător, aer conditionat.\r\n\r\nConstrucția este realizată în anul 2019, este dotată cu interfon, lift accesibil din subteran, spațiu verde și acces securizat, iar opțional se mai poate achiziționa un loc de parcare în garajul subteran, la prețul de 8.000 euro.\r\nPoziționarea favorabilă, într-o zona centrală, este susținută de accesul rapid spre punctele de interes ale orașului. Astfel, facilitațile locației sunt concludente și vă oferă opțiuni multiple de petrecere a timpului liber în mijlocul evenimentelor cotidiene, în imediata apropiere fiind The Office Business Center, noul sediu central Banca Transilvania, spitalul Regina Maria, liceul Mihai Eminescu, liceul Nicolae Balcescu, hotelul Hampton by Hilton, bănci, cafenele, clinici, spații comerciale, supermarketuri, farmacii etc. iar stația mijloacelor de transport în comun se află la doar doi pași distantă.\r\nToate acestea determină ca achiziționarea să fie avantajoasă atât pentru investiție cât și în scop personal.\r\nDe multe ori este destul de dificil să descoperi valoarea corectă a unui apartamet cu o terasă ce dispune de o suprafață foarte consistentă\r\nApartamentul are o infrastuctura foarte bine pusa la punct si este la numai 10 minute distanță de centrul orașului dar și de un acces rapid la mijloacele de transport în comun, școli şi zone comerciale.\r\n\r\nPentru mai multe detali sau pentru stabilirea unei vizionari va asteptam la sediul nostru de pe str. Pitesti nr.12 sau ne puteti suna la numerele de telefon afisate.",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 70.0,
+      "surface_util": 53.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": "open-space",
+      "comfort": "one",
+      "orientation": "north",
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": null,
+      "construction_material": null,
+      "floors": null,
+      "floor": null,
+      "rooms_number": null,
+      "bathrooms_number": null,
+      "kitchens_number": null,
+      "balconies_number": null,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.apartmentattributes",
+    "pk": 2,
+    "fields": {
+      "title": "Apartament de vanzare",
+      "description": "Impakt Imobiliare va propune spre vanzare un apartament semidecomandat cu 2 camere in Floresti, cartier Sesul de Sus!\r\n\r\nApartamentul dispune de o suprafata utila de 44 mp si este compartimentat astfel: un dormitor, un living cu bucatarie, o baie, un hol si un balcoan de 4 mp. Acesta se afla la parterul unui imobil cu 3 etaje constructie noua izolata exterior si dotata cu interfon. Imobilul dispune de certificat energetic clasa A.\r\n\r\nApartamentul detine finisaje moderne precum gresie, faianta, parchet laminat, geamuri termopan, centrala termica individuala, incalzire in pardoseala, mobilier la baie, frigider, cuptor electric si se vinde finisat conform fotografiilor de prezentare.\r\n\r\nPentru confortul dumneavoastra apartamentul detine si un loc de parcare exterior.\r\n\r\nApartamentul se afla in apropierea statiilor de autobus, a farmaciilor, a magazinelor si a altor puncte de interes.\r\n\r\nPentru mai multe detalii sau pentru a progama o vizionare va asteptam la sediul agentiei noastre de pe str. Pitesti, nr. 12 sau ne puteti suna la numerele de telefon afisate.",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 65.0,
+      "surface_util": 60.0,
+      "surface_built": 68.0,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": "circuit",
+      "comfort": "one",
+      "orientation": "north",
+      "energy_class": "a",
+      "construction_year": 2010,
+      "built": "",
+      "interior_state": "finished",
+      "construction_material": "brick",
+      "floors": null,
+      "floor": 1,
+      "rooms_number": 2,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "true",
+      "windows": null,
+      "heating_source": "central_heating"
+    }
+  },
+  {
+    "model": "properties.apartmentattributes",
+    "pk": 3,
+    "fields": {
+      "title": "Apartament de inchiriat",
+      "description": "Impakt Imobiliare va propune spre inchiriere un apartament cochet cu 3 camere in zona Semicentrala!\r\n\r\nApartamentul ofera un confort sporit avand o suprafata utila de 72mp.\r\nAcesta este compus din hol, 2 bai, 2 dormitoare (in fiecare urmand a se monta dulapuri), bucatarie impreuna cu livingul.\r\nProprietatea se afla la etajul 2 al unui imobil cu 3 niveluri construit in anul 2020, dotat cu lift , interfon si izolatie termica avand clasa energetica A.\r\n\r\nApartamentul a fost gandit pana la cel mai mic detaliu si dispune de finisaje ultramoderne, geamuri termopan, parchet laminat, usa antiefractie, centrala termica individuala, gresie si faianta, mobilier personalizat si electrocasnice din gama premium (masina de spalat vase/rufe, hota, frigider, plita pe inductie, cuptor electric) si se inchiriaza complet mobilat si utilat conform fotografiilor de prezentare.\r\n\r\nLocatia este una foarte cautata, in imediata apropiere a mijloacelor de transport in comun, cu acces usor spre centru, spre magazine, farmacii si alte puncte de interes!\r\n\r\nPentru mai multe detalii ne puteti contacta la numerele de telefon afisate sau la sediul agentiei noastre!",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 80.0,
+      "surface_util": 72.0,
+      "surface_built": 84.0,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": "detached",
+      "comfort": "one",
+      "orientation": "east",
+      "energy_class": "a1plus",
+      "construction_year": 2000,
+      "built": "",
+      "interior_state": "lux",
+      "construction_material": "brick",
+      "floors": null,
+      "floor": 2,
+      "rooms_number": 2,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 2,
+      "internet_connection": null,
+      "garage": "true",
+      "furnished": "true",
+      "windows": null,
+      "heating_source": "central_heating"
+    }
+  },
+  {
+    "model": "properties.apartmentattributes",
+    "pk": 4,
+    "fields": {
+      "title": "Ap Zorilor",
+      "description": "zzz",
+      "description_private": "zzz",
+      "description_sentimental": "zzz",
+      "surface_total": 88.0,
+      "surface_util": 44.0,
+      "surface_built": 54.0,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": "detached",
+      "comfort": "one",
+      "orientation": "north",
+      "energy_class": "c",
+      "construction_year": 1986,
+      "built": "before_1960",
+      "interior_state": "semi-finished",
+      "construction_material": "bca",
+      "floors": 4,
+      "floor": 3,
+      "rooms_number": null,
+      "bathrooms_number": null,
+      "kitchens_number": null,
+      "balconies_number": null,
+      "internet_connection": "fiber_optics",
+      "garage": null,
+      "furnished": "semi_furnished",
+      "windows": "double_glazing",
+      "heating_source": "central_heating"
+    }
+  },
+  {
+    "model": "properties.apartmentattributes",
+    "pk": 5,
+    "fields": {
+      "title": null,
+      "description": "",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": null,
+      "surface_util": null,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": "open-space",
+      "comfort": "one",
+      "orientation": "north",
+      "energy_class": null,
+      "construction_year": null,
+      "built": null,
+      "interior_state": null,
+      "construction_material": null,
+      "floors": null,
+      "floor": null,
+      "rooms_number": null,
+      "bathrooms_number": null,
+      "kitchens_number": null,
+      "balconies_number": null,
+      "internet_connection": null,
+      "garage": null,
+      "furnished": null,
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.studioattributes",
+    "pk": 1,
+    "fields": {
+      "title": "asd",
+      "description": "asd",
+      "description_private": "",
+      "description_sentimental": "",
+      "surface_total": 1.0,
+      "surface_util": 1.0,
+      "surface_built": null,
+      "surface_field": null,
+      "front_line": null,
+      "top_floor": false,
+      "ground_floor": false,
+      "mansard": false,
+      "partitioning": "open-space",
+      "comfort": "one",
+      "orientation": "north",
+      "energy_class": null,
+      "construction_year": null,
+      "built": "",
+      "interior_state": "classic",
+      "construction_material": "brick",
+      "floors": 0,
+      "floor": 0,
+      "rooms_number": 1,
+      "bathrooms_number": 1,
+      "kitchens_number": 1,
+      "balconies_number": 1,
+      "internet_connection": null,
+      "garage": "false",
+      "furnished": "false",
+      "windows": null,
+      "heating_source": null
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 8,
+    "fields": {
+      "image_path": "images/property/22/96015e74698edc6ee3d3520066008072.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 9,
+    "fields": {
+      "image_path": "images/property/22/f867a9205864a950cf82051670c521bb.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 10,
+    "fields": {
+      "image_path": "images/property/22/f867a9205864a950cf82051670c521bb.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 11,
+    "fields": {
+      "image_path": "images/property/31/8e793e2472bb026ae625bccb0761f18e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 31
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 12,
+    "fields": {
+      "image_path": "images/property/31/8e793e2472bb026ae625bccb0761f18e.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 31
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 13,
+    "fields": {
+      "image_path": "images/property/24/2e7befa54f2636d27e1d54e251d25497.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 24
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 14,
+    "fields": {
+      "image_path": "images/property/13/5b35b1a74e4f6d02f463ff0d52ca1ca5.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 13
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 15,
+    "fields": {
+      "image_path": "images/property/23/5b35b1a74e4f6d02f463ff0d52ca1ca5.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 23
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 16,
+    "fields": {
+      "image_path": "images/property/26/5b35b1a74e4f6d02f463ff0d52ca1ca5.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 26
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 17,
+    "fields": {
+      "image_path": "images/property/22/7b0c616cc4b1cb278204963782a76aab.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 18,
+    "fields": {
+      "image_path": "images/property/22/1f602beca71a6d01184ff7a17bbc3efc.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 19,
+    "fields": {
+      "image_path": "images/property/22/8524b248065150d9cf0caee834647278.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 20,
+    "fields": {
+      "image_path": "images/property/22/a995588b0e63e77c4c7e55c70fd03921.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 21,
+    "fields": {
+      "image_path": "images/property/22/e0a4a1a88fb8349a8fbf8c98d0c0385d.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 22,
+    "fields": {
+      "image_path": "images/property/22/553d89e9e1f062ba55aa107630051bee.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 23,
+    "fields": {
+      "image_path": "images/property/22/73232de3acd84355ceed1d11119e5785.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 24,
+    "fields": {
+      "image_path": "images/property/31/57ba343d46424461a961ba93f76e60fd.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 31
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 25,
+    "fields": {
+      "image_path": "images/property/30/57ba343d46424461a961ba93f76e60fd.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 30
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 26,
+    "fields": {
+      "image_path": "images/property/13/0c5d0a48340fb93ca2bf6b5c78ef4b6a.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 13
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 27,
+    "fields": {
+      "image_path": "images/property/13/50cf8a5f8d61961a683273b8b7881a65.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 13
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 28,
+    "fields": {
+      "image_path": "images/property/13/3f9d395018129fc0fa447d14493ae2b0.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 13
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 29,
+    "fields": {
+      "image_path": "images/property/13/e7ba0d7c66cadcd668ce225d6ac583f4.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 13
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 30,
+    "fields": {
+      "image_path": "images/property/30/7a1686c64a459c284251901c914af70b.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 30
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 31,
+    "fields": {
+      "image_path": "images/property/30/31bf69534ce29bd77faea3b51c63ebbd.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 30
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 32,
+    "fields": {
+      "image_path": "images/property/30/727e1aa4c2ed08a6dc707d8d68f31770.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 30
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 33,
+    "fields": {
+      "image_path": "images/property/30/16433c6b4b27d21cb87246c23a1dd624.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 30
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 34,
+    "fields": {
+      "image_path": "images/property/22/8f5dbaa8239105e1171be4628bc03cc7.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 35,
+    "fields": {
+      "image_path": "images/property/22/3f9d395018129fc0fa447d14493ae2b0.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 36,
+    "fields": {
+      "image_path": "images/property/22/9106b6c4df7ccf337460afae682d0b05.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 37,
+    "fields": {
+      "image_path": "images/property/22/e7ba0d7c66cadcd668ce225d6ac583f4.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 38,
+    "fields": {
+      "image_path": "images/property/22/d75a93f1aa084859a5f35fb26c2ac637.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 39,
+    "fields": {
+      "image_path": "images/property/22/0c5d0a48340fb93ca2bf6b5c78ef4b6a.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 22
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 40,
+    "fields": {
+      "image_path": "images/property/32/6612a3806f005d29301297dea59e32a5.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 32
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 41,
+    "fields": {
+      "image_path": "images/property/32/0cfb961a2bcaa0cf610cf0889d69f0a0.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 32
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 42,
+    "fields": {
+      "image_path": "images/property/32/dac70c6ca788e696e0d30e2699c38b6c.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 32
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 43,
+    "fields": {
+      "image_path": "images/property/32/ebd3f920dd42fd26be3440ade042258c.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 32
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 44,
+    "fields": {
+      "image_path": "images/property/34/777a80235cf116a9a0c55f542ba1ed26.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 34
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 45,
+    "fields": {
+      "image_path": "images/property/34/b77befee5712ccbed3206aa5f1e98295.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 34
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 46,
+    "fields": {
+      "image_path": "images/property/34/56a52433b6253f0260c2b76af9f4e495.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 34
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 47,
+    "fields": {
+      "image_path": "images/property/33/0c5d0a48340fb93ca2bf6b5c78ef4b6a.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 33
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 48,
+    "fields": {
+      "image_path": "images/property/33/b9553234755d138fde13dbce1173694b.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 33
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 49,
+    "fields": {
+      "image_path": "images/property/34/d8cb53286108a1881fe85b417fdd1a00.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 34
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 50,
+    "fields": {
+      "image_path": "images/property/33/50cf8a5f8d61961a683273b8b7881a65.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 33
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 51,
+    "fields": {
+      "image_path": "images/property/33/d75a93f1aa084859a5f35fb26c2ac637.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 33
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 52,
+    "fields": {
+      "image_path": "images/property/35/abe286d79c6b489ae2b0907c825601a0.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 35
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 53,
+    "fields": {
+      "image_path": "images/property/35/fd7099b0acd7b8f7ab27c111c5939337.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 35
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 54,
+    "fields": {
+      "image_path": "images/property/35/0c5d0a48340fb93ca2bf6b5c78ef4b6a.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 35
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 55,
+    "fields": {
+      "image_path": "images/property/35/50cf8a5f8d61961a683273b8b7881a65.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 35
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 56,
+    "fields": {
+      "image_path": "images/property/36/fd9b73aeed0a69fcd762f26ff2b13b53.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 36
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 57,
+    "fields": {
+      "image_path": "images/property/36/d1860e7f88efd0ff4aa8071ac746b21b.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 36
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 58,
+    "fields": {
+      "image_path": "images/property/36/1447d0e102d034bf316c9e90f67b77a4.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 36
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 59,
+    "fields": {
+      "image_path": "images/property/36/0574227b30d24b937777a17915d33e7a.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 36
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 60,
+    "fields": {
+      "image_path": "images/property/37/21d18e29b066555661aff7a9d75f8a98.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 37
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 61,
+    "fields": {
+      "image_path": "images/property/37/24b33b090bbe182ce264ba78722fbf34.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 37
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 62,
+    "fields": {
+      "image_path": "images/property/37/7d4fbf1bbc8794f1f2a88239a02ee5fa.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 37
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 63,
+    "fields": {
+      "image_path": "images/property/37/20f17abb5366fd8e1e1cfa9854c15cff.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 37
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 64,
+    "fields": {
+      "image_path": "images/property/38/3a1f874eab7f92fdd39b801beef03c68.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 38
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 65,
+    "fields": {
+      "image_path": "images/property/38/15d313eb03f04d6cead0da188e4c9943.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 38
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 66,
+    "fields": {
+      "image_path": "images/property/38/3d3bcf6e6a537dcdc0e0cadec0f157bc.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 38
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 67,
+    "fields": {
+      "image_path": "images/property/38/5728ae3306db48e7d31230da7e6d0d7d.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 38
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 68,
+    "fields": {
+      "image_path": "images/property/39/c6f2cfbd70d1d4af5e7d3fec881b6d1c.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 39
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 69,
+    "fields": {
+      "image_path": "images/property/39/bbf44deac037f6bad79a9bd38665499a.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 39
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 70,
+    "fields": {
+      "image_path": "images/property/39/4e248017b62cc41699d4247a930fc83b.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 39
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 71,
+    "fields": {
+      "image_path": "images/property/39/e3e9d199c540e3cd40def007349dc979.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 39
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 72,
+    "fields": {
+      "image_path": "images/property/40/aba4a0bb1fcc02908d1f63566653459d.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 40
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 73,
+    "fields": {
+      "image_path": "images/property/40/7b650cc12d3b0fa7a9e9527c71ea0530.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 40
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 74,
+    "fields": {
+      "image_path": "images/property/40/85d74b316ee0c4c0d45429a4fccc25f5.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 40
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 75,
+    "fields": {
+      "image_path": "images/property/40/956d04b67a914734b81bbb913c815dd8.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 40
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 76,
+    "fields": {
+      "image_path": "images/property/42/cf5e662eb33b114c3249cf57bf89ea33.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 42
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 77,
+    "fields": {
+      "image_path": "images/property/42/0c79172714d092a137d42c7a5f34a44a.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 42
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 78,
+    "fields": {
+      "image_path": "images/property/42/7f06b3b17df4ca8b145b8488af6170cc.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 42
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 79,
+    "fields": {
+      "image_path": "images/property/42/4a9e3d6f26b0fb753534e2f10ae7bf19.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 42
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 80,
+    "fields": {
+      "image_path": "images/property/42/c5f4ecdcf8c615f58285efc2e38c5456.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 42
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 81,
+    "fields": {
+      "image_path": "images/property/43/a6ca26925d6095097428960e01ec8809.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 43
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 82,
+    "fields": {
+      "image_path": "images/property/43/14addeaa90bee5f09c072887b0634be6.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 43
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 83,
+    "fields": {
+      "image_path": "images/property/43/f7b50fcf443225493d9956035675629d.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 43
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 84,
+    "fields": {
+      "image_path": "images/property/43/6a5e7a9eaf81d8a41e6087fff5c2744d.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 43
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 85,
+    "fields": {
+      "image_path": "images/property/43/34f5d9fd7194d96291d04a5ad7e550fe.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 43
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 86,
+    "fields": {
+      "image_path": "images/property/43/15666ef7e289a815b736c384006c0354.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 43
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 87,
+    "fields": {
+      "image_path": "images/property/43/15666ef7e289a815b736c384006c0354.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 43
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 88,
+    "fields": {
+      "image_path": "images/property/43/e3a59e25dd3f1df3c95062765211f920.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 100,
+      "property": 43
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 89,
+    "fields": {
+      "image_path": "images/property/44/7c42b1d71c84aefc501843513482c5d7.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 0,
+      "property": 44
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 90,
+    "fields": {
+      "image_path": "images/property/44/b894a49de1d290e9f5c89e9f4342010c.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 1,
+      "property": 44
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 91,
+    "fields": {
+      "image_path": "images/property/44/244a4093964987428d7f109dc3c99f40.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 2,
+      "property": 44
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 92,
+    "fields": {
+      "image_path": "images/property/44/cdb35bcdbba542bf8073e50145dca988.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 3,
+      "property": 44
+    }
+  },
+  {
+    "model": "properties.propertyimage",
+    "pk": 93,
+    "fields": {
+      "image_path": "images/property/44/8d0bda1d79ad2c7b1608b6fd229d3f62.jpeg",
+      "public": true,
+      "deleted": false,
+      "position": 4,
+      "property": 44
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 45,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 13,
+      "contract_number": "100/11.11.1111",
+      "contract_type": "",
+      "price": 4123,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": true,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": 5555100,
+      "commission": 10053535,
+      "commission_percent": 1005553523,
+      "is_transacted": true,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-11-27T01:52:21.761",
+      "updated_at": "2021-01-06T12:26:17.530"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 46,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 13,
+      "contract_number": "112/22.22.2222",
+      "contract_type": "",
+      "price": 12312,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": false,
+      "special_offer": false,
+      "is_recommended": false,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": 342525,
+      "commission": 634535,
+      "commission_percent": 634354,
+      "is_transacted": true,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-11-27T02:01:42.597",
+      "updated_at": "2021-01-06T12:26:17.532"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 47,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "rent",
+      "property": 31,
+      "contract_number": "100/11.11.1111",
+      "contract_type": "",
+      "price": 1111,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": false,
+      "special_offer": false,
+      "is_recommended": false,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-11-27T14:27:18.038",
+      "updated_at": "2021-01-06T12:26:17.523"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 48,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "sale",
+      "property": 31,
+      "contract_number": "112/22.22.2222",
+      "contract_type": "",
+      "price": 111,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": false,
+      "special_offer": false,
+      "is_recommended": false,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-11-27T14:30:27.858",
+      "updated_at": "2021-01-06T12:26:17.525"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 49,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "sale",
+      "property": 26,
+      "contract_number": "100/11.11.1111",
+      "contract_type": "",
+      "price": 10000000,
+      "price_minimum": 2000000,
+      "price_per_sqm": 3000000,
+      "exclusive": false,
+      "special_offer": false,
+      "is_recommended": false,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-11-27T22:09:00.461",
+      "updated_at": "2021-01-06T12:26:17.526"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 50,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "sale",
+      "property": 26,
+      "contract_number": "112/22.22.2222",
+      "contract_type": "",
+      "price": 1000,
+      "price_minimum": 10002,
+      "price_per_sqm": 340000,
+      "exclusive": false,
+      "special_offer": false,
+      "is_recommended": false,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": 50000,
+      "commission": 60000,
+      "commission_percent": 80000,
+      "is_transacted": true,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-11-27T22:10:40.134",
+      "updated_at": "2021-01-06T12:26:17.528"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 51,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 5,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 24,
+      "contract_number": "100/11.11.1111",
+      "contract_type": "100",
+      "price": 1000000,
+      "price_minimum": 100000,
+      "price_per_sqm": 600,
+      "exclusive": true,
+      "special_offer": true,
+      "is_recommended": false,
+      "homepage": false,
+      "contract_start_date": "2020-12-01",
+      "contract_end_date": "2020-12-01",
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": true,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-05T10:27:51.558",
+      "updated_at": "2021-01-06T12:26:17.529"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 52,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "sale",
+      "property": 30,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "",
+      "price": 250000,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:23:50.842",
+      "updated_at": "2021-01-06T12:26:17.533"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 53,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "sale",
+      "property": 32,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "",
+      "price": 980000,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": true,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:31:25.676",
+      "updated_at": "2021-01-06T12:26:17.535"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 54,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 33,
+      "contract_number": "321312/12.08.2020",
+      "contract_type": "321312/12.08.2020",
+      "price": 2000000,
+      "price_minimum": 1800000,
+      "price_per_sqm": 25,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": true,
+      "contract_start_date": "2020-12-08",
+      "contract_end_date": "2020-12-24",
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:37:50.183",
+      "updated_at": "2021-01-06T12:26:17.536"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 55,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "sale",
+      "property": 34,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "",
+      "price": 300000,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": false,
+      "special_offer": false,
+      "is_recommended": false,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:39:02.185",
+      "updated_at": "2021-01-06T12:26:17.537"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 56,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 35,
+      "contract_number": "321312/12.08.2020",
+      "contract_type": "321312/12.08.2020",
+      "price": 800000,
+      "price_minimum": 700000,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": false,
+      "homepage": true,
+      "contract_start_date": "2020-12-05",
+      "contract_end_date": "2020-12-09",
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:42:51.567",
+      "updated_at": "2021-01-06T12:26:17.539"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 57,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "rent",
+      "property": 36,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "",
+      "price": 2400,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:45:15.808",
+      "updated_at": "2021-01-06T12:26:17.540"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 58,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 37,
+      "contract_number": "321312/12.08.2020",
+      "contract_type": "321312/12.08.2020",
+      "price": 120000,
+      "price_minimum": 120000,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": true,
+      "contract_start_date": "2020-12-12",
+      "contract_end_date": "2020-12-26",
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:48:26.563",
+      "updated_at": "2021-01-06T12:26:17.542"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 59,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 1,
+      "office": 1,
+      "status": "active",
+      "type": "sale",
+      "property": 38,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "",
+      "price": 149742,
+      "price_minimum": null,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": false,
+      "contract_start_date": null,
+      "contract_end_date": null,
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:55:49.811",
+      "updated_at": "2021-01-06T12:26:17.543"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 60,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 39,
+      "contract_number": "321312/12.08.2020",
+      "contract_type": "321312/12.08.2020",
+      "price": 120000,
+      "price_minimum": 70000,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": true,
+      "contract_start_date": "2020-12-09",
+      "contract_end_date": "2021-01-09",
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-28T12:57:59.686",
+      "updated_at": "2021-01-06T12:26:17.544"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 61,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 40,
+      "contract_number": "321312/12.08.2020",
+      "contract_type": "321312/12.08.2020",
+      "price": 100000,
+      "price_minimum": 90000,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": true,
+      "contract_start_date": "2020-12-26",
+      "contract_end_date": "2020-12-20",
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-29T13:41:05.623",
+      "updated_at": "2021-01-06T12:26:17.546"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 62,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "sale",
+      "property": 42,
+      "contract_number": "321312/12.08.2020",
+      "contract_type": "321312/12.08.2020",
+      "price": 63000,
+      "price_minimum": 600000,
+      "price_per_sqm": null,
+      "exclusive": false,
+      "special_offer": false,
+      "is_recommended": true,
+      "homepage": false,
+      "contract_start_date": "2020-12-24",
+      "contract_end_date": "2021-01-10",
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-29T14:50:16.448",
+      "updated_at": "2021-01-06T12:26:17.547"
+    }
+  },
+  {
+    "model": "offers.offer",
+    "pk": 63,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "user": 8,
+      "office": null,
+      "status": "active",
+      "type": "rent",
+      "property": 43,
+      "contract_number": "321312/12.08.2020",
+      "contract_type": "321312/12.08.2020",
+      "price": 800,
+      "price_minimum": 750,
+      "price_per_sqm": null,
+      "exclusive": true,
+      "special_offer": false,
+      "is_recommended": false,
+      "homepage": false,
+      "contract_start_date": "2020-11-30",
+      "contract_end_date": "2021-01-10",
+      "final_price": null,
+      "commission": null,
+      "commission_percent": null,
+      "is_transacted": false,
+      "is_closed": false,
+      "closed_by": "",
+      "created_at": "2020-12-29T14:55:07.342",
+      "updated_at": "2021-01-06T12:26:17.548"
+    }
+  },
+  {
+    "model": "demands.demand",
+    "pk": 1,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "region": 1,
+      "city": 1,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "type": "sale",
+      "property_type": "house",
+      "top_floor_excluded": false,
+      "ground_floor_excluded": false,
+      "mansard_excluded": false,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "100",
+      "price_min": 100,
+      "price_max": 100,
+      "surface_min": 100.0,
+      "surface_max": 1000.0,
+      "rooms": null,
+      "limit_date": "2020-11-24",
+      "comments": "asdf",
+      "created_at": "2020-11-23T09:44:55.119",
+      "updated_at": "2020-11-23T23:01:34.701",
+      "zones": [
+        1
+      ],
+      "features": []
+    }
+  },
+  {
+    "model": "demands.demand",
+    "pk": 2,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "region": null,
+      "city": null,
+      "user": 1,
+      "office": 1,
+      "client": null,
+      "type": "sale",
+      "property_type": "house",
+      "top_floor_excluded": false,
+      "ground_floor_excluded": false,
+      "mansard_excluded": false,
+      "contract_number": null,
+      "contract_type": null,
+      "price_min": null,
+      "price_max": null,
+      "surface_min": null,
+      "surface_max": null,
+      "rooms": null,
+      "limit_date": "2020-11-10",
+      "comments": "",
+      "created_at": "2020-11-23T23:39:51.358",
+      "updated_at": "2020-11-23T23:39:51.380",
+      "zones": [],
+      "features": []
+    }
+  },
+  {
+    "model": "demands.demand",
+    "pk": 3,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "region": null,
+      "city": null,
+      "user": 1,
+      "office": 1,
+      "client": null,
+      "type": "sale",
+      "property_type": "house",
+      "top_floor_excluded": false,
+      "ground_floor_excluded": false,
+      "mansard_excluded": false,
+      "contract_number": null,
+      "contract_type": null,
+      "price_min": null,
+      "price_max": null,
+      "surface_min": null,
+      "surface_max": null,
+      "rooms": null,
+      "limit_date": "2020-11-10",
+      "comments": "",
+      "created_at": "2020-11-24T09:05:15.212",
+      "updated_at": "2020-11-24T09:05:15.241",
+      "zones": [],
+      "features": []
+    }
+  },
+  {
+    "model": "demands.demand",
+    "pk": 4,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "region": null,
+      "city": null,
+      "user": 1,
+      "office": 1,
+      "client": null,
+      "type": "sale",
+      "property_type": "house",
+      "top_floor_excluded": false,
+      "ground_floor_excluded": false,
+      "mansard_excluded": false,
+      "contract_number": null,
+      "contract_type": null,
+      "price_min": null,
+      "price_max": null,
+      "surface_min": null,
+      "surface_max": null,
+      "rooms": null,
+      "limit_date": "2020-11-12",
+      "comments": "",
+      "created_at": "2020-11-24T09:07:42.858",
+      "updated_at": "2020-11-24T09:07:42.879",
+      "zones": [],
+      "features": []
+    }
+  },
+  {
+    "model": "demands.demand",
+    "pk": 5,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "region": null,
+      "city": null,
+      "user": 1,
+      "office": 1,
+      "client": null,
+      "type": "sale",
+      "property_type": "house",
+      "top_floor_excluded": false,
+      "ground_floor_excluded": false,
+      "mansard_excluded": false,
+      "contract_number": null,
+      "contract_type": null,
+      "price_min": null,
+      "price_max": null,
+      "surface_min": null,
+      "surface_max": null,
+      "rooms": null,
+      "limit_date": "2020-11-10",
+      "comments": "",
+      "created_at": "2020-11-24T09:17:28.247",
+      "updated_at": "2020-11-24T09:17:28.271",
+      "zones": [],
+      "features": []
+    }
+  },
+  {
+    "model": "demands.demand",
+    "pk": 6,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "region": null,
+      "city": null,
+      "user": 1,
+      "office": 1,
+      "client": null,
+      "type": "sale",
+      "property_type": "house",
+      "top_floor_excluded": false,
+      "ground_floor_excluded": false,
+      "mansard_excluded": false,
+      "contract_number": null,
+      "contract_type": null,
+      "price_min": null,
+      "price_max": null,
+      "surface_min": null,
+      "surface_max": null,
+      "rooms": null,
+      "limit_date": "2020-11-17",
+      "comments": "",
+      "created_at": "2020-11-24T09:51:39.368",
+      "updated_at": "2020-11-24T09:51:39.399",
+      "zones": [],
+      "features": []
+    }
+  },
+  {
+    "model": "demands.demand",
+    "pk": 7,
+    "fields": {
+      "deleted": false,
+      "deleted_at": null,
+      "region": 2,
+      "city": 2,
+      "user": 1,
+      "office": 1,
+      "client": 1,
+      "type": "rent",
+      "property_type": "commercial",
+      "top_floor_excluded": false,
+      "ground_floor_excluded": false,
+      "mansard_excluded": false,
+      "contract_number": "111/11.11.1111",
+      "contract_type": "100",
+      "price_min": 100,
+      "price_max": 100,
+      "surface_min": 100.0,
+      "surface_max": 1000.0,
+      "rooms": null,
+      "limit_date": "2020-12-04",
+      "comments": "asdf",
+      "created_at": "2020-12-04T10:34:27.338",
+      "updated_at": "2020-12-04T10:34:27.360",
+      "zones": [
+        2,
+        3
+      ],
+      "features": []
+    }
+  },
+  {
+    "model": "rest_framework_api_key.apikey",
+    "pk": "PosyqE4c.pbkdf2_sha256$216000$c0hodK2iOK2F$kCovlmAwVZVmPMkQdig3EgXGP5Q3HI+aOQBQzBYYKVk=",
+    "fields": {
+      "prefix": "PosyqE4c",
+      "hashed_key": "pbkdf2_sha256$216000$c0hodK2iOK2F$kCovlmAwVZVmPMkQdig3EgXGP5Q3HI+aOQBQzBYYKVk=",
+      "created": "2021-01-06T12:04:20.047",
+      "name": "impaktsite-apikey",
+      "revoked": false,
+      "expiry_date": null
+    }
+  }
+]

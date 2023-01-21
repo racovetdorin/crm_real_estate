@@ -1,0 +1,26 @@
+{% load i18n %}
+
+    <label>{{ html_label }}</label><br>
+    <select id='{{ select_el_id }}' name="{{ html_name }}"
+            class="form-control select2"
+            data-toggle="select2"
+            data-search-url="{% url url %}">
+            {% if not fk_obj and obj %}
+                <option value="{{ obj.id }}" selected>
+                    {% if activity_fk_object_name == 'Client' %}
+                    {{ obj.get_display_full_name }}
+                    {% else %}
+                    {% trans html_label %} {{ obj.id }}
+                    {% endif %}
+                </option>
+            {% elif fk_obj %}
+            <option value="{{ fk_obj.id }}" selected>
+                {% if activity_fk_object_name == 'Client' %}
+                {{ fk_obj.get_display_full_name }}
+                {% else %}
+                {% trans html_label %} {{ fk_obj.id }}
+                {% endif %}
+            </option>
+            {% endif %}
+    </select>
+ <!-- fk_object -->

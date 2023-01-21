@@ -1,0 +1,26 @@
+{% load custom_tags %}
+
+<tr>
+    <td>
+        {% if log.object%}
+        <a href="#"> #{{ log.object_id }}</a>
+        {% endif %}
+    </td>
+
+    <td>
+        {{ log.created_at|date:'d-m-Y' }} {{ log.created_at|time:"H:i" }}
+    </td>
+
+    <td>
+        {{ log.action_type }}
+    </td>
+
+    <td>
+        {{ log.user }}
+    </td>
+
+    <td style="width: 30px;">
+        {{ log.description|linebreaks }}
+    </td>
+
+</tr>

@@ -1,0 +1,263 @@
+[
+  {
+    "model": "properties.featuregroup",
+    "pk": 10,
+    "fields": {
+      "display_name": "Dotări/Echipamente interioare",
+      "slug": "dotari",
+      "property_type": "house,apartment,studio,commercial"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 11,
+    "fields": {
+      "display_name": "Facilități",
+      "slug": "facilitati",
+      "property_type": "house,apartment,studio,commercial"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 13,
+    "fields": {
+      "display_name": "Amenajări interioare",
+      "slug": "amenajari",
+      "property_type": "house,apartment,studio,commercial"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 25,
+    "fields": {
+      "name": "Frigider",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 26,
+    "fields": {
+      "name": "Mașină de spălat",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 27,
+    "fields": {
+      "name": "Aer condiționat",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 28,
+    "fields": {
+      "name": "Aragaz",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 29,
+    "fields": {
+      "name": "TV",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 30,
+    "fields": {
+      "name": "Apă",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 31,
+    "fields": {
+      "name": "Electricitate",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 32,
+    "fields": {
+      "name": "Sistem Alarmă",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 33,
+    "fields": {
+      "name": "Gaz",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 34,
+    "fields": {
+      "name": "Canalizare",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 35,
+    "fields": {
+      "name": "Interfon",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 36,
+    "fields": {
+      "name": "Lift",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 41,
+    "fields": {
+      "name": "Pet Friendly",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 42,
+    "fields": {
+      "name": "Cheia la noi",
+      "group": 10,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 43,
+    "fields": {
+      "name": "Loc de parcare",
+      "group": 11,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 44,
+    "fields": {
+      "name": "Faianță clasică",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 45,
+    "fields": {
+      "name": "Faianță Modernă",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 46,
+    "fields": {
+      "name": "Parchet lemn masiv",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 47,
+    "fields": {
+      "name": "Gresie Clasică",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 48,
+    "fields": {
+      "name": "Gresie Modernă",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 49,
+    "fields": {
+      "name": "Parchet Laminat",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 50,
+    "fields": {
+      "name": "Finisaje marmură",
+      "group": 13,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 51,
+    "fields": {
+      "name": "Geamuri Termopan",
+      "group": 11,
+      "is_filtered": false
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 52,
+    "fields": {
+      "name": "Mobilat",
+      "group": 11,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 53,
+    "fields": {
+      "name": "Garaj",
+      "group": 11,
+      "is_filtered": true
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 54,
+    "fields": {
+      "name": "Internet",
+      "group": 11,
+      "is_filtered": true
+    }
+  }
+]

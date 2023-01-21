@@ -1,0 +1,222 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load humanize %}
+{% load custom_tags %}
+
+{% if not form.id.value %}
+<div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input js-offer-checkbox"
+           id="name-sale"
+           data-container-id="id-for-{{ form.type.value }}"
+           data-fieldset-id="id-fieldset-{{ forloop.counter }}">
+
+    <label for="name-sale" class="custom-control-label">{% trans 'New Offer' %}</label>
+</div>
+
+<div id="id-for-{{ form.type.value }}" class="js-offers-formset" style="display: none">
+{% else %}
+<div id="id-for-{{ form.id.value }}" class="js-offers-formset">
+{% endif %}
+
+    {{ form.id }}
+    {% if form.id.value %} <p><strong> {% trans 'Offer' %} #{{ form.id.value }} &nbsp;&nbsp;&nbsp;&nbsp;{% trans 'Views' %}: {{ form.view_count.value }} </strong></p> {% endif %}
+
+    <fieldset id="id-fieldset-{{ forloop.counter }}">
+        <div class="form-row">
+            <div class="col-md-6">
+                {{ form.type|as_crispy_field }}
+            </div> <!-- type -->
+
+            <div class="col-md-6">
+                {{ form.status|as_crispy_field }}
+            </div><!-- status -->
+        </div> <!-- status/type -->
+
+        <h5>{% trans 'Transaction Details - only for transacted offers' %}</h5>
+        <div class="form-row mb-3">
+            <div class="form-group col-md-6">
+                <label>{{ form.final_price.label}}</label>
+                <input name="{{ form.final_price.html_name }}"
+                       type="text"
+                       value="{{ form.final_price.value|default_if_none:''|intcomma }}"
+                       class="form-control"/>
+            </div> <!-- final_price -->
+
+            <div class="form-group col-md-6">
+                <label>{{ form.VAT.label}}</label>
+
+                <select name="{{ form.VAT.html_name }}" class="form-control">
+                    {% for value, label in form.VAT.field.choices %}
+                    <option {% if value ==  form.VAT.value %} selected {% endif %} value={{ value }}> {{ label }} </option>
+                    {% endfor %}
+
+                </select>
+            </div> <!-- VAT -->
+
+            <div class="form-group col-md-6">
+                <label>{{ form.commission.label}}</label>
+                <input name="{{ form.commission.html_name }}"
+                       type="text"
+                       value="{{ form.commission.value|default_if_none:''|intcomma }}"
+                       class="form-control"/>
+            </div> <!-- commission -->
+
+            <div class="form-group col-md-6">
+                <label>{{ form.commission_percent.label}}</label>
+
+                {% if commission_choices %}
+                <select name="{{ form.commission_percent.html_name }}" class="form-control">
+                    <option value="">---------</option>
+                    {% for value, label in commission_choices %}
+                    <option {% if value ==  form.commission_percent.value %} selected {% endif %} value={{ value }}> {{ label }} </option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                <input type="number"  class="form-control"
+                       value="{{ form.commission_percent.value }}" name="{{ form.commission_percent.html_name }}">
+                {% endif %}
+            </div> <!-- commission_percent -->
+
+        </div> <!-- transaction_details -->
+        <div class="form-row">
+            <div class="col-md-6">
+                {{ form.contract_start_date|as_crispy_field }}
+            </div> <!-- contract_start_date -->
+
+            {% if form.contract_start_date.value and not form.exclusive.value %}
+            <div class="col-md-6">
+                <label>{{ form.contract_end_date.label}}</label><br>
+                <p class="mt-1"><strong>{{ form.contract_start_date.value|get_contract_end_date }}</strong></p>
+                <input hidden
+                       name="{{ form.contract_end_date.html_name }}"
+                       type="date"
+                       value="{{ form.contract_start_date.value|get_contract_end_date }}"
+                       class="form-control"/>
+            </div> <!-- contract_end_date -->
+            {% elif form.exclusive.value %}
+            <div class="col-md-6">
+                {{ form.contract_end_date|as_crispy_field }}
+            </div>
+            {% endif %}
+        </div> <!-- contract_start_date/contract_end_date -->
+
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>{{ form.contract_number.label }}</label>
+                    <input name="{{ form.contract_number.html_name }}"
+                           type="number"
+                           value="{{ form.contract_number.value|default_if_none:'' }}"
+                           class="form-control">
+                </div>
+            </div> <!-- contract_number -->
+
+            <div class="col-md-6">
+                {{ form.contract_register_date|as_crispy_field }}
+            </div> <!-- contract_register_date -->
+        </div> <!-- contract_number/contract_register_date -->
+
+        <div class="form-row mb-3">
+            <div class="form-group col-md-6">
+            <label>{{ form.price.label }}</label>
+            <input name="{{ form.price.html_name }}"
+                   type="text"
+                   value="{{ form.price.value|default_if_none:''|intcomma }}"
+                   class="form-control"/>
+            </div> <!-- price -->
+
+            <div class="form-group col-md-6">
+                <label>{{ form.price_minimum.label}}</label>
+
+                <input name="{{ form.price_minimum.html_name }}"
+                       type="text"
+                       value="{{ form.price_minimum.value|default_if_none:''|intcomma }}"
+                       class="form-control"/>
+            </div> <!-- price_minimum -->
+
+            {% if form.price.value %}
+            <div class="form-group col-md-6">
+                <label>{{ form.price_per_sqm.label}}</label>
+                <input name="{{ form.price_per_sqm.html_name }}"
+                       type="text"
+                       {% if property.attributes_object.surface_total and form.price.value %}
+                       value="{{ form.price.value|floor_division:property.attributes_object.surface_total }}"
+
+                       {% else %}
+                       value="{{ form.price_per_sqm.value|default_if_none:''|intcomma }}"
+
+                       {% endif %}
+
+                       class="form-control"/>
+            </div> <!-- price_per_sqm -->
+            {% endif %}
+
+        </div> <!-- end 'prices' row -->
+
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" {% if form.exclusive.value == True %} checked {% endif %}
+                           name="{{ form.exclusive.html_name }}"
+                           value=True
+                           class="custom-control-input"
+                           id="{{ form.exclusive.auto_id }}">
+                    <label for="{{ form.exclusive.id_for_label }}" class="custom-control-label">{{ form.exclusive.label }}</label>
+                </div>
+            </div> <!-- exclusive -->
+
+            <div class="form-group col-md-5">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" {% if form.promote_site.value == True %} checked {% endif %}
+                           name="{{ form.promote_site.html_name }}"
+                           value=True
+                           class="custom-control-input"
+                           id="{{ form.promote_site.auto_id }}">
+                    <label for="{{ form.promote_site.id_for_label }}" class="custom-control-label">{{ form.promote_site.label }}</label>
+                </div>
+            </div> <!-- promote on site -->
+
+        </div> <!-- exclusive/promote on site -->
+
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" {% if form.is_recommended.value == True %} checked {% endif %}
+                           name="{{ form.is_recommended.html_name }}"
+                           value=True
+                           class="custom-control-input"
+                           id="{{ form.is_recommended.auto_id }}">
+                    <label for="{{ form.is_recommended.id_for_label }}" class="custom-control-label">{{ form.is_recommended.label }}</label>
+                </div>
+            </div><!-- is_recommended -->
+
+            <div class="form-group col-md-5">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" {% if form.homepage.value == True %} checked {% endif %}
+                           name="{{ form.homepage.html_name }}"
+                           value=True
+                           class="custom-control-input"
+                           id="{{ form.homepage.auto_id }}">
+                    <label for="{{ form.homepage.id_for_label }}" class="custom-control-label">{{ form.homepage.label }}</label>
+                </div>
+            </div> <!-- homepage -->
+        </div> <!-- is_recommended/homepage -->
+
+
+        {% if form.id.value %}
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" {% if form.is_closed.value == True %} checked {% endif %}
+                           name="{{ form.is_closed.html_name }}"
+                           value=True
+                           class="custom-control-input"
+                           id="{{ form.is_closed.auto_id }}">
+                    <label for="{{ form.is_closed.id_for_label }}" class="custom-control-label">{{ form.is_closed.label }}</label>
+                </div>
+            </div>
+        </div> <!-- is_closed -->
+        {% endif %}
+
+    </fieldset>
+</div>

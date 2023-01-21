@@ -1,0 +1,37 @@
+{% load i18n %}
+
+<div class="row">
+    <div class="col-12" id="id-matching-demands">
+        <div class="card">
+            <div class="card-body">
+                {% if demands_of_interest %}
+                <label>{% trans 'Demands of interest' %}</label>
+                {% else %}
+                <label>{% trans 'Matching demands' %}</label>
+                {% endif %}
+                {% include 'partials/object_count.html' with object_list_1=demands|length objects_1='demands' %}
+                <div class="table-responsive">
+                    <table class="table table-centered table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline collapsed"
+                           id="products-datatable">
+                        <thead>
+                        <tr>
+                            <th>{% trans 'Demand details' %}</th>
+                            <th>{% trans 'Property details' %}</th>
+                            <th>{% trans 'Features' %}</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% trans 'Client/Agent' %}</th>
+                            <th>{% trans 'Contract start/end' %}</th>
+                            <th class="custom-width">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for demand in demands %}
+                        {% include 'demands/partials/_list_row.html' with demand=demand %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% include 'partials/matching_objects_pagination.html' with objects=demands %}
+            </div>
+        </div>
+    </div>
+</div>  <!-- matching demands -->

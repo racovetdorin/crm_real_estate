@@ -1,0 +1,37 @@
+{% load i18n %}
+
+<div class="row">
+    <div class="col-12" id="id-matching-properties">
+        <div class="card">
+            <div class="card-body">
+                {% if offers_of_interest %}
+                <label>{% trans 'Offers of interest' %}</label>
+                {% else %}
+                <label>{% trans 'Matching offers' %}</label>
+                {% endif %}
+                <div class="table-responsive">
+                    <table class="table table-centered w-100 dt-responsive nowrap dataTable no-footer dtr-inline collapsed" id="products-datatable">
+                        <thead class="thead-light">
+                            <tr>
+                            <th>{% trans 'Property' %}</th>
+                            <th>{% trans 'Details' %}</th>
+                            <th>{% trans 'Prices' %}</th>
+                            <th>{% trans 'Address' %}</th>
+                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% trans 'Client/Agent' %}</th>
+                            <th>{% trans 'Created At' %}/{% trans 'Updated At' %}</th>
+                            <th>{% trans 'Offers' %}</th>
+                            <th class="width-75">{% trans 'Action' %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for property in properties %}
+                        {% include 'properties/partials/_list_row.html' with property=property %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div> <!-- matching_demands_list -->
+                {% include 'partials/matching_objects_pagination.html' with objects=properties %}
+            </div>
+        </div>
+    </div>
+</div> <!-- matched properties -->

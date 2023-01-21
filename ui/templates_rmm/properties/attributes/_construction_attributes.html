@@ -1,0 +1,143 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load custom_tags %}
+
+<div class="mb-3 form-row">
+    <div class="col-md-4 col-xl-2">
+       {{ form.rooms_number|as_crispy_field }}
+    </div> <!-- rooms_number -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.bathrooms_number|as_crispy_field }}
+    </div>  <!-- bathrooms_number -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.kitchens_number|as_crispy_field }}
+    </div> <!-- kitchens_number -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.balconies_number|as_crispy_field }}
+    </div>  <!-- balconies_number -->
+</div>
+
+<div class="mb-3 form-row">
+    <div class="col-md-4 col-xl-2">
+        {{ form.partitioning|as_crispy_field }}
+    </div> <!-- partitioning -->
+    {% if property.type == 'apartment' %}
+    <div class="col-md-4 col-xl-2">
+        {{ form.apartment_state|as_crispy_field }}
+    </div> <!-- apartment_state -->
+    {% elif property.type == 'house' %}
+    <div class="col-md-4 col-xl-2">
+        {{ form.house_state|as_crispy_field }}
+    </div> <!-- house_state -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.sewerage|as_crispy_field }}
+    </div> <!-- sewerage -->
+    <div class="col-md-4 col-xl-2">
+        {{ form.water_pipes|as_crispy_field }}
+    </div> <!-- water_pipes -->
+    <div class="col-md-4 col-xl-2">
+        {{ form.gasification|as_crispy_field }}
+    </div> <!-- gasification -->
+
+    {% elif property.type == 'commercial' %}
+    <div class="col-md-4 col-xl-2">
+        {{ form.commercial_state|as_crispy_field }}
+    </div> <!-- commercial_state -->
+    {% else %}
+    <div class="col-md-4 col-xl-2">
+        {{ form.interior_state|as_crispy_field }}
+    </div> <!-- interior_state -->
+    {% endif %}
+    <div class="form-group col-md-4 col-xl-2">
+        {{ form.orientation|as_crispy_field }}
+    </div> <!-- orientation -->
+</div>
+
+<div class="mb-3 form-row">
+    <div class="col-md-4 col-xl-2">
+        {{ form.construction_year|as_crispy_field }}
+    </div> <!-- construction_year -->
+    {% if property.type == 'apartment' %}
+    <div class="col-md-4 col-xl-2">
+        {{ form.apartment_construction_material|as_crispy_field }}
+    </div> <!-- apartment_construction_material -->
+    {% elif property.type == 'house' %}
+    <div class="col-md-4 col-xl-2">
+        {{ form.house_construction_material|as_crispy_field }}
+    </div> <!-- house_construction_material -->
+    {% else %}
+    <div class="col-md-4 col-xl-2">
+        {{ form.construction_material|as_crispy_field }}
+    </div> <!-- construction_material -->
+    {% endif %}
+    <div class="col-md-4 col-xl-2">
+       {{ form.heating_source|as_crispy_field }}
+    </div> <!-- heating_source -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.built|as_crispy_field }}
+    </div> <!-- built  -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.floors|as_crispy_field }}
+    </div> <!-- floors -->
+</div>
+
+<div class="mb-3 form-row">
+    <div class="col-md-4 col-xl-2">
+        {{ form.internet_connection|as_crispy_field }}
+    </div> <!-- internet -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.garage|as_crispy_field }}
+    </div> <!-- garage -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.furnished|as_crispy_field }}
+    </div> <!-- furnished -->
+
+    <div class="col-md-4 col-xl-2">
+        {{ form.windows|as_crispy_field }}
+    </div> <!-- windows -->
+
+    <div class="col-md-4 col-xl-2"> 
+        {{ form.allow_childrens|as_crispy_field }}
+    </div> <!-- allow childrens -->
+                
+    <div class="col-md-4 col-xl-2"> 
+        {{ form.allow_animals|as_crispy_field }}
+    </div> <!-- allow animals -->
+</div>
+
+<div class="mb-3 form-row">
+    <div class="col-md-4 col-xl-2">
+        {{ form.cadastral_number|as_crispy_field }}
+   </div>
+</div>
+
+<div class="form-row">
+    <div class="form-row col-12">
+        <div class="mr-3 col">{{ form.top_floor|as_crispy_field }}</div>
+        <div class="mr-3 col">{{ form.mansard|as_crispy_field }}</div>
+        <div class="mr-3 col">
+        {% if form.window_shop %} {{ form.window_shop|as_crispy_field }} {% endif %}
+        </div>
+
+        <div class="w-100"></div>
+
+        <div class="mr-3 col">{{ form.ground_floor|as_crispy_field }}</div>
+        <div class="mr-3 col">{{ form.new_building|as_crispy_field }}</div>
+        <div class="mr-3 col"></div>
+
+         <div class="w-100"></div>
+
+        <div class="mr-3 col">{{ form.in_development|as_crispy_field }}</div>
+        <div class="mr-3 col">{{ form.key_holding|as_crispy_field }}</div>
+        <div class="mr-3 col"></div>
+    </div>
+</div>
+<!-- 'new_construction/key_possession/pet_friendly/parking_spot/garage/furnished/ground_floor/top_floor/mansard/' -->

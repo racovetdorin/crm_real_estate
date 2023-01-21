@@ -1,0 +1,16 @@
+{% load crispy_forms_tags %}
+{% load custom_tags %}
+
+{% include 'properties/attributes/_base_attributes.html' %}
+
+<div class="mb-3 form-row">
+    <div class="col-md-4 col-xl-2">
+        {{ form.rental_fund|as_crispy_field }}
+   </div>
+   <div class="col-md-4 col-xl-2">
+        {{ form.building_plan|as_crispy_field }}
+    </div>
+</div>
+
+
+{% include 'properties/attributes/_construction_attributes.html' %}

@@ -1,0 +1,246 @@
+{% load static %}
+{% load i18n %}
+<div class="left-side-menu">
+
+    <!-- LOGO -->
+    <a href="{% url 'ui:dashboard'%}" class="logo text-center logo-light">
+        <span class="logo-lg">
+            <img src="{{ LOGO }}" alt="" height="48">
+        </span>
+        <span class="logo-sm">
+            <img src="{{ LOGO }}" alt="" height="38">
+        </span>
+    </a>
+
+    <div class="h-100" id="left-side-menu-container" data-simplebar>
+
+        <!--- Sidemenu -->
+        <ul class="metismenu side-nav">
+
+            <li class="side-nav-title side-nav-item">{% trans 'Navigation' %}</li>
+
+            <li class="side-nav-item">
+                <a href="{% url 'ui:dashboard'%}" class="side-nav-link">
+                    <i class="uil-dashboard"></i>
+                    <span> {% trans 'Dashboard' %} </span>
+                </a>
+            </li> <!-- dashboard -->
+
+            <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="uil-check-circle"></i>
+                    <span> {% trans 'Activities' %} </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    {% if request.user.role != 'mortage_broker' %}
+                    <li>
+                        <a href="{% url 'ui:my_activities_list' %}">{% trans 'My activities' %}</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_manager %}
+                    <li>
+                        <a href="{% url 'ui:all_activities_list' %}">{% trans 'All activities' %}</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'ui:archived_activities_list' %}">{% trans 'Archived activities' %}</a>
+                    </li>
+                </ul>
+            </li> <!-- activities -->
+
+            <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="dripicons-lightbulb"></i>
+                    <span> {% trans 'Property leads' %} </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    {% if request.user.role != 'mortage_broker' %}
+                    <li>
+                        <a href="{% url 'ui:my_leads_list' %}">{% trans 'My leads' %}</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_manager %}
+                    <li>
+                        <a href="{% url 'ui:all_leads_list' %}">{% trans 'All leads' %}</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'ui:archived_leads_list' %}">{% trans 'Archived leads' %}</a>
+                    </li>
+                </ul>
+            </li> <!-- leads -->
+
+            <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="uil-home-alt"></i>
+                    <span> {% trans 'Properties' %} </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    {% if request.user.role != 'mortage_broker' %}
+                    <li>
+                        <a href="{% url 'ui:property_create' %}">{% trans 'Add' %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ui:my_properties_list' %}">{% trans 'My properties' %}</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'ui:office_properties_list' %}">{% trans 'Office properties' %}</a>
+                    </li>
+                    {% if request.user.role != 'mortage_broker' %}
+                    <li>
+                        <a href="{% url 'ui:all_properties_list' %}">{% trans 'All properties' %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li> <!-- properties -->
+
+            <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="uil-file-alt"></i>
+                    <span> {% trans 'Demands' %} </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    {% if request.user.role != 'mortage_broker' %}
+                    <li>
+                        <a href="{% url 'ui:demand_create' %}">{% trans 'Add' %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ui:my_demands_list' %}">{% trans 'My demands' %}</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'ui:office_demands_list' %}">{% trans 'Office demands' %}</a>
+                    </li>
+                    {% if request.user.role != 'mortage_broker' %}
+                    <li>
+                        <a href="{% url 'ui:all_demands_list' %}">{% trans 'All demands' %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li> <!-- demands -->
+
+            <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="dripicons-user"></i>
+                    <span> {% trans 'Clients' %} </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    {% if request.user.role != 'mortage_broker' %}
+                    <li>
+                        <a href="{% url 'ui:client_create' %}">{% trans 'Add' %}</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ui:my_clients_list' %}">{% trans 'My clients' %}</a>
+                    </li>
+                    {% endif %}
+                    {% if request.user.is_manager or request.user.role == 'mortage_broker' %}
+                    <li>
+                        <a href="{% url 'ui:office_clients_list' %}">{% trans 'Office clients' %}</a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a href="{% url 'ui:all_clients_list' %}">{% trans 'All clients' %}</a>-->
+<!--                    </li>-->
+                    {% endif %}
+                </ul>
+            </li> <!-- clients -->
+            {% if request.user.role != 'mortage_broker' %}
+            <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="dripicons-checkmark"></i>
+                    <span>{% trans 'Transacted offers' %}</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    <li>
+                        <a href="{% url 'ui:my_transacted_offers_list' %}">{% trans 'My offers' %}</a>
+                    </li>
+                    {% if request.user.is_manager %}
+                    <li>
+                        <a href="{% url 'ui:all_transacted_offers_list' %}">{% trans 'All offers' %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li> <!-- offer transactions -->
+
+            <li class="side-nav-item">
+                <a href="javascript: void(0);" class="side-nav-link">
+                    <i class="dripicons-checkmark"></i>
+                    <span>{% trans 'Transacted demands' %}</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="side-nav-second-level" aria-expanded="false">
+                    <li>
+                        <a href="{% url 'ui:my_transacted_demands_list' %}">{% trans 'My demands' %}</a>
+                    </li>
+                    {% if request.user.is_manager %}
+                    <li>
+                        <a href="{% url 'ui:all_transacted_demands_list' %}">{% trans 'All demands' %}</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li> <!-- demands transactions -->
+            {% endif %}
+            <li class="side-nav-item">
+                <a href="https://remax.knolyx.com/" class="side-nav-link">
+                    <i class=" mdi mdi-book-open-page-variant"></i>
+                    <span> {% trans 'Training' %} </span>
+                </a>
+            </li> <!-- dashboard -->
+
+            <li class="side-nav-item">
+                <a href="http://remaxdesigncenter.ro/" class="side-nav-link">
+                    <i class=" mdi mdi-cart"></i>
+                    <span> {% trans 'Design center' %} </span>
+                </a>
+            </li> <!-- dashboard -->
+
+            <li class="side-nav-item">
+                <a href="{% url 'ui:tutorials' %}" class="side-nav-link">
+                    <i class=" mdi mdi-book-open-page-variant"></i>
+                    <span> {% trans 'CRM Tutorials' %} </span>
+                </a>
+            </li> <!-- tutorials -->
+
+            {% if perms.permissions.can_view_administration_tab %}
+                <li class="side-nav-item">
+                    <a href="javascript: void(0);" class="side-nav-link">
+                        <i class="mdi mdi-layers-triple-outline"></i>
+                        <span>{% trans 'Administration' %}</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="side-nav-second-level" aria-expanded="false">
+
+                        {% if perms.users.add %}
+                        <li>
+                            <a href="{% url 'ui:user_create' %}">{% trans 'Create agent' %}</a>
+                        </li>
+                        {% endif %}
+
+                        <li>
+                            <a href="{% url 'ui:users_list' %}">{% trans 'Agents' %}</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'ui:audit_list' %}">{% trans 'Audit' %}</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'ui:offices_list' %}">{% trans 'Agencies/Franchises' %}</a>
+                        </li>
+                    </ul>
+                </li> <!-- administration -->
+            {% endif %}
+
+        </ul>
+
+        <div class="clearfix"></div>
+
+    </div>
+
+</div>

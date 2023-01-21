@@ -1,0 +1,45 @@
+{% load custom_tags %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="GET">
+                    <strong><label class="mb-2">{% trans 'Filters' %}</label></strong>
+                    <a class="ml-2" href="{{request.path}}"><strong>{% trans 'Reset filters' %}</strong></a>
+
+                    <div class="form-row">
+                        <div class="col-md-6 col-lg-3">
+                            {{ filter.form.email|as_crispy_field }}
+                        </div> <!-- email -->
+
+                        <div class="col-md-6 col-lg-2">
+                            {{ filter.form.phone|as_crispy_field }}
+                        </div> <!-- phone -->
+
+                        <div class="col-md-6 col-lg-2">
+                            {{ filter.form.full_name|as_crispy_field }}
+                        </div> <!-- full_name -->
+
+                        <div class="col-md-6 col-lg-2">
+                            {{ filter.form.role|as_crispy_field }}
+                        </div> <!-- role -->
+
+                        <div class="form-group mb-3 col-md-1">
+                            {{ filter.form.id|as_crispy_field }}
+                        </div> <!-- id -->
+                        <div class="form-group mb-3 col-md-1">
+                            {{ filter.form.is_active|as_crispy_field }}
+                        </div> <!-- id -->
+                    </div> <!-- all_filters -->
+
+                    <div class="float-right">
+                        {% include 'partials/_filter_button.html' %}
+                    </div> <!-- filter -->
+                </form>
+            </div> <!-- end card-body -->
+        </div> <!-- end card -->
+    </div> <!-- end col -->
+</div> <!-- end row -->

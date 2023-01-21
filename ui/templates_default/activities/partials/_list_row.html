@@ -1,0 +1,280 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load custom_tags %}
+
+<!-- Task Item -->
+<div class="card mb-0" data-change-type-url="{% url 'api_activity_status_change' activity_id=activity.id %}" data-activity-id="{{ activity.id }}">
+    <div class="card-body p-3" style="background-color: {{activity.get_list_background_color_code}}">
+        <small class="float-right text-muted">{% trans 'Created at' %}: {{ activity.created_at|date:DATE_FORMAT_RO }}</small>
+
+        {% if activity.is_taken %}
+            <span class="badge badge-primary badge-pill mb-1">{% trans 'Taken' %}</span>
+        {% endif %}
+
+        {% if not activity.is_available %}
+            <span class="badge badge-warning badge-pill">{% trans 'Unavailable' %}</span>
+        {% endif %}
+
+        {% include 'partials/_badge_filter.html' %} &nbsp;&nbsp;#{{ activity.id }}
+
+        <h5 class="mt-2 mb-1">
+            <a href="javascript: void(0)" data-toggle="modal" data-target="#task-detail-modal-{{ activity.id }}" class="text-body">{{ activity.title|default_if_none:'na' }}</a>
+        </h5>
+
+        {% if activity.due_date %}
+        <p class="mb-0">
+            <small class="text-muted">{% trans 'Due Date' %}: {{ activity.due_date|default_if_none:'na'|date:'d-m-Y' }}</small>
+        </p>
+        {% endif %}
+
+        <p class="mb-0">
+            <small class="text-muted">{% trans 'Agent' %}: {{ activity.user|default_if_none:"" }}</small>
+        </p>
+
+        {% if activity.phone %}
+        <p class="mb-0">
+            <small class="text-muted">{% trans 'Phone' %}: {{ activity.phone }}</small>
+        </p>
+        {% endif %}
+
+        {% if activity.type %}
+        <p class="mb-0">
+            <small class="text-muted">{% trans 'Type' %}: {{ activity.get_type_display }}</small>
+        </p>
+        {% endif %}
+        {% if activity.property %} <a class="d-inline" href="{% url 'ui:property_update' pk=activity.property.id %}"><small>{% trans 'Property' %} #{{ activity.property.id }}</small></a> {% endif %}
+        {% if activity.demand %} <a class="d-inline" href="{% url 'ui:demand_update' pk=activity.demand.id %}"><small>{% trans 'Demand' %}  #{{ activity.demand.id }}</small></a> {% endif %}
+        {% if activity.client %} <a class="d-inline" href="{% url 'ui:client_update' pk=activity.client.id %}"><small>{% trans 'Client' %}  #{{ activity.client.id }}</small></a> {% endif %}
+        <br>
+
+        {% if activity.hyperlink %}
+        <a href="{{ activity.hyperlink }}">
+            {% if activity.hyperlink|length >= 39 %}
+            <small>Link: {{ activity.hyperlink|truncatechars:39 }}</small>
+            {% else %}
+            <small>Link: {{ activity.hyperlink }}</small>
+            {% endif %}
+        </a>
+        {% endif %}
+    </div> <!-- end card-body -->
+</div>
+<!-- Task Item End -->
+
+<div class="modal fade task-modal-content no-drag" id="task-detail-modal-{{ activity.id }}" tabindex="-1" role="dialog" aria-labelledby="NewTaskModalLabel" style="display: none;" aria-hidden="true">
+    <form method="POST"
+          {% if activity_fk_object_id %} action="{% url 'ui:activity_create' %}?activity_id={{ activity.id }}"
+          {% else %} action="{% url 'ui:activity_create' %}?activity_id={{ activity.id }}"
+          {% endif %}>
+        {% csrf_token %}
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="NewTaskModalLabel">{{ activity.title|default_if_none:'na' }}
+                    #{{ activity.id }}
+                    {% if activity.is_taken %}
+                        <span class="badge badge-primary badge-pill">{% trans 'Taken' %}</span>
+                    {% endif %}
+
+                    {% if not activity.is_available %}
+                        <span class="badge badge-warning badge-pill">{% trans 'Unavailable' %}</span>
+                    {% endif %}
+
+                    {% include 'partials/_badge_filter.html' %}
+                    </h4> <br>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form class="p-2">
+                        <div class="form-row">
+                            {% if activity.is_taken and activity.user and activity.user != request.user and not user.is_superuser %}
+                                <div class="form-group">
+                                    <h4>{% trans 'Agent' %}: {{ activity.user.get_display_full_name }}</h4>
+                                    <input type="hidden" name="{{ form.user.name }}" value="{{ activity.user.id }}">
+                                </div>
+                            {% endif %}
+
+                            <div class="form-group col-12">
+                                <label>{{ form.title.label }}</label>
+                                <input type="text" class="form-control" name="{{ form.title.name }}" value="{{ activity.title|default_if_none:'na' }}">
+                            </div> <!-- title -->
+                        </div> <!-- title -->
+
+                        <div class="form-row">
+                            <div class="form-group col-lg-4">
+                                <label>{{ form.status.label }}</label>
+
+                                <select class="form-control" id="modal-select-{{ activity.id }}" name="{{ form.status.name }}">
+                                    {% if activities %}
+                                    {% for value, status in form.status.field.choices|slice:'0:3' %}
+                                    <option {% if activity.status == value %} selected {% endif %}
+                                            value="{{ value }}">{{ status }}</option>
+                                    {% endfor %}
+
+                                    {% elif leads %}
+                                    {% for value, status in form.status.field.choices|slice:'3:' %}
+                                    <option {% if activity.status == value %} selected {% endif %}
+                                            value="{{ value }}">{{ status }}</option>
+                                    {% endfor %}
+
+                                    {% else %}
+                                    {% for value, status in form.status.field.choices %}
+                                    <option {% if activity.status == value %} selected {% endif %}
+                                            value="{{ value }}">{{ status }}</option>
+                                    {% endfor %}
+
+                                    {% endif %}
+                                </select>
+                            </div> <!-- status -->
+
+                            <div class="form-group col-md-4">
+                                <label>{{ form.type.label }}</label>
+
+                                <select class="form-control" name="{{ form.type.name }}">
+                                {% for value, label in form.type.field.choices %}
+                                    <option {% if activity.type == value %} selected {% endif %} value="{{ value }}">{{ label }}</option>
+                                {% endfor %}
+                                </select>
+                            </div> <!-- type -->
+
+                            <div class="form-group col-lg-4">
+                                <label>{{ form.priority.label }}</label>
+                                <select class="form-control" name="{{ form.priority.name }}">
+                                    {% for value, priority in form.priority.field.choices %}
+                                    <option {% if activity.priority == value %} selected {% endif %} value="{{ value }}">{{ priority }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div> <!-- priority -->
+                        </div> <!-- priority/status/user -->
+
+                        {% if user.is_superuser or activity.user == request.user %}
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                    <label>{{ form.user.label }}</label>
+                                    <select name="{{ form.user.name }}"
+                                            class="form-control select2">
+
+                                        {% for value, user in form.user.field.choices %}
+                                        <option {% if activity.user %}
+                                                    {% if activity.user.id|to_str == value|to_str %} selected {% endif %}
+
+                                                {% elif request.user|to_str == value|to_str %}
+                                                    selected
+
+                                                {% endif %}
+                                                value="{{ value }}">{{ user }}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div> <!-- user(agent) -->
+                            <div class="col-lg-1 ml-2 mt-4">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox"
+                                           name="{{ form.is_taken.html_name }}"
+                                           {% if activity.is_taken %} checked {% endif %} value=True
+                                           class="custom-control-input"
+                                           id="id_is_taken_{{ activity.id }}">
+                                    <label for="id_is_taken_{{ activity.id }}" class="custom-control-label">
+                                           {% if activity.is_taken %} {{ form.is_taken.label }}
+                                           {% else %} {% trans 'Take!' %} {% endif %}
+                                    </label>
+                                </div>
+                        </div> <!-- is_taken -->
+                        </div> <!-- user/is_taken -->
+                        {% endif %}
+
+                        <div class="form-group">
+                            <label>{{ form.description.label }}</label>
+
+                            <textarea class="form-control" name="{{ form.description.name }}" rows="4">{{ activity.description|default_if_none:'' }}</textarea>
+                        </div> <!-- description -->
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label>{{ form.phone.label }}</label>
+
+                                <input type="text" name="{{ form.phone.name }}" class="form-control" value="{{ activity.phone }}">
+                            </div> <!-- phone -->
+
+                            <div class="form-group col-md-9">
+                                <label>{{ form.hyperlink.label }}</label>
+
+                                <input type="text" name="{{ form.hyperlink.name }}" class="form-control" value="{{ activity.hyperlink }}">
+                            </div> <!-- hyperlink -->
+                        </div> <!-- phone/hyperlink -->
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>{{ form.due_date.label }}</label>
+                                <input type="date" name="{{ form.due_date.name }}" class="form-control" value="{{ activity.due_date|date }}">
+                            </div> <!-- due_date -->
+
+                            {% if user.is_superuser %}
+                            <div class="form-group mt-4 ml-3">
+                                <div class="text-left">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox"
+                                               name="{{ form.is_available.html_name }}"
+                                               {% if activity.is_available %} checked {% endif %} value=True
+                                               class="custom-control-input"
+                                               id="id_is_available_{{ activity.id }}">
+                                        <label for="id_is_available_{{ activity.id }}" class="custom-control-label">{{ form.is_available.label }}</label>
+                                    </div>
+                                </div>
+                            </div> <!-- is_available -->
+
+                            {% else %}
+                            <input type="hidden" name="{{ form.is_available.html_name }}" value=True>
+
+                            {% endif %}
+
+                            <div class="form-group mt-4 ml-3">
+                                <div class="custom-control custom-checkbox">
+                                    <input id="id_is_archived_{{ activity.id }}" class="custom-control-input" type="checkbox" name="{{ form.is_archived.html_name }}" value="True">
+                                    <label for="id_is_archived_{{ activity.id }}" class="custom-control-label">{{ form.is_archived.label }}</label>
+                                </div>
+
+                            </div> <!-- is_archived -->
+                        </div> <!-- due_date/is_available/is_archived -->
+
+                        <div class="form-row">
+                            {% if activity.property or 'property' in activity.linked_with %}
+                            {% include 'activities/partials/_fk_object_div.html' with fk_obj=activity.property html_name=form.property.name html_label=form.property.label select_el_id=activity|get_activity_ajax_search_id:'property' url='ui:ajax_search_properties' %}
+                            {% endif %}
+
+                            {% if activity.client or 'client' in activity.linked_with%}
+                            {% include 'activities/partials/_fk_object_div.html' with fk_obj=activity.client html_name=form.client.name html_label=form.client.label select_el_id=activity|get_activity_ajax_search_id:'client' url='ui:ajax_search_clients' %}
+                            {% endif %}
+
+                            {% if activity.demand or 'demand' in activity.linked_with %}
+                            {% include 'activities/partials/_fk_object_div.html' with fk_obj=activity.demand html_name=form.demand.name html_label=form.demand.label select_el_id=activity|get_activity_ajax_search_id:'demand' url='ui:ajax_search_demands' %}
+                            {% endif %}
+                        </div>
+                        
+                        {% if not activity.is_taken and activity.user != request.user and not user.is_superuser %}
+                            <div class="text-left">
+                                <div class="custom-control custom-switch">
+                                <input type="checkbox"
+                                       name="{{ form.is_taken.html_name }}"
+                                       {% if activity.is_taken %} checked {% endif %} value=True
+                                       class="custom-control-input"
+                                       id="id_is_taken_{{ activity.id }}">
+                                <label for="id_is_taken_{{ activity.id }}" class="custom-control-label">
+                                       {% if activity.is_taken %} {{ form.is_taken.label }}
+                                       {% else %} {% trans 'Take!' %} {% endif %}
+                                </label>
+                                </div>
+                            </div> <!-- is_taken -->
+                        {% endif %}
+
+                        <input type="hidden" value="{{ activity_fk_object }}" name="activity_fk_object">
+                        <input type="hidden" value="{{ request.path }}" name="current_path">
+
+                        <div class="text-right">
+                            <button type="button" class="btn btn-light" data-dismiss="modal">{% trans 'Cancel' %}</button> <!-- cancel -->
+                            {% include 'partials/_submit_button.html' with title='Submit' type='submit' value='POST' button_class="btn btn-lg btn-primary"  %}
+                        </div> <!-- submit/cancel -->
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </form>
+</div>

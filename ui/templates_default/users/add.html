@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load custom_tags %}
+{% load i18n %}
+{% load static %}
+{% translate "Update Agent" %}
+{% translate "Create Agent" %}
+
+
+<!-- Group Translations -->
+{% translate 'Agents' %}
+{% translate 'Office Managers' %}
+{% translate 'Region Managers' %}
+{% translate 'Delete Selected' %}
+
+
+{% block content %}
+<div class="container-fluid">
+    {% if agent %}
+    {% include "partials/page_title.html" with title='Update Agent' id=agent.id %}
+    {% else %}
+    {% include "partials/page_title.html" with title='Create Agent' %} <!-- title_box -->
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-12 col-md-5 col-xl-6">
+                <div class="card" style="height: 98%">
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {% include 'partials/form_errors.html' %}<!-- form errors -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        {{ form.first_name|as_crispy_field }}
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        {{ form.last_name|as_crispy_field }}
+                                    </div>
+                                </div> <!-- first_name/last_name -->
+
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        {{ form.email|as_crispy_field }}
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        {{ form.phone|as_crispy_field }}
+                                    </div>
+                                </div> <!-- email/phone -->
+
+                                {% if request.user.is_manager %}
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label>{{ form.groups.label }}</label>
+
+                                        <select class="select2 form-control select2-multiple"
+                                                name="{{ form.groups.name }}"
+                                                data-toggle="select2"
+                                                data-placeholder="{% trans 'Choose group(s)...' %}"
+                                                multiple>
+                                                {% for value, group in form.groups.field.choices %}
+                                                    {% if not user.is_superuser %}
+                                                        {% if group == 'Office Managers' and not user|in_group:'Region Managers' %}
+                                                        {% elif group == 'Region Managers' and not user.is_superuser %}
+                                                        {% else %}
+                                                            <option {% if value in form.groups.value %} selected {% endif %} value="{{ value }}">{% trans group %}</option>
+                                                        {% endif %}
+                                                    {% elif user.is_superuser %}
+                                                        <option {% if value in form.groups.value %} selected {% endif %} value="{{ value }}">{% trans group %}</option>
+                                                    {% endif %}
+
+                                                {% endfor %}
+                                        </select>
+                                    </div>
+                                </div> <!-- groups -->
+
+                                    <div class="form-row">
+                                        <div class="col-6">
+                                            {{ form.office|as_crispy_field }}
+                                        </div>
+                                        <div class="col-6">
+                                            {{ form.role|as_crispy_field }}
+                                        </div>
+                                    </div> <!-- role -->
+                                {% endif %}
+
+                                {% if not agent%}
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        {{ form.password1|as_crispy_field }}
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        {{ form.password2|as_crispy_field }}
+                                    </div>
+                                </div> <!-- password -->
+                                {% else %}
+                                <div class="form-row col p-0">
+                                    {% for field in form.layout_settings %}
+                                    <div class="form-group col-5">
+                                        {{ field }}
+                                    </div>
+                                    {% endfor %}
+                                    <div class="form-group col-5">
+                                        <input type="checkbox" id="id_show_on_site" name="show_on_site" {% if form.show_on_site.value %} checked {% endif %}>
+                                        <label for="id_is_active">{{ form.show_on_site.label }}</label>
+                                    </div>
+                                    <div class="form-group col-5">
+                                        <input type="checkbox" id="id_is_active" name="is_active" {% if form.is_active.value %} checked {% endif %}>
+                                        <label for="id_is_active">{{ form.is_active.label }}</label>
+                                    </div>
+                                </div> <!-- layout_settings -->
+                                {% endif %}
+
+                                {% include 'partials/_submit_button.html' with title='Submit' type='submit' value='POST' button_class="btn btn-lg btn-primary" %} <!-- submit -->
+
+                                {% if agent %}
+                                {% if request.user == agent or user.is_superuser %}
+                                <br><a class="float-right form-row" href="{% url 'ui:password_change' %}"><strong>{% trans 'Change Password' %}</strong></a>
+                                {% endif %}
+                                {% endif %}
+                            </div>
+                        </div> <!-- fields -->
+                    </div>
+                </div>
+            </div>
+
+            {% if agent %}
+            <div class="col-12 col-md-7 col-xl-6">
+                <div class="card" style="height: 98%">
+                    <div class="card-body">
+                        <div class="col-12 p-0">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>*{% trans 'File extension must be .jpg!' %}</p>
+                                    <div action="{% url 'ui:users_upload_images' pk=agent.id %}" class="dropzone"
+                                         id="images-dropzone"  data-plugin="dropzone" data-previews-container="#file-previews"
+                                         data-upload-preview-template="#uploadPreviewTemplate">
+
+                                        <div class="dz-message needsclick">
+                                            <i class="h1 text-muted dripicons-cloud-upload"></i>
+                                            <h3>Drop files here or click to upload.</h3>
+                                        </div>
+                                    </div> <!-- dropzone -->
+
+                                    <div class="dropzone-previews mt-3" id="file-previews"></div> <!-- preview -->
+
+                                    <div class="d-none" id="uploadPreviewTemplate">
+                                        <div class="card mt-1 mb-0 shadow-none border">
+                                            <div class="p-2">
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
+                                                        <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                                                    </div>
+                                                    <div class="col pl-0">
+                                                        <a href="javascript:void(0);" class="text-muted font-weight-bold" data-dz-name></a>
+                                                        <p class="mb-0" data-dz-size></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- file preview template -->
+                                </div>
+                            </div>
+                        </div> <!-- images_upload -->
+                    </div>
+                </div>
+            </div> <!-- images-upload -->
+                {% if images %}
+                <div class="col-12">
+                <div class="card">
+                    <p class="mt-2 ml-2 mb-0">*{% trans 'First image is thumbnail' %}</p>
+                    <div class="card-body">
+                        <div class="form-row col file-previews p-0">
+                            {% for image in images %}
+                                {% include 'users/partials/_user_image.html' %}
+                            {% endfor %}
+                        </div> <!-- thumbnails -->
+
+                        <div class="form-row">
+                            {% include 'partials/_submit_button.html' with title='Submit' type='submit' button_class="btn btn-primary" %}
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- image_thumbnails -->
+                {% endif %}
+            {% endif %}
+
+        </div>
+    </form>
+</div>
+
+<div class="float-left ml-2" id="language-div">
+    <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}">
+        <select name="language">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                    {{ language.name_local }} ({{ language.code }})
+                </option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="{% trans 'Change' %}">
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    $( function() {
+        $( ".file-previews" ).sortable();
+        $( ".file-previews" ).disableSelection();
+    } );
+</script>
+
+<script src="{% static 'dist/js/custom/messages_fadeout.js' %}"></script>
+
+<script src="{% static 'dist/js/vendor/dropzone.min.js' %}"></script>
+<script src="{% static 'dist/js/ui/component.fileupload.js' %}"></script>
+{% endblock %}
+

@@ -1,0 +1,389 @@
+[
+  {
+    "model": "properties.featuregroup",
+    "pk": 1,
+    "fields": {
+      "display_name": "Climatizare",
+      "slug": "climatizare",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 2,
+    "fields": {
+      "display_name": "Electrocasnice",
+      "slug": "electrocasnice",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 3,
+    "fields": {
+      "display_name": "Ușă intrare",
+      "slug": "usa-intrare",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 4,
+    "fields": {
+      "display_name": "Amenajare străzi",
+      "slug": "amenajare-strazi",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 5,
+    "fields": {
+      "display_name": "Utilități generale",
+      "slug": "utilitati-generale",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 6,
+    "fields": {
+      "display_name": "Rulouri / Obloane",
+      "slug": "rulouri-obloane",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 7,
+    "fields": {
+      "display_name": "Jaluzele",
+      "slug": "jaluzele",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 8,
+    "fields": {
+      "display_name": "Mobilat",
+      "slug": "mobilat",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 9,
+    "fields": {
+      "display_name": "Uși interior",
+      "slug": "usi-interior",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 10,
+    "fields": {
+      "display_name": "Izolații termice",
+      "slug": "izolatii-termice",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 11,
+    "fields": {
+      "display_name": "Stare interior",
+      "slug": "stare-interior",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 12,
+    "fields": {
+      "display_name": "Ferestre",
+      "slug": "ferestre",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 13,
+    "fields": {
+      "display_name": "Contorizare",
+      "slug": "contorizare",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 14,
+    "fields": {
+      "display_name": "Acces Internet",
+      "slug": "acces-internet",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 15,
+    "fields": {
+      "display_name": "Alte spații utile",
+      "slug": "alte-spatii-utile",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 16,
+    "fields": {
+      "display_name": "Utilități de bază",
+      "slug": "utilitati-de-baza",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 17,
+    "fields": {
+      "display_name": "Podele",
+      "slug": "podele",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 18,
+    "fields": {
+      "display_name": "Diverse",
+      "slug": "diverse",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 19,
+    "fields": {
+      "display_name": "Bucătărie",
+      "slug": "bucatarie",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 20,
+    "fields": {
+      "display_name": "Dotări imobil",
+      "slug": "dotari-imobil",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 21,
+    "fields": {
+      "display_name": "Pereți",
+      "slug": "pereti",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 22,
+    "fields": {
+      "display_name": "Sistem încălzire",
+      "slug": "sistem-incalzire",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 23,
+    "fields": {
+      "display_name": "Alte Spații",
+      "slug": "alte-spatii",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 24,
+    "fields": {
+      "display_name": "Dotări",
+      "slug": "dotari",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 25,
+    "fields": {
+      "display_name": "Utilități teren",
+      "slug": "utilitati-teren",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 26,
+    "fields": {
+      "display_name": "Alte caracteristici",
+      "slug": "alte-caracteristici",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 27,
+    "fields": {
+      "display_name": "Sursă de alimentare",
+      "slug": "sursa-de-alimentare",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 28,
+    "fields": {
+      "display_name": "Ferestre birouri",
+      "slug": "ferestre-birouri",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 29,
+    "fields": {
+      "display_name": "Lift",
+      "slug": "lift",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 30,
+    "fields": {
+      "display_name": "Detalii tehnice",
+      "slug": "detalii-tehnice",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 31,
+    "fields": {
+      "display_name": "Servicii asigurate în clădire",
+      "slug": "servicii-asigurate-in-cladire",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 32,
+    "fields": {
+      "display_name": "Alte caracteristici spațiu industrial",
+      "slug": "alte-caracteristici-spatiu-industrial",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 33,
+    "fields": {
+      "display_name": "Alte caracteristici spațiu comercial",
+      "slug": "alte-caracteristici-spatiu-comercial",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 34,
+    "fields": {
+      "display_name": "Siguranță și securitate",
+      "slug": "siguranta-si-securitate",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 35,
+    "fields": {
+      "display_name": "Climatizare birou",
+      "slug": "climatizare-birou",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 36,
+    "fields": {
+      "display_name": "Facilități clădire / proximități",
+      "slug": "facilitati-cladire-proximitati",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 37,
+    "fields": {
+      "display_name": "IT&C",
+      "slug": "itc",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 38,
+    "fields": {
+      "display_name": "Sistem electric",
+      "slug": "sistem-electric",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 39,
+    "fields": {
+      "display_name": "Elemente ECO",
+      "slug": "elemente-eco",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 40,
+    "fields": {
+      "display_name": "Arhitectură",
+      "slug": "arhitectura",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 41,
+    "fields": {
+      "display_name": "Servicii asigurate în clădire",
+      "slug": "servicii-asigurate-in-cladire-hotel",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 42,
+    "fields": {
+      "display_name": "IT&C",
+      "slug": "itc-hotel",
+      "property_type": "house,apartment,studio"
+    }
+  },
+  {
+    "model": "properties.featuregroup",
+    "pk": 43,
+    "fields": {
+      "display_name": "Facilități clădire / proximități",
+      "slug": "facilitati-hotel-proximitati",
+      "property_type": "house,apartment,studio"
+    }
+  }
+]

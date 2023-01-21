@@ -1,0 +1,19 @@
+{% load i18n %}
+<div id="invalidation-modal-{{ id }}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="NewTaskModalLabel text-center">{% trans 'Offer validation:' %} #{{ form.id.value }}</h4>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="mb-4">{% trans 'If this offer is not ready to be valid, invalidate it by clicking the button bellow.' %}</h5>
+                    <a href="{% url invalidation_url pk=id %}?property_path={{ request.get_full_path }}#offer-cards"
+                       class="btn btn-success btn-lg float-right">{% trans 'Invalidate' %}</a>
+                    <a href="javascript: void(0)" class="btn btn-warning btn-lg float-right mr-2" data-dismiss="modal" aria-hidden="true">{% trans 'Cancel' %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

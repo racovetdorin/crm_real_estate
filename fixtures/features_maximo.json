@@ -1,0 +1,2036 @@
+[
+  {
+    "model": "properties.feature",
+    "pk": 1,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Aer condiționat"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 2,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Ventiloconvectoare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 3,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Aeroterme"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 4,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Fier de călcat"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 5,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Mașină de spălat vase"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 6,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Cafetieră"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 7,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Mașină de spălat rufe"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 8,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Toaster"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 9,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Frigider"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 10,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Cuptor microunde"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 11,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Aragaz"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 12,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Hotă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 13,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Robot bucătărie"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 14,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Uscător păr"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 15,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sandwich-maker"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 16,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "HI-FI"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 17,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "TV"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 18,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Aspirator"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 19,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "DVD"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 20,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Pal"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 21,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Lemn"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 22,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Metal"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 23,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "PVC"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 24,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sticlă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 25,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Asfaltate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 26,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Betonate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 27,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Pietruite"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 28,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "De pământ"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 29,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Neamenajate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 30,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Iluminat stradal"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 31,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Mijloace de transport în comun"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 32,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Curent"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 33,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Apă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 34,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Canalizare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 35,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Gaz"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 36,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "CATV"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 37,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Telefon"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 38,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Telefon internațional"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 39,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Aluminiu"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 40,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Lemn"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 41,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "PVC"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 42,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Orizontale"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 43,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Verticale"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 44,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Nemobilat"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 45,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Parțial"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 46,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Complet"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 47,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Lux"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 48,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Celulare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 49,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Lemn"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 50,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Panel"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 51,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "PVC"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 52,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sticlă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 53,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Interior"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 54,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Exterior"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 55,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Renovat"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 56,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Bună"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 57,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Necesită renovare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 58,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Aluminiu"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 59,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Lemn"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 60,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "PVC"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 61,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Contor gaz"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 62,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Apometre"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 63,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Contor căldură"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 64,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Cablu"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 65,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Fibră optică"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 66,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Wireless"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 67,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Dial-up"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 68,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Terasă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 69,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "WC Serviciu"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 70,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Boxă la subsol"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 71,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Debara"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 72,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Are subsol"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 73,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Are demisol"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 74,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Are mansardă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 75,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Rezidențial"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 76,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Administrare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 77,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Menaj"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 78,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Pază"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 79,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Supraveghere video"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 80,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Risc seismic"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 81,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Linoleum"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 82,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Mochetă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 83,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Parchet"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 84,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Gresie"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 85,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Dușumea"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 86,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Marmură"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 87,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Senzor de fum"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 88,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem de alarmă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 89,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Șemineu"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 90,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Jacuzzi"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 91,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Telecomandă poartă garaj"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 92,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Telecomandă poartă acces auto"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 93,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Scară interioară"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 94,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Mobilată"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 95,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Parțial mobilată"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 96,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Utilată"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 97,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Parțial utilată"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 98,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Spații agrement"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 99,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Videointerfon"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 100,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Piscină interioară"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 101,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Saună"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 102,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Acoperiș"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 103,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Curte"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 104,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Curte comună"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 105,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Grădină"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 106,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Interfon"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 107,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Lift"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 108,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Piscină exterioară"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 109,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Uscătorie"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 110,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Spa"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 111,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Var"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 112,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Vinarom"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 113,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Vopsea lavabilă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 114,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Faianță"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 115,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Lambriu"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 116,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Tapet"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 117,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Humă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 118,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Termoficare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 119,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Centrală proprie"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 120,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Centrală imobil"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 121,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sobă / Teracotă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 122,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Calorifere"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 123,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Încălzire prin pardoseală"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 124,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Piscină"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 125,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Deschisă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 126,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Internet"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 127,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Curent"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 128,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Apă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 129,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Canalizare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 130,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Gaz"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 131,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Utilități în zonă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 132,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Oportunitate de investiții"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 133,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Construcție demolabilă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 134,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Parcelabil"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 135,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "La șosea"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 136,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Teren împrejmuit"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 137,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Acces auto"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 138,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Generator de rezervă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 139,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Generator de urgență"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 140,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Generator electric"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 141,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sursă principală de alimentare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 142,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sursa UPS"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 143,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sursă suplimentară de energie din generator"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 144,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Ferestre care se deschid"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 145,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Ferestre înclinate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 146,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Cameră server"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 147,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Centrală termică"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 148,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Compartimentare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 149,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Control al accesului"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 150,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Control al accesului pe zone"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 151,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Detectoare de fum/incendiu"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 152,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Finisaje de calitate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 153,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Podea înălțată"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 154,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem antiincendiu"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 155,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem de evacuare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 156,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem modern de telecomunicații"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 157,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Tavan fals"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 158,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Ventilație mecanică"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 159,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Acces pentru persoane cu dizabilități"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 160,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Îndepărtarea zăpezii"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 161,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Îngrijirea spațiilor verzi"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 162,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Pază permanentă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 163,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Recepție"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 164,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Servicii de întreținere și reparații lifturi"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 165,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Administrare și management imobiliar"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 166,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Contor electric"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 167,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Irigații"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 168,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Curent trifazic (380V)"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 169,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Pod rulant"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 170,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Uși de acces"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 171,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Luminatoare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 172,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Acces TIR"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 173,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Posibilitate de compartimentare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 174,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Acces secundar marfă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 175,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Posibilitate terasă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 176,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem de ventilație"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 177,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Curățenie spații comune"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 178,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Curățenie parcare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 179,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Curățenie exterioară"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 180,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Consumabile grupuri sociale"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 181,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Salubritate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 182,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Afișare logo pe clădire"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 183,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Contorizare separată"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 184,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Acces securizat parcare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 185,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Semaforizare parcare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 186,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Transmisie date"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 187,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Post trafo"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 188,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Server room cu rack, ventilație, control acces"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 189,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Control acces securizat pe bază de cartele"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 190,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Lift cu destinație programată"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 191,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Fitness"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 192,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Piatră naturală"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 193,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Pivniță"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 194,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Magazie"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 195,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "MDF"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 196,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Piatră naturală"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 197,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Certificare Green Building"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 198,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Fațadă ventilată"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 199,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Building management system"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 200,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Parcare biciclete"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 201,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sisteme de securitate integrate BMS"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 202,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "CCTV"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 203,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Extinctoare sprinkler"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 204,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem climatizare 4 țevi"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 205,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem climatizare 2 țevi"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 206,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Control individual AC pentru fiecare zonă de birou"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 207,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Cafenea la parter"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 208,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Restaurant în clădire"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 209,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Centru comercial în proximitate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 210,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Stație de metrou în proximitate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 211,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Autobuz"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 212,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Tramvai"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 213,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Posibilitatea alegerii operator date / telefonie"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 214,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Necesită surse suplimentare de energie"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 215,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Control electric individual pe zona de birou"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 216,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem electric inteligent"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 217,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Incărcător auto electrice"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 218,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Sistem inteligent ascensoare"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 219,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Echipamente moderne / silențioase"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 220,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Grupuri sanitare amenajate și utilate"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 221,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Unități Split"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 222,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Aport de aer proaspăt"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 223,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Cortină de sticlă"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 224,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Studiu Geo"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 225,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Fosă septică"
+    }
+  },
+  {
+    "model": "properties.feature",
+    "pk": 226,
+    "fields": {
+      "is_filtered": false,
+      "group": 1,
+      "name": "Dressing"
+    }
+  }
+]

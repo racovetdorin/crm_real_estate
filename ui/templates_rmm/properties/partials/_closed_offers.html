@@ -1,0 +1,35 @@
+{% load i18n %}
+
+<div class="row">
+    <div class="col-12" id="id_closed_offers">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline collapsed">
+                    <thead>
+                    <tr>
+                        <th>{% trans 'Agent' %}</th>
+                        <th>{% trans 'Office' %}</th>
+                        <th>{% trans 'Offer and Property ID' %}</th>
+                        <th>{% trans 'Exclusivity' %}</th>
+                        <th>{% trans 'Transaction type' %}</th>
+                        <th>{% trans 'Final price' %}</th>
+                        <th>{% trans 'Commission Seller %' %}</th>
+                        <th>{% trans 'Commission Seller' %}</th>
+                        <th>{% trans 'Commission Buyer %' %}</th>
+                        <th>{% trans 'Commission Buyer' %}</th>
+                        <th>{% trans 'Link 999.md' %}</th>
+                        <th>{% trans 'Closing date' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for offer in closed_offers %}
+                    {% include 'offers/partials/_closed_offers_list_row.html' with offer=offer %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> <!-- closed_offers -->
+</div>

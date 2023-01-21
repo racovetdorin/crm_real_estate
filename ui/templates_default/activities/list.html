@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block content %}
+{% include 'activities/partials/_list.html' with modal_target="add_activity_modal" activity_type='activity' %}
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- third party js -->
+<script src="{% static 'dist/js/custom/messages_fadeout.js' %}"></script>
+<script src="{% static 'dist/js/app.min.js' %}"></script>
+<script src="{% static 'dist/js/vendor/dragula.min.js' %}"></script>
+<script src="{% static 'dist/js/custom/activities_fk_objects_filter.js' %}"></script>
+<script src="{% static 'dist/js/ui/component.dragula.js' %}"></script>
+<!-- third party js ends -->
+{% endblock %}

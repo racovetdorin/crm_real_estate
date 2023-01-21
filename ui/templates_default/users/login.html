@@ -1,0 +1,56 @@
+{% extends 'users/base_auth.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="col-lg-5">
+    <div class="card">
+        <!-- Logo -->
+        <div class="card-header pt-4 pb-4 text-center bg-primary">
+            <span><img src="{{ LOGO }}" alt="" height="72"></span>
+        </div>
+
+        <div class="card-body p-4">
+            {% if form.errors %}
+            <p class="alert alert-danger">{% trans "Your username and password didn't match. Please try again." %}</p>
+            {% endif %}
+            <form action="{% url 'ui:crm_login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">{% trans 'Email address' %}</label>
+                    <input class="form-control" type="email" name="{{ form.username.name }}" id="username" required=""
+                           placeholder="{% trans 'Enter your email' %}">
+                </div> <!-- email -->
+
+                <div class="form-group">
+                    <a href="{% url 'ui:password_reset' %}" class="text-muted float-right"><small>
+                        {% trans 'Forgot your password?' %}</small></a>
+
+                    <label for="password">{% trans 'Password' %}</label>
+                    <div class="input-group input-group-merge">
+                        <input type="password" name="{{ form.password.name }}" id="password" class="form-control"
+                               placeholder="{% trans 'Enter your password' %}">
+                        <div class="input-group-append" data-password="false">
+                            <div class="input-group-text">
+                                <span class="password-eye"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- password/password reset -->
+
+                <div class="form-group mb-3">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                        <label class="custom-control-label" for="checkbox-signin">{% trans 'Remember me' %}</label>
+                    </div>
+                </div> <!-- remember me -->
+
+                <div class="form-group mb-0 text-center">
+                    <button class="btn btn-primary" type="submit">{% trans 'Log In' %}</button>
+                </div> <!-- submit -->
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

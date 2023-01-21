@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<div class="form-group col-sm-6 col-xl-2 text-center">
+    <input type="hidden" name="position-img-{{ image.id }}" value="{{ image.id }}">
+    <a href="{{ storage_url }}{{ image.image_path }}">
+        <img class="rounded property-thumbnail"
+             src="{{ storage_url }}{{ image.image_path }}"
+             alt="contact-img"title="contact-img"
+        />
+    </a><br>
+
+    <input id="id-delete-{{ image.id }}" type="checkbox" name="delete-img-{{ image.id }}" value="{{ image.id }}">
+    <label class="text-danger font-weight-bold" for="id-delete-{{ image.id }}">{% trans 'Delete' %}</label>
+</div>

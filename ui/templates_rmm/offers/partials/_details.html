@@ -1,0 +1,135 @@
+{% load custom_tags %}
+{% load i18n %}
+
+{{ offer_id_input }}
+<strong style="color: #449AB9">{% trans 'Details for offer with ID' %}: {{ offer.id }}</strong><br><br>
+
+<div class="form-row">
+    <div class="col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Type' %}: </label><br>
+        <p>{{ offer.get_type_display|default_if_none:"--" }}</p>
+    </div> <!-- type -->
+
+    <div class="col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Status' %}: </label><br>
+        <p>{{ offer.get_status_display|default_if_none:"--" }}</p>
+    </div><!-- status -->
+
+</div> <!-- status/type -->
+
+<div class="form-row">
+    <div class="col-md-12 form-group mb-3">
+        <label class="m-0"><strong>{% trans 'Contract start date' %}:</strong></label><br>
+        <p>{{ offer.contract_start_date|default_if_none:"--" }}</p>
+    </div> <!-- contract_start_date -->
+
+    {% if offer.contract_start_date and not offer.exclusive %}
+    <div class="col-md-6 form-group mb-3">
+        <label class="m-0"><strong>{% trans 'Contract end date' %}: </strong></label><br>
+        <p>{{ offer.contract_start_date|get_contract_end_date }}</p>
+    </div> <!-- contract_end_date -->
+    {% else %}
+    <div class="col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Contract end date' %}: </label><br>
+        <p>{{ offer.contract_end_date|default_if_none:"--" }}</p>
+    </div> <!-- contract_end_date -->
+    {% endif %}
+
+    <div class="col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Contract register' %}</label><br>
+        <p>{{ offer.contract_register_date|default_if_none:"--" }}</p>
+    </div> <!-- contract_register_date -->
+
+</div> <!-- contract_start_date/contract_end_date -->
+
+<div class="form-row">
+    <div class="col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Contract number' %}: </label><br>
+        <p>{{ offer.contract_number|default_if_none:"--" }}</p>
+    </div> <!-- contract_number -->
+
+
+</div> <!-- contract_number/contract_register_date -->
+
+<div class="form-row">
+    <div class="form-group mb-3 col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Price' %}: </label><br>
+        <p>{{ offer.price|default_if_none:"--" }} €</p>
+    </div> <!-- price -->
+
+    <div class="form-group mb-3 col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Price minimum' %}: </label><br>
+        <p>{{ offer.price_minimum|default_if_none:"--" }} €</p>
+    </div> <!-- price_minimum -->
+
+    {% if offer.price %}
+    <div class="form-group mb-3 col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Price per sqm' %}: </label><br>
+        <p>{{ offer.price|floor_division:property.attributes_object.surface_total|default_if_none:"--" }} €</p>
+    </div> <!-- price_per_sqm -->
+    {% endif %}
+
+</div> <!-- end 'prices' row -->
+
+<div class="form-row">
+    <div class="form-group mb-3 col-md-6">
+        <label class="m-0">{% trans 'Is exclusive' %}: </label><br>
+        <p>{{ offer.exclusive|translate_bool }}</p>
+    </div> <!-- exclusive -->
+
+    <div class="form-group mb-3 col-md-6">
+        <label class="m-0">{% trans 'Is promoted on site' %}: </label><br>
+        <p>{{ offer.promote_site|translate_bool }}</p>
+    </div> <!-- promote on site -->
+
+</div> <!-- exclusive/promote on site -->
+
+<div class="form-row">
+    <div class="form-group mb-3 col-md-6">
+        <label class="m-0">{% trans 'Is recommended' %}: </label><br>
+        <p>{{ offer.is_recommended|translate_bool }}</p>
+    </div><!-- is_recommended -->
+
+    <div class="form-group mb-3 col-md-6">
+        <label class="m-0">{% trans 'Is on homepage' %}: </label><br>
+        <p>{{ offer.promote_site_homepage|translate_bool }}</p>
+    </div> <!-- homepage -->
+</div> <!-- is_recommended/homepage -->
+
+
+{% if 'transacted' in offer.status %}
+<h5>{% trans 'Transaction Details - only for transacted offers' %}</h5>
+<div class="form-row mb-3">
+    <div class="form-group mb-3 col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Final price' %}: </label><br>
+        <p>{{ offer.final_price|default_if_none:"--" }}</p>
+    </div> <!-- final_price -->
+
+    <div class="form-group mb-3 col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'VAT' %}: </label><br>
+        <p>{{ offer.get_VAT_display|default_if_none:"--" }}</p>
+    </div> <!-- VAT -->
+
+    <div class="form-group mb-3 col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Commission' %}: </label><br>
+        <p>{{ offer.commission|default_if_none:"--" }}</p>
+    </div> <!-- commission -->
+
+    <div class="form-group mb-3 col-md-6 form-group mb-3">
+        <label class="m-0">{% trans 'Commission percent' %}: </label><br>
+        <p>{{ offer.commission_percent|default_if_none:"--" }}</p>
+    </div> <!-- commission_percent -->
+
+</div> <!-- transaction_details -->
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
